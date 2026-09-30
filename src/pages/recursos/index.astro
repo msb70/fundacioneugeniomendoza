@@ -1,0 +1,73 @@
+---
+// Página /recursos/: catálogo de plataformas, apps y publicaciones.
+// Contenido en src/site/recursos.json (editar ahí para añadir o cambiar recursos).
+import Base from '../../layouts/Base.astro';
+import ResourceCard from '../../components/ResourceCard.astro';
+import { pageByRoute, type PageMeta } from '../../lib/site';
+import data from '../../site/recursos.json';
+
+// Reutiliza CSS/JS del tema tal como los carga el blog (misma cascada de estilos).
+const base = pageByRoute('/blog/')!;
+const url = 'https://fundacioneugeniomendoza.com/recursos/';
+const title = 'Recursos - Fundación Eugenio Mendoza';
+const description =
+  'Plataformas, aplicaciones y publicaciones de la Fundación Eugenio Mendoza y sus aliados: microcréditos, niñez migrante, economía del cuidado, emprendimiento, cultura y educación.';
+const robots = (base.seo.match(/<meta name="robots" content="([^"]*)"/) ?? [])[1] ?? 'index, follow';
+
+const meta: PageMeta = {
+  ...base,
+  route: '/recursos/',
+  bodyClass: 'page page-recursos wp-custom-logo wp-embed-responsive wp-theme-fem-conversion-theme',
+  seo: [
+    `<title>${title}</title>`,
+    `<meta name="description" content="${description}" />`,
+    `<meta name="robots" content="${robots}" />`,
+    `<link rel="canonical" href="${url}" />`,
+    `<meta property="og:site_name" content="Fundación Eugenio Mendoza" />`,
+    `<meta property="og:type" content="website" />`,
+    `<meta property="og:title" content="${title}" />`,
+    `<meta property="og:description" content="${description}" />`,
+    `<meta property="og:url" content="${url}" />`,
+    `<meta property="og:image" content="https://fundacioneugeniomendoza.com/assets/recursos/vidas-en-movimiento.webp" />`,
+    `<meta name="twitter:card" content="summary_large_image" />`,
+  ].join('\n'),
+  menu: {
+    overrides: {
+      '12': 'menu-item menu-item-type-custom menu-item-object-custom current-menu-item menu-item-12',
+    },
+    aria: ['12'],
+    logoCurrent: false,
+    hrefs: {},
+  },
+};
+---
+<Base meta={meta} extraHead='<link rel="stylesheet" href="/assets/recursos/recursos.css" />'>
+<main class="blog-page fem-recursos" id="main-content">
+  <section class="blog-hero">
+    <div class="container">
+      <h1>Recursos</h1>
+      <p>Plataformas, aplicaciones y publicaciones al servicio de emprendedores, familias, cuidadoras, docentes y organizaciones.</p>
+    </div>
+  </section>
+
+  <nav class="fem-recursos__nav" aria-label="Secciones de recursos">
+    <div class="container">
+      {data.secciones.map((s) => <a href={`#${s.id}`}>{s.titulo}</a>)}
+    </div>
+  </nav>
+
+  {data.secciones.map((s) => (
+    <section class="fem-recursos__seccion" id={s.id} aria-labelledby={`${s.id}-titulo`}>
+      <div class="container">
+        <header class="fem-recursos__cabecera">
+          <h2 id={`${s.id}-titulo`}>{s.titulo}</h2>
+          <p>{s.intro}</p>
+        </header>
+        <div class="fem-recursos__grid">
+          {s.items.map((item) => <ResourceCard item={item} />)}
+        </div>
+      </div>
+    </section>
+  ))}
+</main>
+</Base>

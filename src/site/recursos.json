@@ -1,0 +1,207 @@
+{
+  "secciones": [
+    {
+      "id": "plataformas",
+      "titulo": "Plataformas de la Fundación",
+      "intro": "Herramientas digitales desarrolladas por la Fundación Eugenio Mendoza y su ecosistema para acompañar a emprendedores, familias, cuidadoras y organizaciones.",
+      "items": [
+        {
+          "nombre": "SiCrecer",
+          "etiqueta": "Microcréditos",
+          "descripcion": "Sistema de gestión de microcréditos para microempresarios. Permite a la organización administrar solicitudes, créditos y el acompañamiento de cada emprendedor desde un solo lugar.",
+          "imagen": "/assets/recursos/sicrecer.webp",
+          "imagenAlt": "Pantalla de acceso de la plataforma SiCrecer",
+          "logo": "/assets/recursos/sicrecer-logo.png",
+          "logoFondo": "#1f2937",
+          "enlaces": [
+            {
+              "texto": "Ir a la aplicación",
+              "url": "https://sicrecer.com/",
+              "principal": true
+            }
+          ]
+        },
+        {
+          "nombre": "Vidas en Movimiento",
+          "etiqueta": "Niñez migrante",
+          "descripcion": "Plataforma de seguimiento migratorio para identificar, acompañar y derivar a niños, niñas y adolescentes en movilidad. Conecta a las organizaciones de la región para que la atención continúe aunque la familia cambie de territorio. Proyecto coordinado con El Diálogo Interamericano y el apoyo de Fundación FEMSA.",
+          "imagen": "/assets/recursos/vidas-en-movimiento.webp",
+          "imagenAlt": "Niños y familias atendidos por el proyecto Vidas en Movimiento",
+          "logo": "/assets/recursos/vidas-en-movimiento-logo.png",
+          "logoFondo": "#ffffff",
+          "enlaces": [
+            {
+              "texto": "Ir a la aplicación",
+              "url": "https://vidasenmovimiento.com/",
+              "principal": true
+            }
+          ]
+        },
+        {
+          "nombre": "Cresiendo",
+          "etiqueta": "Economía del cuidado",
+          "descripcion": "Plataforma para formar, acompañar y formalizar la economía del cuidado. Su aplicación acompaña a madres cuidadoras de niños y niñas en su formación y las conecta con una comunidad y con oportunidades para profesionalizar su labor.",
+          "imagen": "/assets/recursos/cresiendo.webp",
+          "imagenAlt": "Cuidadora comunitaria acompañando a niños en una actividad",
+          "logo": "/assets/recursos/cresiendo-logo.png",
+          "logoFondo": "#ffffff",
+          "enlaces": [
+            {
+              "texto": "Ir a la aplicación",
+              "url": "https://cresiendo.digital/",
+              "principal": true
+            },
+            {
+              "texto": "Sitio web",
+              "url": "https://cresiendo.co/"
+            }
+          ]
+        },
+        {
+          "nombre": "Comunidad Palante",
+          "etiqueta": "Emprendimiento",
+          "descripcion": "Comunidad digital de microemprendedores en Colombia y Venezuela. Ofrece información, contenidos de formación, historias de emprendedores y herramientas para que los negocios crezcan y no se detengan.",
+          "imagen": "/assets/recursos/palante.webp",
+          "imagenAlt": "Emprendedora de la comunidad Palante en su negocio",
+          "logo": "/assets/recursos/palante-logo.png",
+          "logoFondo": "#0b3b75",
+          "enlaces": [
+            {
+              "texto": "Visitar Palante",
+              "url": "https://palante.digital/",
+              "principal": true
+            }
+          ]
+        },
+        {
+          "nombre": "Iberoamérica Digital",
+          "etiqueta": "Sociedad civil",
+          "descripcion": "Punto de encuentro del tercer sector latinoamericano. Reúne y pone a disposición experiencias de ONG, fundaciones y actores independientes de la región, con su contexto, método y resultados, para que otras organizaciones puedan aprender de ellas.",
+          "imagen": "/assets/recursos/iberoamerica-digital.webp",
+          "imagenAlt": "Encuentro de organizaciones de la sociedad civil",
+          "logo": "/assets/recursos/iberoamerica-digital-logo.png",
+          "logoFondo": "#ffffff",
+          "enlaces": [
+            {
+              "texto": "Visitar el sitio",
+              "url": "https://www.iberoamericadigital.com/",
+              "principal": true
+            }
+          ]
+        },
+        {
+          "nombre": "Sala Mendoza",
+          "etiqueta": "Cultura",
+          "descripcion": "Espacio para el arte contemporáneo y la cultura visual en Caracas, iniciado por Luisa Rodríguez de Mendoza y Eugenio Mendoza. Organiza exposiciones, eventos y el Premio Mendoza para impulsar a nuevos artistas.",
+          "imagen": "/assets/recursos/sala-mendoza.webp",
+          "imagenAlt": "Exposición de arte contemporáneo en la Sala Mendoza",
+          "logo": "/assets/recursos/sala-mendoza-logo.png",
+          "logoFondo": "#ffffff",
+          "enlaces": [
+            {
+              "texto": "Visitar el sitio",
+              "url": "https://fundacionsalamendoza.com/",
+              "principal": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aliados",
+      "titulo": "Herramientas y programas de aliados",
+      "intro": "Recursos de organizaciones aliadas que recomendamos a las comunidades con las que trabajamos.",
+      "items": [
+        {
+          "nombre": "CREDUEMPRENDER",
+          "etiqueta": "Crédito educativo",
+          "descripcion": "Programa de crédito educativo de APICE para emprendedores colombianos y venezolanos migrantes residentes en Colombia, y sus familias, que quieren formarse para iniciar o fortalecer su emprendimiento. La Fundación Eugenio Mendoza es aliada del programa.",
+          "imagen": "/assets/recursos/creduemprender.webp",
+          "imagenAlt": "Emprendedor y estudiante graduado, imagen del programa CREDUEMPRENDER",
+          "logo": "/assets/recursos/creduemprender-logo.png",
+          "logoFondo": "#ffffff",
+          "enlaces": [
+            {
+              "texto": "Conocer el programa",
+              "url": "https://apice.org.co/site/creduemprender/",
+              "principal": true
+            }
+          ]
+        },
+        {
+          "nombre": "La Profe Azul",
+          "etiqueta": "Docentes · WhatsApp",
+          "descripcion": "Asistente virtual con inteligencia artificial en WhatsApp que apoya gratis, las 24 horas, a docentes que enseñan a leer y escribir en los primeros grados. Desarrollado por UNICEF Colombia y la Fundación Carvajal con apoyo del BID.",
+          "imagen": "/assets/recursos/profe-azul.webp",
+          "imagenAlt": "Ilustración del personaje La Profe Azul",
+          "enlaces": [
+            {
+              "texto": "Escribir por WhatsApp",
+              "url": "https://wa.me/573238331111",
+              "principal": true
+            }
+          ],
+          "imagenPosicion": "center 15%"
+        },
+        {
+          "nombre": "GIFMM Contigo",
+          "etiqueta": "Migrantes · App gratuita",
+          "descripcion": "Aplicación gratuita para personas refugiadas y migrantes venezolanas en Colombia. Muestra la ubicación y horarios de los puntos donde organizaciones humanitarias ofrecen alimentación, alojamiento y atención médica y psicosocial, además de líneas de atención y orientación legal.",
+          "icono": "/assets/recursos/gifmm-contigo-logo.png",
+          "iconoFondo": "#0f7f86",
+          "enlaces": [
+            {
+              "texto": "Google Play",
+              "url": "https://play.google.com/store/apps/details?id=com.iom",
+              "principal": true
+            },
+            {
+              "texto": "App Store",
+              "url": "https://apps.apple.com/co/app/gifmm-contigo/id1575581043"
+            }
+          ]
+        },
+        {
+          "nombre": "GraphoGame: Jugar para leer",
+          "etiqueta": "Lectura inicial · App",
+          "descripcion": "Juego educativo que ayuda a niños y niñas a aprender a leer en español: letras, sílabas y palabras, adaptándose al ritmo de cada niño. Promovido por el BID para apoyar el aprendizaje de la lectura en casa y en el aula.",
+          "icono": "/assets/recursos/graphogame-logo.png",
+          "iconoFondo": "#1a2cff",
+          "enlaces": [
+            {
+              "texto": "Google Play",
+              "url": "https://play.google.com/store/apps/details?id=com.graphogame.gg_spanish_global",
+              "principal": true
+            },
+            {
+              "texto": "App Store",
+              "url": "https://apps.apple.com/co/app/graphogame-jugar-para-leer/id1507943034"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "publicaciones",
+      "titulo": "Publicaciones",
+      "intro": "Documentos institucionales de la Fundación.",
+      "items": [
+        {
+          "nombre": "Memoria 2025",
+          "etiqueta": "Informe anual · PDF",
+          "descripcion": "Informe anual de actividades de la Fundación Eugenio Mendoza (julio 2024 – junio 2025): programas de primera infancia, educación, desarrollo social, emprendimiento y cultura en Venezuela y Colombia, alianzas y resultados.",
+          "imagen": "/assets/recursos/memoria-2025.webp",
+          "imagenAlt": "Portada de la Memoria 2025 de la Fundación Eugenio Mendoza",
+          "imagenAjuste": "contain",
+          "enlaces": [
+            {
+              "texto": "Descargar PDF",
+              "url": "/wp-content/uploads/2026/01/2025-11-13-Memoria-FEM-12112025.pdf",
+              "principal": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

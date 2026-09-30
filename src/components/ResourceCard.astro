@@ -1,0 +1,54 @@
+---
+interface Enlace { texto: string; url: string; principal?: boolean }
+interface Item {
+  nombre: string;
+  etiqueta: string;
+  descripcion: string;
+  imagen?: string;
+  imagenAlt?: string;
+  imagenAjuste?: string;
+  imagenPosicion?: string;
+  logo?: string;
+  logoFondo?: string;
+  icono?: string;
+  iconoFondo?: string;
+  enlaces: Enlace[];
+}
+const { item } = Astro.props as { item: Item };
+const externo = (u: string) => /^https?:/.test(u);
+const principal = item.enlaces.find((e) => e.principal) ?? item.enlaces[0];
+---
+<article class="fem-recurso">
+  <a class="fem-recurso__media" href={principal.url} tabindex="-1" aria-hidden="true"
+     {...(externo(principal.url) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+     style={item.icono ? `background:${item.iconoFondo}` : undefined}>
+    {item.imagen && (
+      <img src={item.imagen} alt={item.imagenAlt ?? item.nombre} loading="lazy" decoding="async"
+           class={item.imagenAjuste === 'contain' ? 'is-contain' : undefined}
+           style={item.imagenPosicion ? `object-position:${item.imagenPosicion}` : undefined} />
+    )}
+    {item.icono && <img class="fem-recurso__icono" src={item.icono} alt="" loading="lazy" decoding="async" />}
+    {item.logo && (
+      <span class="fem-recurso__logo" style={`background:${item.logoFondo ?? '#fff'}`}>
+        <img src={item.logo} alt="" loading="lazy" decoding="async" />
+      </span>
+    )}
+  </a>
+  <div class="fem-recurso__body">
+    <span class="fem-recurso__tag">{item.etiqueta}</span>
+    <h3 class="fem-recurso__title">{item.nombre}</h3>
+    <p class="fem-recurso__desc">{item.descripcion}</p>
+    <div class="fem-recurso__links">
+      {item.enlaces.map((e) => (
+        <a class={e.principal ? 'fem-recurso__btn' : 'fem-recurso__btn fem-recurso__btn--sec'} href={e.url}
+           {...(externo(e.url) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
+          {e.texto}
+          {externo(e.url) && (
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          )}
+          {externo(e.url) && <span class="screen-reader-text"> (se abre en una pestaña nueva)</span>}
+        </a>
+      ))}
+    </div>
+  </div>
+</article>

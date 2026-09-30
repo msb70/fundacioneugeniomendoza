@@ -7,6 +7,7 @@ export const GET: APIRoute = ({ site }) => {
   const urls = allPages()
     .filter((p) => p.route !== '/404/')
     .map((p) => p.route)
+    .concat(['/recursos/']) // páginas propias de Astro (no migradas de WordPress)
     .sort()
     .map((r) => `  <url><loc>${base}${encodeURI(r)}</loc></url>`)
     .join('\n');
