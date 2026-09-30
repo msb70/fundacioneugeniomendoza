@@ -1,0 +1,54 @@
+name: Build y publicar en rama deploy
+
+# main = código fuente. deploy = solo el sitio compilado (lo que Hostinger publica).
+# Hostinger (hPanel → Git) está conectado a la rama `deploy` con auto-deploy.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # SITE_ENV se define en Settings → Secrets and variables → Actions → Variables.
+      # staging (por defecto): noindex + robots.txt bloqueando todo.
+      # production: al sustituir el WordPress en fundacioneugeniomendoza.com.
+      - name: Build
+        env:
+          PUBLIC_SITE_ENV: ${{ vars.SITE_ENV || 'staging' }}
+        run: npm run build
+
+      - name: Comprobar build
+        run: |
+          test -f dist/index.html
+          test -f dist/.htaccess
+          test -f dist/api/contact.php
+          echo "Páginas: $(find dist -name index.html | wc -l)"
+
+      - name: Publicar dist/ en la rama deploy
+        run: |
+          cd dist
+          git init -q -b deploy
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Deploy ${GITHUB_SHA::7} (${{ vars.SITE_ENV || 'staging' }})"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" deploy

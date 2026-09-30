@@ -1,0 +1,365 @@
+
+<style id="fem-cat-colors">
+/* Categoría: ayuda-a-la-infancia */
+a.cat-pill.cat-pill--ayuda-a-la-infancia.is-active {
+    background: #FF9635 !important;
+    border-color: #FF9635 !important;
+    color: #ffffff !important;
+}
+a.cat-pill.cat-pill--ayuda-a-la-infancia:not(.is-active):hover {
+    background: #fff2e7 !important;
+    border-color: #FF9635 !important;
+    color: #FF9635 !important;
+}
+a.fem-badge.fem-badge--ayuda-a-la-infancia {
+    background: #FF9635 !important;
+    color: #ffffff !important;
+}
+/* Categoría: blog */
+a.cat-pill.cat-pill--blog.is-active {
+    background: #0ea5e9 !important;
+    border-color: #0ea5e9 !important;
+    color: #ffffff !important;
+}
+a.cat-pill.cat-pill--blog:not(.is-active):hover {
+    background: #e2f4fc !important;
+    border-color: #0ea5e9 !important;
+    color: #0ea5e9 !important;
+}
+a.fem-badge.fem-badge--blog {
+    background: #0ea5e9 !important;
+    color: #ffffff !important;
+}
+/* Categoría: cultura */
+a.cat-pill.cat-pill--cultura.is-active {
+    background: #7c3aed !important;
+    border-color: #7c3aed !important;
+    color: #ffffff !important;
+}
+a.cat-pill.cat-pill--cultura:not(.is-active):hover {
+    background: #efe7fd !important;
+    border-color: #7c3aed !important;
+    color: #7c3aed !important;
+}
+a.fem-badge.fem-badge--cultura {
+    background: #7c3aed !important;
+    color: #ffffff !important;
+}
+/* Categoría: desarrollo-social */
+a.cat-pill.cat-pill--desarrollo-social.is-active {
+    background: #007991 !important;
+    border-color: #007991 !important;
+    color: #ffffff !important;
+}
+a.cat-pill.cat-pill--desarrollo-social:not(.is-active):hover {
+    background: #e0eff2 !important;
+    border-color: #007991 !important;
+    color: #007991 !important;
+}
+a.fem-badge.fem-badge--desarrollo-social {
+    background: #007991 !important;
+    color: #ffffff !important;
+}
+/* Categoría: educacion */
+a.cat-pill.cat-pill--educacion.is-active {
+    background: #10b981 !important;
+    border-color: #10b981 !important;
+    color: #ffffff !important;
+}
+a.cat-pill.cat-pill--educacion:not(.is-active):hover {
+    background: #e2f7f0 !important;
+    border-color: #10b981 !important;
+    color: #10b981 !important;
+}
+a.fem-badge.fem-badge--educacion {
+    background: #10b981 !important;
+    color: #ffffff !important;
+}
+/* Categoría: emprendimiento */
+a.cat-pill.cat-pill--emprendimiento.is-active {
+    background: #f59e0b !important;
+    border-color: #f59e0b !important;
+    color: #ffffff !important;
+}
+a.cat-pill.cat-pill--emprendimiento:not(.is-active):hover {
+    background: #fef3e2 !important;
+    border-color: #f59e0b !important;
+    color: #f59e0b !important;
+}
+a.fem-badge.fem-badge--emprendimiento {
+    background: #f59e0b !important;
+    color: #ffffff !important;
+}
+/* Categoría: eventos */
+a.cat-pill.cat-pill--eventos.is-active {
+    background: #ef4444 !important;
+    border-color: #ef4444 !important;
+    color: #ffffff !important;
+}
+a.cat-pill.cat-pill--eventos:not(.is-active):hover {
+    background: #fde9e9 !important;
+    border-color: #ef4444 !important;
+    color: #ef4444 !important;
+}
+a.fem-badge.fem-badge--eventos {
+    background: #ef4444 !important;
+    color: #ffffff !important;
+}
+</style>
+
+<main class="blog-page">
+
+  <!-- ===== HERO ===== -->
+  <section class="blog-hero">
+    <div class="container">
+      <h1>Blog</h1>
+      <p>Noticias, historias de impacto y actualizaciones sobre nuestros programas y proyectos.</p>
+    </div>
+  </section>
+
+  <!-- ===== FILTROS DE CATEGORÍA ===== -->
+  <div class="blog-filters-bar">
+    <div class="container">
+      <nav class="blog-filters" aria-label="Filtrar por categoría">
+
+        <a class="cat-pill"
+           href="/blog/">
+          Todos
+        </a>
+
+                  <a class="cat-pill cat-pill--ayuda-a-la-infancia"
+             href="/category/ayuda-a-la-infancia/">
+            Ayuda a la Infancia          </a>
+                  <a class="cat-pill cat-pill--desarrollo-social"
+             href="/category/desarrollo-social/">
+            Desarrollo Social          </a>
+                  <a class="cat-pill cat-pill--educacion"
+             href="/category/educacion/">
+            Educación          </a>
+                  <a class="cat-pill cat-pill--emprendimiento is-active"
+             href="/category/emprendimiento/">
+            Emprendimiento          </a>
+                  <a class="cat-pill cat-pill--eventos"
+             href="/category/eventos/">
+            Eventos          </a>
+        
+        <!-- Cultura: siempre visible, link externo -->
+        <a class="cat-pill cat-pill--cultura"
+           href="https://www.fundacionsalamendoza.com"
+           target="_blank" rel="noopener noreferrer">
+          Cultura
+          <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+
+      </nav>
+    </div>
+  </div>
+
+  <!-- ===== POSTS: primer artículo destacado + resto en grid ===== -->
+  <section class="blog-list">
+    <div class="container">
+
+      
+        
+<!-- ===== POST DESTACADO ===== -->
+<article class="fem-featured-card" id="post-418">
+  <a class="fem-featured-card__media" href="/%e2%8f%b1%ef%b8%8femprender-con-foco-en-medio-de-las-distracciones/" tabindex="-1" aria-hidden="true">
+          <img width="1024" height="683" src="/wp-content/uploads/2026/09/Emprender-con-foco-en-medio-de-las-distracciones-1024x683.png" class="fem-featured-card__img wp-post-image" alt="⏱️Emprender con foco en medio de las distracciones" decoding="async" fetchpriority="high" srcset="/wp-content/uploads/2026/09/Emprender-con-foco-en-medio-de-las-distracciones-1024x683.png 1024w, /wp-content/uploads/2026/09/Emprender-con-foco-en-medio-de-las-distracciones-300x200.png 300w, /wp-content/uploads/2026/09/Emprender-con-foco-en-medio-de-las-distracciones-768x512.png 768w, /wp-content/uploads/2026/09/Emprender-con-foco-en-medio-de-las-distracciones.png 1536w" sizes="(max-width: 1024px) 100vw, 1024px" />      </a>
+
+  <div class="fem-featured-card__body">
+          <a class="fem-badge fem-badge--desarrollo-social" href="/category/desarrollo-social/">Desarrollo Social</a>
+    
+    <h2 class="fem-featured-card__title">
+      <a href="/%e2%8f%b1%ef%b8%8femprender-con-foco-en-medio-de-las-distracciones/">⏱️Emprender con foco en medio de las distracciones</a>
+    </h2>
+
+    <p class="fem-featured-card__excerpt">Una guía práctica para convertir la atención en pequeños avances de negocio Quien emprende toma decisiones todo el día: responde a clientes, resuelve compras, revisa ingresos, prepara pedidos y atiende…</p>
+
+    <div class="fem-featured-card__meta">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <time datetime="2026-09-28T17:21:13+00:00">28 de September, 2026</time>
+      <span class="fem-featured-card__sep">·</span>
+      <span>Fundación E. Mendoza</span>
+    </div>
+
+    <a class="fem-featured-card__link" href="/%e2%8f%b1%ef%b8%8femprender-con-foco-en-medio-de-las-distracciones/">Leer más →</a>
+  </div>
+</article>
+
+
+                  <div class="blog-grid">
+                          
+<!-- ===== TARJETA DE GRID ===== -->
+<article class="fem-post-card" id="post-411">
+  <a class="fem-post-card__media" href="/blog-emprendimiento-juvenil-del-aula-a-una-oportunidad/" tabindex="-1" aria-hidden="true">
+          <img width="768" height="512" src="/wp-content/uploads/2026/09/El-ABC-del-Emprendedor-Juvenil.jpg" class="fem-post-card__img wp-post-image" alt="📚Emprendimiento Juvenil: del Aula a una Oportunidad | FEM" decoding="async" srcset="/wp-content/uploads/2026/09/El-ABC-del-Emprendedor-Juvenil.jpg 768w, /wp-content/uploads/2026/09/El-ABC-del-Emprendedor-Juvenil-300x200.jpg 300w" sizes="(max-width: 768px) 100vw, 768px" />      </a>
+
+  <div class="fem-post-card__body">
+          <a class="fem-badge fem-badge--emprendimiento" href="/category/emprendimiento/">Emprendimiento</a>
+    
+    <h3 class="fem-post-card__title">
+      <a href="/blog-emprendimiento-juvenil-del-aula-a-una-oportunidad/">📚Emprendimiento Juvenil: del Aula a una Oportunidad | FEM</a>
+    </h3>
+
+    <p class="fem-post-card__excerpt">Descubre cómo el ABC del Emprendedor Juvenil conecta educación, iniciativa y oportunidades para que los jóvenes desarrollen proyectos con propósito.…</p>
+
+    <div class="fem-post-card__meta">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <time datetime="2026-09-26T02:53:02+00:00">26 de September, 2026</time>
+      <span class="fem-post-card__sep">·</span>
+      <span>Fundación E. Mendoza</span>
+    </div>
+  </div>
+</article>
+                          
+<!-- ===== TARJETA DE GRID ===== -->
+<article class="fem-post-card" id="post-381">
+  <a class="fem-post-card__media" href="/burnout-emprendedor-y-salud-mental/" tabindex="-1" aria-hidden="true">
+          <img width="768" height="443" src="/wp-content/uploads/2026/09/Infografia_Burnout_Alta_Calidad-1-e1790386092404-768x443.jpg" class="fem-post-card__img wp-post-image" alt="🧠Burnout Emprendedor y Salud Mental" decoding="async" srcset="/wp-content/uploads/2026/09/Infografia_Burnout_Alta_Calidad-1-e1790386092404-768x443.jpg 768w, /wp-content/uploads/2026/09/Infografia_Burnout_Alta_Calidad-1-e1790386092404-300x173.jpg 300w, /wp-content/uploads/2026/09/Infografia_Burnout_Alta_Calidad-1-e1790386092404-1024x591.jpg 1024w, /wp-content/uploads/2026/09/Infografia_Burnout_Alta_Calidad-1-e1790386092404.jpg 1240w" sizes="(max-width: 768px) 100vw, 768px" />      </a>
+
+  <div class="fem-post-card__body">
+          <a class="fem-badge fem-badge--emprendimiento" href="/category/emprendimiento/">Emprendimiento</a>
+    
+    <h3 class="fem-post-card__title">
+      <a href="/burnout-emprendedor-y-salud-mental/">🧠Burnout Emprendedor y Salud Mental</a>
+    </h3>
+
+    <p class="fem-post-card__excerpt">Cómo construir negocios sostenibles sin agotar a quienes los hacen posibles Emprender exige energía, criterio y constancia. Cuando la presión…</p>
+
+    <div class="fem-post-card__meta">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <time datetime="2026-09-26T01:39:11+00:00">26 de September, 2026</time>
+      <span class="fem-post-card__sep">·</span>
+      <span>Fundación E. Mendoza</span>
+    </div>
+  </div>
+</article>
+                      </div>
+        
+      
+      <div class="blog-pagination">
+              </div>
+
+    </div>
+  </section>
+
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const marquee = document.querySelector('.fem-logo-marquee');
+  if (!marquee) return;
+
+  const logos = marquee.querySelectorAll('.fem-logo');
+  const marqueeCenter = marquee.offsetWidth / 2;
+
+  function updateLogos() {
+    logos.forEach(logo => {
+      const rect = logo.getBoundingClientRect();
+      const marqueeRect = marquee.getBoundingClientRect();
+      const logoCenter = rect.left + rect.width / 2 - marqueeRect.left;
+      const distanceFromCenter = Math.abs(logoCenter - marqueeCenter);
+      
+      const img = logo.querySelector('img');
+      if (distanceFromCenter < 100) { // Área del centro (ajusta este valor)
+        img.style.opacity = '1';
+        img.style.transform = 'scale(1.05)';
+      } else {
+        img.style.opacity = '0.7';
+        img.style.transform = 'scale(1)';
+      }
+    });
+    
+    requestAnimationFrame(updateLogos);
+  }
+  
+  updateLogos();
+});
+
+// Efecto de zoom al cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+  const heroBg = document.querySelector('.hero .hero-background');
+  if (heroBg) {
+    setTimeout(function() {
+      heroBg.classList.add('loaded');
+    }, 100);
+  }
+});
+
+// Efecto Parallax en el Hero
+window.addEventListener('scroll', function() {
+  const hero = document.querySelector('.hero');
+  if (hero) {
+    const scrolled = window.pageYOffset;
+    const heroHeight = hero.offsetHeight;
+    
+    // Solo aplicar parallax si estamos dentro del hero
+    if (scrolled <= heroHeight) {
+      const heroBg = hero.querySelector('.hero-background');
+      heroBg.style.transform = 'translateY(' + (scrolled * 0.5) + 'px) scale(1.05)';
+    }
+  }
+});
+
+// Carrusel
+document.addEventListener('DOMContentLoaded', function () {
+  const carousel = document.querySelector('.fem-hero-carousel');
+
+  if (!carousel) return;
+
+  const slides = carousel.querySelectorAll('.fem-hero-slide');
+  const dots = carousel.querySelectorAll('.fem-hero-dots button');
+  const prev = carousel.querySelector('.fem-hero-prev');
+  const next = carousel.querySelector('.fem-hero-next');
+
+  let current = 0;
+  let timer;
+
+  function showSlide(index) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+
+    current = (index + slides.length) % slides.length;
+
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  function nextSlide() {
+    showSlide(current + 1);
+  }
+
+  function prevSlide() {
+    showSlide(current - 1);
+  }
+
+  function startAutoplay() {
+    timer = setInterval(nextSlide, 6000);
+  }
+
+  function resetAutoplay() {
+    clearInterval(timer);
+    startAutoplay();
+  }
+
+  next.addEventListener('click', function () {
+    nextSlide();
+    resetAutoplay();
+  });
+
+  prev.addEventListener('click', function () {
+    prevSlide();
+    resetAutoplay();
+  });
+
+  dots.forEach(function (dot, index) {
+    dot.addEventListener('click', function () {
+      showSlide(index);
+      resetAutoplay();
+    });
+  });
+
+  startAutoplay();
+});
+</script>
+

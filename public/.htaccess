@@ -1,0 +1,48 @@
+# Fundación Eugenio Mendoza — sitio estático (Astro) en Hostinger
+Options -Indexes
+DirectoryIndex index.html index.php
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Forzar HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Sitemaps y feeds heredados de WordPress / All in One SEO
+RewriteRule ^(sitemap_index|wp-sitemap|post-sitemap|page-sitemap|fem_aliado-sitemap|category-sitemap|post_tag-sitemap)\.xml$ /sitemap.xml [L,R=301]
+RewriteRule ^sitemap\.rss$ /sitemap.xml [L,R=301]
+RewriteRule ^(.*/)?feed/?$ /blog/ [L,R=301]
+
+# Endpoints de WordPress que ya no existen
+RewriteRule ^(wp-login\.php|xmlrpc\.php|wp-admin/?.*)$ - [G,L]
+
+# Añadir barra final a las rutas de páginas (como hacía WordPress)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !/$
+RewriteCond %{REQUEST_FILENAME}/index.html -f
+RewriteRule ^(.*)$ /$1/ [L,R=301]
+</IfModule>
+
+# Bloquear acceso directo a utilidades internas
+<Files "lib.php">
+  Require all denied
+</Files>
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  <FilesMatch "\.(jpg|jpeg|png|webp|gif|svg|woff2?|ttf|eot|css|js|pdf)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=300"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml application/xml text/plain
+</IfModule>

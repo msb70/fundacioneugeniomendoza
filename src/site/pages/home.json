@@ -1,0 +1,45 @@
+{
+ "route": "/",
+ "htmlAttrs": "dir=\"ltr\" lang=\"en-US\" prefix=\"og: https://ogp.me/ns#\"",
+ "bodyClass": "home wp-singular page-template-default page page-id-189 wp-custom-logo wp-embed-responsive wp-theme-fem-conversion-theme",
+ "seo": "<title>Front Page - Fundación Eugenio Mendoza</title>\n<meta name=\"robots\" content=\"noindex, nofollow, max-image-preview:large\" />\n<link rel=\"canonical\" href=\"https://fundacioneugeniomendoza.com/\" />\n<meta name=\"generator\" content=\"All in One SEO (AIOSEO) 5.0.2\" />\n<meta property=\"og:locale\" content=\"en_US\" />\n<meta property=\"og:site_name\" content=\"Fundación Eugenio Mendoza -\" />\n<meta property=\"og:type\" content=\"website\" />\n<meta property=\"og:title\" content=\"Front Page - Fundación Eugenio Mendoza\" />\n<meta property=\"og:url\" content=\"https://fundacioneugeniomendoza.com/\" />\n<meta property=\"og:image\" content=\"https://fundacioneugeniomendoza.com/wp-content/uploads/2026/06/cropped-FEM-LOGO-BLANCO-1.png\" />\n<meta property=\"og:image:secure_url\" content=\"https://fundacioneugeniomendoza.com/wp-content/uploads/2026/06/cropped-FEM-LOGO-BLANCO-1.png\" />\n<meta property=\"og:image:width\" content=\"376\" />\n<meta property=\"og:image:height\" content=\"127\" />\n<meta name=\"twitter:card\" content=\"summary_large_image\" />\n<meta name=\"twitter:title\" content=\"Front Page - Fundación Eugenio Mendoza\" />\n<meta name=\"twitter:image\" content=\"https://fundacioneugeniomendoza.com/wp-content/uploads/2026/06/cropped-FEM-LOGO-BLANCO-1.png\" />\n<script type=\"application/ld+json\" class=\"aioseo-schema\">\n\t\t\t{\"@context\":\"https:\\/\\/schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"@id\":\"https:\\/\\/fundacioneugeniomendoza.com\\/#breadcrumblist\",\"itemListElement\":[{\"@type\":\"ListItem\",\"@id\":\"https:\\/\\/fundacioneugeniomendoza.com\\/#listItem\",\"position\":1,\"name\":\"Home\"}]},{\"@type\":\"Organization\",\"@id\":\"https:\\/\\/fundacioneugeniomendoza.com\\/#organization\",\"name\":\"Fundaci\\u00f3n Eugenio Mendoza\",\"url\":\"https:\\/\\/fundacioneugeniomendoza.com\\/\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https:\\/\\/fundacioneugeniomendoza.com\\/wp-content\\/uploads\\/2026\\/06\\/cropped-FEM-LOGO-BLANCO-1.png\",\"@id\":\"https:\\/\\/fundacioneugeniomendoza.com\\/#organizationLogo\",\"width\":376,\"height\":127,\"caption\":\"Fundaci\\u00f3n Eugenio Mendoza\"},\"image\":{\"@id\":\"https:\\/\\/fundacioneugeniomendoza.com\\/#organizationLogo\"}},{\"@type\":\"WebPage\",\"@id\":\"https:\\/\\/fundacioneugeniomendoza.com\\/#webpage\",\"url\":\"https:\\/\\/fundacioneugeniomendoza.com\\/\",\"name\":\"Front Page - Fundaci\\u00f3n Eugenio Mendoza\",\"inLanguage\":\"en-US\",\"isPartOf\":{\"@id\":\"https:\\/\\/fundacioneugeniomendoza.com\\/#website\"},\"breadcrumb\":{\"@id\":\"https:\\/\\/fundacioneugeniomendoza.com\\/#breadcrumblist\"},\"datePublished\":\"2026-02-26T01:33:08+00:00\",\"dateModified\":\"2026-02-26T01:33:09+00:00\"},{\"@type\":\"WebSite\",\"@id\":\"https:\\/\\/fundacioneugeniomendoza.com\\/#website\",\"url\":\"https:\\/\\/fundacioneugeniomendoza.com\\/\",\"name\":\"Fundaci\\u00f3n Eugenio Mendoza\",\"inLanguage\":\"en-US\",\"publisher\":{\"@id\":\"https:\\/\\/fundacioneugeniomendoza.com\\/#organization\"}}]}\n\t\t</script>",
+ "head": [
+  "aa5e2a33a79a",
+  "068a8e4f7bf9",
+  "308faac8b967",
+  "f779255c0c4c",
+  "9233699e0c6d",
+  "1047263907d6",
+  "03171faa8e3b",
+  "d3dd77f41e19",
+  "f50df3fb88cc",
+  "614de51bee53",
+  "7fb2202f68a8",
+  "09dac7bf7646",
+  "6ae98968040f",
+  "0a8a747c6f41",
+  "31ce5ccda372",
+  "e388aff412e8",
+  "23ddf9076df2",
+  "7c430240d18f",
+  "600433564b13"
+ ],
+ "pre": "",
+ "tail": [
+  "7f4a80305be8",
+  "e82d009f1c2d",
+  "2d5bf546aa43",
+  "03a867760fef"
+ ],
+ "menu": {
+  "overrides": {},
+  "aria": [],
+  "logoCurrent": true,
+  "hrefs": {
+   "10": "#programas",
+   "12": "#recursos",
+   "145": "#recursos",
+   "146": "#recursos"
+  }
+ }
+}

@@ -1,0 +1,41 @@
+{
+ "route": "/aliados/unicef/",
+ "htmlAttrs": "dir=\"ltr\" lang=\"en-US\" prefix=\"og: https://ogp.me/ns#\"",
+ "bodyClass": "wp-singular fem_aliado-template-default single single-fem_aliado postid-111 wp-custom-logo wp-embed-responsive wp-theme-fem-conversion-theme",
+ "seo": "<title>UNICEF - Fundación Eugenio Mendoza</title>\n<meta name=\"robots\" content=\"noindex, nofollow, max-image-preview:large\" />\n<link rel=\"canonical\" href=\"https://fundacioneugeniomendoza.com/aliados/unicef/\" />\n<meta name=\"generator\" content=\"All in One SEO (AIOSEO) 5.0.2\" />\n<meta property=\"og:locale\" content=\"en_US\" />\n<meta property=\"og:site_name\" content=\"Fundación Eugenio Mendoza -\" />\n<meta property=\"og:type\" content=\"article\" />\n<meta property=\"og:title\" content=\"UNICEF - Fundación Eugenio Mendoza\" />\n<meta property=\"og:url\" content=\"https://fundacioneugeniomendoza.com/aliados/unicef/\" />\n<meta property=\"og:image\" content=\"https://fundacioneugeniomendoza.com/wp-content/uploads/2026/06/cropped-FEM-LOGO-BLANCO-1.png\" />\n<meta property=\"og:image:secure_url\" content=\"https://fundacioneugeniomendoza.com/wp-content/uploads/2026/06/cropped-FEM-LOGO-BLANCO-1.png\" />\n<meta property=\"og:image:width\" content=\"376\" />\n<meta property=\"og:image:height\" content=\"127\" />\n<meta property=\"article:published_time\" content=\"2026-02-02T03:19:50+00:00\" />\n<meta property=\"article:modified_time\" content=\"2026-02-02T03:19:50+00:00\" />\n<meta name=\"twitter:card\" content=\"summary_large_image\" />\n<meta name=\"twitter:title\" content=\"UNICEF - Fundación Eugenio Mendoza\" />\n<meta name=\"twitter:image\" content=\"https://fundacioneugeniomendoza.com/wp-content/uploads/2026/06/cropped-FEM-LOGO-BLANCO-1.png\" />\n<script type=\"application/ld+json\" class=\"aioseo-schema\">\n\t\t\t{\"@context\":\"https:\\/\\/schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"@id\":\"https:\\/\\/fundacioneugeniomendoza.com\\/aliados\\/unicef\\/#breadcrumblist\",\"itemListElement\":[{\"@type\":\"ListItem\",\"@id\":\"https:\\/\\/fundacioneugeniomendoza.com\\/#listItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https:\\/\\/fundacioneugeniomendoza.com\\/\",\"nextItem\":{\"@type\":\"ListItem\",\"@id\":\"https:\\/\\/fundacioneugeniomendoza.com\\/aliados\\/unicef\\/#listItem\",\"name\":\"UNICEF\"}},{\"@type\":\"ListItem\",\"@id\":\"https:\\/\\/fundacioneugeniomendoza.com\\/aliados\\/unicef\\/#listItem\",\"position\":2,\"name\":\"UNICEF\",\"previousItem\":{\"@type\":\"ListItem\",\"@id\":\"https:\\/\\/fundacioneugeniomendoza.com\\/#listItem\",\"name\":\"Home\"}}]},{\"@type\":\"Organization\",\"@id\":\"https:\\/\\/fundacioneugeniomendoza.com\\/#organization\",\"name\":\"Fundaci\\u00f3n Eugenio Mendoza\",\"url\":\"https:\\/\\/fundacioneugeniomendoza.com\\/\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https:\\/\\/fundacioneugeniomendoza.com\\/wp-content\\/uploads\\/2026\\/06\\/cropped-FEM-LOGO-BLANCO-1.png\",\"@id\":\"https:\\/\\/fundacioneugeniomendoza.com\\/aliados\\/unicef\\/#organizationLogo\",\"width\":376,\"height\":127,\"caption\":\"Fundaci\\u00f3n Eugenio Mendoza\"},\"image\":{\"@id\":\"https:\\/\\/fundacioneugeniomendoza.com\\/aliados\\/unicef\\/#organizationLogo\"}},{\"@type\":\"WebPage\",\"@id\":\"https:\\/\\/fundacioneugeniomendoza.com\\/aliados\\/unicef\\/#webpage\",\"url\":\"https:\\/\\/fundacioneugeniomendoza.com\\/aliados\\/unicef\\/\",\"name\":\"UNICEF - Fundaci\\u00f3n Eugenio Mendoza\",\"inLanguage\":\"en-US\",\"isPartOf\":{\"@id\":\"https:\\/\\/fundacioneugeniomendoza.com\\/#website\"},\"breadcrumb\":{\"@id\":\"https:\\/\\/fundacioneugeniomendoza.com\\/aliados\\/unicef\\/#breadcrumblist\"},\"datePublished\":\"2026-02-02T03:19:50+00:00\",\"dateModified\":\"2026-02-02T03:19:50+00:00\"},{\"@type\":\"WebSite\",\"@id\":\"https:\\/\\/fundacioneugeniomendoza.com\\/#website\",\"url\":\"https:\\/\\/fundacioneugeniomendoza.com\\/\",\"name\":\"Fundaci\\u00f3n Eugenio Mendoza\",\"inLanguage\":\"en-US\",\"publisher\":{\"@id\":\"https:\\/\\/fundacioneugeniomendoza.com\\/#organization\"}}]}\n\t\t</script>",
+ "head": [
+  "aa5e2a33a79a",
+  "068a8e4f7bf9",
+  "308faac8b967",
+  "f779255c0c4c",
+  "9233699e0c6d",
+  "1047263907d6",
+  "03171faa8e3b",
+  "614de51bee53",
+  "7fb2202f68a8",
+  "09dac7bf7646",
+  "6ae98968040f",
+  "0a8a747c6f41",
+  "31ce5ccda372",
+  "e388aff412e8",
+  "23ddf9076df2",
+  "7c430240d18f"
+ ],
+ "pre": "",
+ "tail": [
+  "7f4a80305be8",
+  "e82d009f1c2d",
+  "2d5bf546aa43",
+  "03a867760fef",
+  "8b668f0cb7b5",
+  "a131f9dd1b03"
+ ],
+ "menu": {
+  "overrides": {
+   "197": "menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-197"
+  },
+  "aria": [],
+  "logoCurrent": false,
+  "hrefs": {}
+ }
+}

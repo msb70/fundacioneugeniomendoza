@@ -1,0 +1,357 @@
+
+
+<main id="primary" class="site-main page-trabaja">
+
+  <!-- HERO -->
+    <section class="colaborar-hero">
+
+
+        <div class="container">
+            <div class="colaborar-hero__inner">
+                <div class="colaborar-hero__chip">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <h1>Únete a nuestro equipo</h1>
+                <p>Forma parte de una organización comprometida con el desarrollo social, la educación y la cultura en Venezuela y Latinoamérica.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Join Us -->
+    <section class="tcn-benefits">
+        <div class="container">
+            <h2>¿Por qué trabajar con nosotros?</h2>
+            <div class="tcn-benefits__grid">
+                <div class="tcn-benefit-card">
+                    <i class="fa-solid fa-heart"></i>
+                    <h3>Impacto Social</h3>
+                    <p>Tu trabajo contribuirá directamente a mejorar la vida de miles de personas en Venezuela.</p>
+                </div>
+                <div class="tcn-benefit-card">
+                    <i class="fa-solid fa-users"></i>
+                    <h3>Equipo Comprometido</h3>
+                    <p>Trabaja junto a profesionales apasionados por el cambio social y el desarrollo.</p>
+                </div>
+                <div class="tcn-benefit-card">
+                    <i class="fa-solid fa-book-open"></i>
+                    <h3>Crecimiento Profesional</h3>
+                    <p>Oportunidades de aprendizaje y desarrollo en un ambiente de trabajo enriquecedor.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form -->
+    <section class="tcn-form-section">
+        <div class="container">
+            <div class="tcn-form__wrapper">
+                <h2>Envía tu Aplicación</h2>
+                <p class="tcn-form__subtitle">Completa el formulario y adjunta tu CV para ser considerado en futuras oportunidades.</p>
+
+                <form id="tcn-application-form" class="tcn-form" enctype="multipart/form-data">
+                    <input type="hidden" name="_wp_http_referer" value="/trabaja-con-nosotros/" />
+                    <div class="tcn-form__field">
+                        <label for="tcn_nombre">Nombre Completo *</label>
+                        <input type="text" id="tcn_nombre" name="nombre" required placeholder="Tu nombre completo">
+                    </div>
+
+                    <div class="tcn-form__row">
+                        <div class="tcn-form__field">
+                            <label for="tcn_email">Email *</label>
+                            <input type="email" id="tcn_email" name="email" required placeholder="tu@email.com">
+                        </div>
+                        <div class="tcn-form__field">
+                            <label for="tcn_telefono">Teléfono *</label>
+                            <input type="tel" id="tcn_telefono" name="telefono" required placeholder="+58 412 123 4567">
+                        </div>
+                    </div>
+
+                    <div class="tcn-form__field">
+                        <label for="tcn_categoria">Área de Interés *</label>
+                        <select id="tcn_categoria" name="categoria" required>
+                            <option value="">Selecciona un área</option>
+                            <option value="educacion">Educación y Primera Infancia</option>
+                            <option value="desarrollo-social">Desarrollo Social</option>
+                            <option value="cultura">Cultura y Arte</option>
+                            <option value="administracion">Administración y Finanzas</option>
+                            <option value="comunicaciones">Comunicaciones y Marketing</option>
+                            <option value="voluntariado">Coordinación de Voluntariado</option>
+                            <option value="tecnologia">Tecnología e Innovación</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="tcn-form__field">
+                        <label for="tcn_cv">Adjuntar CV (PDF, DOC, DOCX - Max 5MB) *</label>
+                        <div class="tcn-file-upload">
+                            <input type="file" id="tcn_cv" name="cv" accept=".pdf,.doc,.docx" required>
+                            <div class="tcn-file-upload__display">
+                                <i class="fa-solid fa-upload"></i>
+                                <span class="tcn-file-upload__text">Haz clic para seleccionar tu CV o arrástralo aquí</span>
+                                <span class="tcn-file-upload__name"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tcn-form__field">
+                        <label for="tcn_mensaje">Mensaje / Carta de Presentación *</label>
+                        <textarea id="tcn_mensaje" name="mensaje" rows="6" required placeholder="Cuéntanos sobre ti, tu experiencia y por qué te gustaría trabajar con nosotros..."></textarea>
+                    </div>
+
+                    <div class="tcn-form__messages">
+                        <div class="tcn-form__success" style="display: none;">
+                            <i class="fa-solid fa-check-circle"></i>
+                            <span>¡Aplicación enviada! Gracias por tu interés. Nos pondremos en contacto contigo pronto.</span>
+                        </div>
+                        <div class="tcn-form__error" style="display: none;">
+                            <i class="fa-solid fa-exclamation-circle"></i>
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="tcn-form__submit">
+                        <span class="tcn-form__submit-text">Enviar Aplicación</span>
+                        <span class="tcn-form__submit-loading" style="display: none;">
+                            <i class="fa-solid fa-spinner fa-spin"></i> Enviando...
+                        </span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+<script>
+console.log('JavaScript inline cargado correctamente');
+
+jQuery(document).ready(function($) {
+  console.log('jQuery ready');
+  
+  // File upload display
+  $('#tcn_cv').on('change', function(e) {
+    console.log('File input changed');
+    const file = e.target.files[0];
+    
+    if (file) {
+      console.log('File selected:', file.name);
+      
+      // Validar tamaño (5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        alert('El archivo debe ser menor a 5MB');
+        $(this).val('');
+        return;
+      }
+      
+      // Validar tipo
+      const validTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+      if (!validTypes.includes(file.type)) {
+        alert('Solo se permiten archivos PDF, DOC o DOCX');
+        $(this).val('');
+        return;
+      }
+      
+      // Mostrar nombre del archivo
+      $('.tcn-file-upload__text').hide();
+      $('.tcn-file-upload__name').text('✓ ' + file.name).show();
+      $('.tcn-file-upload__display').css('border-color', '#28a745');
+      console.log('File display updated');
+    } else {
+      $('.tcn-file-upload__text').show();
+      $('.tcn-file-upload__name').text('').hide();
+      $('.tcn-file-upload__display').css('border-color', '#ddd');
+    }
+  });
+
+  // Form submission
+  $('#tcn-application-form').on('submit', function(e) {
+    e.preventDefault();
+    console.log('Form submitted');
+
+    const form = $(this);
+    const submitBtn = form.find('.tcn-form__submit');
+    const formData = new FormData(this);
+    formData.append('action', 'tcn_submit_application');
+
+    // Validar que hay archivo
+    if (!$('#tcn_cv')[0].files[0]) {
+      console.log('No file attached');
+      $('.tcn-form__error span').text('Por favor adjunta tu CV');
+      $('.tcn-form__error').fadeIn();
+      return;
+    }
+
+    console.log('File attached:', $('#tcn_cv')[0].files[0].name);
+
+    // Hide messages
+    $('.tcn-form__success, .tcn-form__error').hide();
+
+    // Disable button and show loading
+    submitBtn.prop('disabled', true);
+    submitBtn.find('.tcn-form__submit-text').hide();
+    submitBtn.find('.tcn-form__submit-loading').show();
+
+    console.log('Sending AJAX request to:', '/api/careers.php');
+
+    $.ajax({
+      url: '/api/careers.php',
+      type: 'POST',
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function(response) {
+        console.log('AJAX Success:', response);
+        
+        if (response.success) {
+          console.log('Form submitted successfully');
+          $('.tcn-form__success').fadeIn();
+          form[0].reset();
+          $('.tcn-file-upload__text').show();
+          $('.tcn-file-upload__name').text('').hide();
+          $('.tcn-file-upload__display').css('border-color', '#ddd');
+          
+          // Scroll to success message
+          $('html, body').animate({
+            scrollTop: $('.tcn-form__success').offset().top - 100
+          }, 500);
+        } else {
+          console.log('Form error:', response.data);
+          $('.tcn-form__error span').text(response.data.message || 'Error al enviar la aplicación');
+          $('.tcn-form__error').fadeIn();
+        }
+      },
+      error: function(xhr, status, error) {
+        console.log('AJAX Error:', {xhr: xhr, status: status, error: error});
+        console.log('Response text:', xhr.responseText);
+        $('.tcn-form__error span').text('Error de conexión. Por favor intenta nuevamente.');
+        $('.tcn-form__error').fadeIn();
+      },
+      complete: function() {
+        console.log('AJAX Complete');
+        // Re-enable button
+        submitBtn.prop('disabled', false);
+        submitBtn.find('.tcn-form__submit-text').show();
+        submitBtn.find('.tcn-form__submit-loading').hide();
+      }
+    });
+  });
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const marquee = document.querySelector('.fem-logo-marquee');
+  if (!marquee) return;
+
+  const logos = marquee.querySelectorAll('.fem-logo');
+  const marqueeCenter = marquee.offsetWidth / 2;
+
+  function updateLogos() {
+    logos.forEach(logo => {
+      const rect = logo.getBoundingClientRect();
+      const marqueeRect = marquee.getBoundingClientRect();
+      const logoCenter = rect.left + rect.width / 2 - marqueeRect.left;
+      const distanceFromCenter = Math.abs(logoCenter - marqueeCenter);
+      
+      const img = logo.querySelector('img');
+      if (distanceFromCenter < 100) { // Área del centro (ajusta este valor)
+        img.style.opacity = '1';
+        img.style.transform = 'scale(1.05)';
+      } else {
+        img.style.opacity = '0.7';
+        img.style.transform = 'scale(1)';
+      }
+    });
+    
+    requestAnimationFrame(updateLogos);
+  }
+  
+  updateLogos();
+});
+
+// Efecto de zoom al cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+  const heroBg = document.querySelector('.hero .hero-background');
+  if (heroBg) {
+    setTimeout(function() {
+      heroBg.classList.add('loaded');
+    }, 100);
+  }
+});
+
+// Efecto Parallax en el Hero
+window.addEventListener('scroll', function() {
+  const hero = document.querySelector('.hero');
+  if (hero) {
+    const scrolled = window.pageYOffset;
+    const heroHeight = hero.offsetHeight;
+    
+    // Solo aplicar parallax si estamos dentro del hero
+    if (scrolled <= heroHeight) {
+      const heroBg = hero.querySelector('.hero-background');
+      heroBg.style.transform = 'translateY(' + (scrolled * 0.5) + 'px) scale(1.05)';
+    }
+  }
+});
+
+// Carrusel
+document.addEventListener('DOMContentLoaded', function () {
+  const carousel = document.querySelector('.fem-hero-carousel');
+
+  if (!carousel) return;
+
+  const slides = carousel.querySelectorAll('.fem-hero-slide');
+  const dots = carousel.querySelectorAll('.fem-hero-dots button');
+  const prev = carousel.querySelector('.fem-hero-prev');
+  const next = carousel.querySelector('.fem-hero-next');
+
+  let current = 0;
+  let timer;
+
+  function showSlide(index) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+
+    current = (index + slides.length) % slides.length;
+
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  function nextSlide() {
+    showSlide(current + 1);
+  }
+
+  function prevSlide() {
+    showSlide(current - 1);
+  }
+
+  function startAutoplay() {
+    timer = setInterval(nextSlide, 6000);
+  }
+
+  function resetAutoplay() {
+    clearInterval(timer);
+    startAutoplay();
+  }
+
+  next.addEventListener('click', function () {
+    nextSlide();
+    resetAutoplay();
+  });
+
+  prev.addEventListener('click', function () {
+    prevSlide();
+    resetAutoplay();
+  });
+
+  dots.forEach(function (dot, index) {
+    dot.addEventListener('click', function () {
+      showSlide(index);
+      resetAutoplay();
+    });
+  });
+
+  startAutoplay();
+});
+</script>
+

@@ -1,0 +1,17 @@
+---
+// Genera todas las URLs del sitio (páginas, entradas del blog, aliados, archivos).
+import Base from '../layouts/Base.astro';
+import { allPages, type Page } from '../lib/site';
+
+export function getStaticPaths() {
+  return allPages().map((page) => ({
+    params: { route: page.route.replace(/^\/|\/$/g, '') || undefined },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props as { page: Page };
+---
+<Base meta={page}>
+	<Fragment set:html={page.body} />
+</Base>

@@ -1,0 +1,37 @@
+---
+// Layout único del sitio. Mantiene el mismo orden de hojas de estilo y scripts
+// que el original para conservar la cascada CSS (paridad visual).
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { fragment, parseAttrs, IS_PRODUCTION, type PageMeta } from '../lib/site';
+
+interface Props { meta: PageMeta }
+const { meta } = Astro.props;
+
+let seo = meta.seo;
+if (!IS_PRODUCTION) {
+  // Entorno de pruebas: nunca indexable (evita contenido duplicado en Google).
+  seo = seo.replace(/<meta name="robots" content="[^"]*" \/>/, '<meta name="robots" content="noindex, nofollow" />');
+  if (!/name="robots"/.test(seo)) seo = '<meta name="robots" content="noindex, nofollow" />\n' + seo;
+}
+const head = meta.head.map(fragment).join('\n');
+const tail = meta.tail.map(fragment).join('\n');
+const htmlAttrs = parseAttrs(meta.htmlAttrs);
+---
+<!DOCTYPE html>
+<html {...htmlAttrs}>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<Fragment set:html={seo} />
+	<Fragment set:html={head} />
+</head>
+<body class={meta.bodyClass}>
+<Fragment set:html={meta.pre} />
+<Header menu={meta.menu} />
+<slot />
+<Footer />
+<Fragment set:html={tail} />
+<script is:inline src="/assets/fem-static.js" defer></script>
+</body>
+</html>

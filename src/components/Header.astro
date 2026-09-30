@@ -1,0 +1,31 @@
+---
+// Cabecera con menú principal. El estado activo replica las clases de WordPress
+// (current-menu-item, current_page_parent, aria-current) para que el CSS del tema
+// se comporte exactamente igual.
+import headerHtml from '../site/header.html?raw';
+import type { MenuState } from '../lib/site';
+
+interface Props { menu: MenuState }
+const { menu } = Astro.props;
+
+let html = headerHtml;
+for (const [id, cls] of Object.entries(menu.overrides)) {
+  html = html.replace(new RegExp(`(<li id="menu-item-${id}" class=")[^"]*(")`), `$1${cls}$2`);
+}
+for (const id of menu.aria) {
+  html = html.replace(
+    new RegExp(`(<li id="menu-item-${id}"[^>]*><a(?: target="_blank")? href="[^"]*")`),
+    '$1 aria-current="page"',
+  );
+}
+for (const [id, href] of Object.entries(menu.hrefs ?? {})) {
+  html = html.replace(
+    new RegExp(`(<li id="menu-item-${id}"[^>]*><a(?: target="_blank")? href=")[^"]*(")`),
+    `$1${href}$2`,
+  );
+}
+if (menu.logoCurrent) {
+  html = html.replace('rel="home">', 'rel="home" aria-current="page">');
+}
+---
+<Fragment set:html={html} />

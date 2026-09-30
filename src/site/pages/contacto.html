@@ -1,0 +1,334 @@
+
+
+
+<main id="primary" class="site-main page-contacto">
+
+  <!-- HERO -->
+  <!-- <section class="contacto-hero"> -->
+  <!--   <div class="container contacto-hero__inner"> -->
+  <!--     <h1>Contacto</h1> -->
+  <!--     <p> -->
+  <!--       Estamos aquí para responder tus preguntas y explorar oportunidades de colaboración. -->
+  <!--     </p> -->
+  <!--   </div> -->
+  <!-- </section> -->
+  
+     <section class="impacto-hero">
+    <div class="impacto-hero__bg"
+         style="background-image: url('/wp-content/themes/fem-conversion-theme/assets/images/contacto-hero.png');">
+    </div>
+    <div class="container impacto-hero__content">
+      <div class="impacto-hero__text">
+        <h1>Contáctanos</h1>
+        <p class="impacto-hero__subtitle">Estamos aquí para responder tus preguntas y explorar oportunidades de colaboración.</p>
+        <p class="impacto-hero__caption"></p>
+      </div>
+    </div>
+  </section>
+  <!-- Pilares Section -->
+    
+    <section id="pilares" class="pilares">
+        <div class="container">
+            <div class="pilares-grid">
+                <div class="pilar">
+                    <div class="icon">👥</div>
+                    <h3>SOMOS</h3>
+                    <p>Una institución privada, sin fines de lucro, creada en 1951, para desarrollar acciones en el sector educativo y social.</p>
+                </div>
+                <div class="pilar">
+                    <div class="icon">❤️</div>
+                    <h3>HACEMOS</h3>
+                    <p>Programas en Desarrollo Social, Primera Infancia y Cultura para contribuir y mejorar las condiciones de vida.</p>
+                </div>
+                <div class="pilar">
+                    <div class="icon">📅</div>
+                    <h3>EVENTOS</h3>
+                    <p>Mantente al tanto de los eventos organizados por FEM a través de nuestras redes sociales.</p>
+                </div>
+                <div class="pilar">
+                    <a href="#colaborar">
+                        <div class="icon">🎓</div>
+                        <h3>PARTICIPA</h3>
+                        <p>Recibe información sobre talleres y actividades, noticias del sector microempresarial, y obtén descuentos.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+  <!-- FORMULARIO + INFO CONTACTO -->
+  <section class="contacto-section">
+    <div class="container contacto-grid">
+      <!-- Formulario -->
+      <div class="contacto-col">
+        <h2 class="contacto-title">Envíanos un mensaje</h2>
+
+        <div class="contacto-card contacto-card--form">
+
+        
+          <!-- FORMULARIO CORREGIDO -->
+          <form class="contacto-form" method="post" action="/api/contact.php">
+            <!-- Cambiar action a 'fem_contact' para que coincida con functions.php -->
+            <input type="hidden" name="action" value="fem_contact">
+            <input type="hidden" name="_wp_http_referer" value="/contacto/" />               
+    
+            <div class="contacto-form__row contacto-form__row--2">
+              <div class="contacto-field">
+                <label for="nombre">Nombre completo</label>
+                <input
+                  type="text"
+                  id="nombre"
+                  name="nombre"
+                  placeholder="Tu nombre"
+                  required
+                />
+              </div>
+              <div class="contacto-field">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="tu@email.com"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="contacto-form__row">
+              <div class="contacto-field">
+                <label for="asunto">Asunto</label>
+                <input
+                  type="text"
+                  id="asunto"
+                  name="asunto"
+                  placeholder="¿Sobre qué quieres hablar?"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="contacto-form__row">
+              <div class="contacto-field">
+                <label for="mensaje">Mensaje</label>
+                <textarea
+                  id="mensaje"
+                  name="mensaje"
+                  rows="5"
+                  placeholder="Escribe tu mensaje aquí..."
+                  required
+                ></textarea>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-primary-lg contacto-form__submit">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>Enviar mensaje</span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Info contacto + Presencia regional -->
+      <div class="contacto-col">
+        <h2 class="contacto-title">Información de Contacto</h2>
+
+        <div class="contacto-info-cards">
+                      <div class="contacto-card contacto-card--info">
+              <div class="contacto-info">
+                <div class="contacto-info__icon">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="contacto-info__text">
+                  <h4>Dirección</h4>
+                  <!--p><!--?php echo esc_html( $info['content'] ); ?></p-->
+                  <p>Universidad Metropolitana, CENTROMET <br>Edif. Andrés Germán Otero Piso 1, oficina 101
+                  <br>Urb. Terrazas del Ávila. Caracas, Venezuela</p>
+                </div>
+              </div>
+            </div>
+                      <div class="contacto-card contacto-card--info">
+              <div class="contacto-info">
+                <div class="contacto-info__icon">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="contacto-info__text">
+                  <h4>Email</h4>
+                  <!--p><!--?php echo esc_html( $info['content'] ); ?></p-->
+                  <p>info@fundacioneugeniomendoza.org.ve</p>
+                </div>
+              </div>
+            </div>
+                      <div class="contacto-card contacto-card--info">
+              <div class="contacto-info">
+                <div class="contacto-info__icon">
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <div class="contacto-info__text">
+                  <h4>Teléfono</h4>
+                  <!--p><!--?php echo esc_html( $info['content'] ); ?></p-->
+                  <p>+58 (212) 213-45-67</p>
+                </div>
+              </div>
+            </div>
+                      <div class="contacto-card contacto-card--info">
+              <div class="contacto-info">
+                <div class="contacto-info__icon">
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+                <div class="contacto-info__text">
+                  <h4>Horario</h4>
+                  <!--p><!--?php echo esc_html( $info['content'] ); ?></p-->
+                  <p>Lunes a Viernes: 8:00 AM - 5:00 PM</p>
+                </div>
+              </div>
+            </div>
+                  </div>
+
+        <div class="contacto-card contacto-card--regional">
+          <div class="contacto-card__header">
+            <span class="contacto-card__icon">
+              <i class="fa-solid fa-globe"></i>
+            </span>
+            <h3>Presencia Regional</h3>
+          </div>
+          <div class="contacto-card__body contacto-regional-grid">
+            <div class="contacto-regional-item">
+              <h4>Venezuela</h4>
+              <p class="contacto-regional__subtitle">Sede principal</p>
+              <p class="contacto-regional__tag">87% de proyectos</p>
+            </div>
+            <div class="contacto-regional-item">
+              <h4>Colombia</h4>
+              <p class="contacto-regional__subtitle">Operación binacional</p>
+              <p class="contacto-regional__tag">13% de proyectos</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+   
+
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const marquee = document.querySelector('.fem-logo-marquee');
+  if (!marquee) return;
+
+  const logos = marquee.querySelectorAll('.fem-logo');
+  const marqueeCenter = marquee.offsetWidth / 2;
+
+  function updateLogos() {
+    logos.forEach(logo => {
+      const rect = logo.getBoundingClientRect();
+      const marqueeRect = marquee.getBoundingClientRect();
+      const logoCenter = rect.left + rect.width / 2 - marqueeRect.left;
+      const distanceFromCenter = Math.abs(logoCenter - marqueeCenter);
+      
+      const img = logo.querySelector('img');
+      if (distanceFromCenter < 100) { // Área del centro (ajusta este valor)
+        img.style.opacity = '1';
+        img.style.transform = 'scale(1.05)';
+      } else {
+        img.style.opacity = '0.7';
+        img.style.transform = 'scale(1)';
+      }
+    });
+    
+    requestAnimationFrame(updateLogos);
+  }
+  
+  updateLogos();
+});
+
+// Efecto de zoom al cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+  const heroBg = document.querySelector('.hero .hero-background');
+  if (heroBg) {
+    setTimeout(function() {
+      heroBg.classList.add('loaded');
+    }, 100);
+  }
+});
+
+// Efecto Parallax en el Hero
+window.addEventListener('scroll', function() {
+  const hero = document.querySelector('.hero');
+  if (hero) {
+    const scrolled = window.pageYOffset;
+    const heroHeight = hero.offsetHeight;
+    
+    // Solo aplicar parallax si estamos dentro del hero
+    if (scrolled <= heroHeight) {
+      const heroBg = hero.querySelector('.hero-background');
+      heroBg.style.transform = 'translateY(' + (scrolled * 0.5) + 'px) scale(1.05)';
+    }
+  }
+});
+
+// Carrusel
+document.addEventListener('DOMContentLoaded', function () {
+  const carousel = document.querySelector('.fem-hero-carousel');
+
+  if (!carousel) return;
+
+  const slides = carousel.querySelectorAll('.fem-hero-slide');
+  const dots = carousel.querySelectorAll('.fem-hero-dots button');
+  const prev = carousel.querySelector('.fem-hero-prev');
+  const next = carousel.querySelector('.fem-hero-next');
+
+  let current = 0;
+  let timer;
+
+  function showSlide(index) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+
+    current = (index + slides.length) % slides.length;
+
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  function nextSlide() {
+    showSlide(current + 1);
+  }
+
+  function prevSlide() {
+    showSlide(current - 1);
+  }
+
+  function startAutoplay() {
+    timer = setInterval(nextSlide, 6000);
+  }
+
+  function resetAutoplay() {
+    clearInterval(timer);
+    startAutoplay();
+  }
+
+  next.addEventListener('click', function () {
+    nextSlide();
+    resetAutoplay();
+  });
+
+  prev.addEventListener('click', function () {
+    prevSlide();
+    resetAutoplay();
+  });
+
+  dots.forEach(function (dot, index) {
+    dot.addEventListener('click', function () {
+      showSlide(index);
+      resetAutoplay();
+    });
+  });
+
+  startAutoplay();
+});
+</script>
+

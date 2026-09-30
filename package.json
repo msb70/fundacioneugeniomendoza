@@ -1,0 +1,17 @@
+{
+  "name": "fundacioneugeniomendoza",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Sitio web de la Fundación Eugenio Mendoza — Astro (estático) + endpoints PHP mínimos",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "build:staging": "PUBLIC_SITE_ENV=staging astro build",
+    "build:production": "PUBLIC_SITE_ENV=production astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^7.3.5"
+  }
+}
