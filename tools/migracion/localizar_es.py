@@ -45,6 +45,7 @@ def html(path: str) -> bool:
     s = open(path, encoding='utf-8').read()
     o = s
     s = RE_FECHA.sub(lambda m: f'{m.group(1)} de {MESES[m.group(2)]}', s)
+    s = re.sub(r'\b(\d{1,2}) de (' + '|'.join(MESES.values()) + r'), (\d{4})\b', r'\1 de \2 de \3', s)
     for a, b in HTML_TEXTOS:
         s = s.replace(a, b)
     if s != o:
