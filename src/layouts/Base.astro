@@ -9,7 +9,10 @@ interface Props { meta: PageMeta; extraHead?: string }
 const { meta, extraHead = '' } = Astro.props;
 
 let seo = meta.seo;
-if (!IS_PRODUCTION) {
+if (IS_PRODUCTION) {
+  // El WordPress original tenía noindex en todas las páginas: en producción se indexa.
+  seo = seo.replace(/<meta name="robots" content="[^"]*" \/>/, '<meta name="robots" content="index, follow, max-image-preview:large" />');
+} else {
   // Entorno de pruebas: nunca indexable (evita contenido duplicado en Google).
   seo = seo.replace(/<meta name="robots" content="[^"]*" \/>/, '<meta name="robots" content="noindex, nofollow" />');
   if (!/name="robots"/.test(seo)) seo = '<meta name="robots" content="noindex, nofollow" />\n' + seo;
