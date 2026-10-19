@@ -2,6 +2,16 @@
   "_comment": "Diapositivas propias del carrusel de la home. Se insertan en el build (src/lib/fixes.ts) y sobreviven a la sincronización con WordPress. 'hasta' (AAAA-MM-DD, opcional): a partir de ese día la diapositiva deja de publicarse en el siguiente build. 'movil': posición del fondo en móvil (la parte que se ve).",
   "slides": [
     {
+      "id": "premio-eugenio-mendoza-xvii-2026",
+      "imagen": "/wp-content/themes/fem-conversion-theme/assets/images/premio-eugenio-mendoza-xvii-2026.jpg",
+      "enlace": "/daniel-guerra-gana-xvii-premio-eugenio-mendoza/",
+      "nuevaPestana": false,
+      "texto": "Daniel Guerra gana la XVII edición del Premio Eugenio Mendoza con «Archipiélago sensorial del Caribe». Exposición de los 12 artistas hasta el 31 de octubre en la Sala Mendoza, UNIMET, Caracas, con entrada libre",
+      "movil": "90% center",
+      "primera": true,
+      "hasta": "2026-11-01"
+    },
+    {
       "id": "panel-asomicrofinanzas-2026",
       "imagen": "/wp-content/themes/fem-conversion-theme/assets/images/panel-asomicrofinanzas-2026.jpg",
       "enlace": "/formalizar-para-crecer-congreso-asomicrofinanzas-2026/",
