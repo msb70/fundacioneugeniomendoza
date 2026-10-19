@@ -50,8 +50,13 @@ if (!ctype_digit($postId) || $rating < 1 || $rating > 5) {
 flock($fh, LOCK_EX);
 $data = fem_ratings_load($fh);
 if (!isset($data[$postId])) {
-    flock($fh, LOCK_UN);
-    fem_json(false, ['message' => 'Contenido no encontrado.']);
+    // Entrada publicada después de sembrar ratings.json: se acepta si el build la declara.
+    $valid = json_decode((string)@file_get_contents(__DIR__ . '/rating-ids.json'), true);
+    if (!is_array($valid) || !in_array((int)$postId, $valid, true)) {
+        flock($fh, LOCK_UN);
+        fem_json(false, ['message' => 'Contenido no encontrado.']);
+    }
+    $data[$postId] = ['sum' => 0, 'count' => 0];
 }
 $voter = fem_ip_hash();
 $voters = $data[$postId]['voters'] ?? [];

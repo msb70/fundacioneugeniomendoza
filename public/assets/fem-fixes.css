@@ -232,3 +232,16 @@ html body .page-nosotros .nos-ods-card p { color: #fff !important; }
 .fem-404__accesos a:hover, .fem-404__accesos a:focus-visible { border-color: #007991; box-shadow: 0 4px 18px rgba(0,121,145,.15); }
 .fem-404__accesos strong { color: #007991; font-size: 1.05rem; }
 .fem-404__accesos span { color: #64748b; font-size: .9rem; }
+
+/* Tarjeta destacada del blog (escritorio): la imagen se recortaba a lo alto del texto
+   (object-fit: cover en una celda casi cuadrada) y las portadas 16:9 perdían el borde
+   izquierdo y derecho. La celda conserva la proporción 16:9 y se centra verticalmente. */
+@media (min-width: 769px) {
+  article.fem-featured-card { align-items: center !important; }
+  a.fem-featured-card__media {
+    align-self: center !important;
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+}
