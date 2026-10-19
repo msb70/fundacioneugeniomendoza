@@ -4,12 +4,12 @@
     {
       "id": "panel-asomicrofinanzas-2026",
       "imagen": "/wp-content/themes/fem-conversion-theme/assets/images/panel-asomicrofinanzas-2026.jpg",
-      "enlace": "/assets/img/panel-asomicrofinanzas-2026-cartel.jpg",
-      "nuevaPestana": true,
+      "enlace": "/formalizar-para-crecer-congreso-asomicrofinanzas-2026/",
+      "nuevaPestana": false,
       "texto": "Panel «Formalizar para crecer: nuevas rutas para fortalecer la microempresa» en el 16º Congreso Internacional Asomicrofinanzas AMF, con María Claudia Lacouture, Nicolás Botero y Miguel McAllister; modera Rodrigo Torres",
       "movil": "93% center",
       "primera": true,
-      "hasta": null
+      "hasta": "2026-10-23"
     }
   ]
 }

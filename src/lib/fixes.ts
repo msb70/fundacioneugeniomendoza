@@ -4,6 +4,7 @@
 // Revisión del sitio del 19-10-2026 (hallazgos C1, M3, M4, M5, M6, M7, M8, B1, B2, B4).
 import seo from '../site/seo.json';
 import carrusel from '../site/carrusel.json';
+import { agendaHtml } from './agenda';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -157,6 +158,11 @@ export function fixBody(body: string, route: string, seoHtml: string): { body: s
   if (isCategory(route)) {
     const name = bareTitle(seoHtml);
     if (name) b = b.replace(/<h1>Blog/, `<h1>Blog: ${name}`);
+  }
+
+  // Calendario de eventos encima del listado de la categoría Eventos (src/site/eventos.json).
+  if (route === '/category/eventos/') {
+    b = b.replace(/(\s*<!-- ===== POSTS)/, agendaHtml(asset('/assets/eventos/agenda.js')) + '$1');
   }
 
   // B1: enlaces rotos heredados del WordPress.

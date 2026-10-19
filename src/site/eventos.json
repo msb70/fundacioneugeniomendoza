@@ -1,0 +1,62 @@
+{
+  "_comentario": "Calendario de /category/eventos/. Cada evento enlaza a su entrada del blog (categoría Eventos en WordPress). Fechas AAAA-MM-DD; 'fin' solo si dura más de un día.",
+  "eventos": [
+    {
+      "titulo": "Olimpiadas Matemática Matific",
+      "inicio": "2026-09-04",
+      "hora": "11:00 a. m. (Chile/Argentina)",
+      "lugar": "En línea",
+      "enlace": "/olimpiadas-matematica-matific/"
+    },
+    {
+      "titulo": "Impact Minds 2026",
+      "inicio": "2026-09-08",
+      "fin": "2026-09-11",
+      "lugar": "Manaos, Brasil",
+      "enlace": "/impact-minds-2026/"
+    },
+    {
+      "titulo": "Congreso Internacional TED STEM+ Entramar 2026",
+      "inicio": "2026-09-18",
+      "fin": "2026-09-19",
+      "lugar": "Virtual (18) y Vicente López, Argentina (19)",
+      "enlace": "/congreso-internacional-ted-stem-entramar-2026/"
+    },
+    {
+      "titulo": "Juntos por la Inclusión: inclusión laboral y competitividad",
+      "inicio": "2026-10-21",
+      "hora": "8:30 a. m. (Colombia)",
+      "lugar": "Universidad EAFIT, Medellín, Colombia",
+      "enlace": "/foro-inclusion-laboral-competitividad-medellin/"
+    },
+    {
+      "titulo": "16º Congreso Asomicrofinanzas AMF · panel «Formalizar para crecer»",
+      "inicio": "2026-10-22",
+      "fin": "2026-10-23",
+      "hora": "Panel: 23 de octubre, 11:30 a. m. (Colombia)",
+      "lugar": "Grand Hyatt, Bogotá, Colombia",
+      "enlace": "/formalizar-para-crecer-congreso-asomicrofinanzas-2026/"
+    },
+    {
+      "titulo": "D-Future Technology Leaders Summit EdTech",
+      "inicio": "2026-10-23",
+      "fin": "2026-10-24",
+      "lugar": "Zona Rental UNIMET, Caracas, Venezuela",
+      "enlace": "/d-future-edtech-summit-caracas-2026/"
+    },
+    {
+      "titulo": "Foro AFE Prosperidad Compartida 2026",
+      "inicio": "2026-10-27",
+      "fin": "2026-10-29",
+      "lugar": "Forum UPB, Medellín, Colombia",
+      "enlace": "/foro-afe-prosperidad-compartida-medellin-2026/"
+    },
+    {
+      "titulo": "11º Simposio Niñas, Niños y Adolescentes en Internet",
+      "inicio": "2026-10-29",
+      "fin": "2026-10-30",
+      "lugar": "São Paulo, Brasil, y en línea · gratuito",
+      "enlace": "/simposio-ninos-adolescentes-internet-2026/"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+// Calendario de eventos de /category/eventos/ (datos en src/site/eventos.json).
+// El HTML lleva la lista completa de eventos (funciona sin JS) y los datos en JSON;
+// /assets/eventos/agenda.js dibuja el calendario del mes actual y filtra la lista.
+import data from '../site/eventos.json';
+
+export type Evento = {
+  titulo: string; inicio: string; fin?: string; hora?: string; lugar?: string; enlace: string;
+};
+
+const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+/** "23 y 24 de octubre de 2026", "27 al 29 de octubre de 2026", "30 de septiembre al 2 de octubre de 2026" */
+export function rangoFechas(e: Evento): string {
+  const [y1, m1, d1] = e.inicio.split('-').map(Number);
+  if (!e.fin || e.fin === e.inicio) return `${d1} de ${MESES[m1 - 1]} de ${y1}`;
+  const [y2, m2, d2] = e.fin.split('-').map(Number);
+  if (y1 === y2 && m1 === m2) return `${d1} ${d2 - d1 === 1 ? 'y' : 'al'} ${d2} de ${MESES[m1 - 1]} de ${y1}`;
+  if (y1 === y2) return `${d1} de ${MESES[m1 - 1]} al ${d2} de ${MESES[m2 - 1]} de ${y1}`;
+  return `${d1} de ${MESES[m1 - 1]} de ${y1} al ${d2} de ${MESES[m2 - 1]} de ${y2}`;
+}
+
+export function eventos(): Evento[] {
+  return [...(data.eventos as Evento[])].sort((a, b) => a.inicio.localeCompare(b.inicio));
+}
+
+function item(e: Evento): string {
+  const [, m, d] = e.inicio.split('-').map(Number);
+  return `<li class="fem-agenda__evento" data-inicio="${e.inicio}" data-fin="${e.fin ?? e.inicio}">
+  <span class="fem-agenda__fecha" aria-hidden="true"><b>${d}</b>${MESES[m - 1].slice(0, 3)}</span>
+  <div class="fem-agenda__info">
+    <a class="fem-agenda__titulo" href="${esc(e.enlace)}">${esc(e.titulo)}</a>
+    <p class="fem-agenda__meta"><time datetime="${e.inicio}">${rangoFechas(e)}</time>${e.hora ? ` · ${esc(e.hora)}` : ''}</p>
+    ${e.lugar ? `<p class="fem-agenda__lugar">${esc(e.lugar)}</p>` : ''}
+  </div>
+</li>`;
+}
+
+/** Bloque del calendario para insertar antes del listado de entradas. */
+export function agendaHtml(scriptSrc: string): string {
+  const evs = eventos();
+  if (!evs.length) return '';
+  return `
+  <!-- ===== CALENDARIO DE EVENTOS (src/site/eventos.json, src/lib/agenda.ts) ===== -->
+  <section class="fem-agenda" aria-labelledby="fem-agenda-titulo">
+    <div class="container">
+      <div class="fem-agenda__panel">
+        <div class="fem-agenda__cal" hidden>
+          <div class="fem-agenda__cabecera">
+            <button type="button" class="fem-agenda__nav" data-dir="-1" aria-label="Mes anterior">&#8249;</button>
+            <h2 id="fem-agenda-titulo" class="fem-agenda__mes" aria-live="polite">Calendario de eventos</h2>
+            <button type="button" class="fem-agenda__nav" data-dir="1" aria-label="Mes siguiente">&#8250;</button>
+          </div>
+          <table class="fem-agenda__grid">
+            <thead><tr><th scope="col" abbr="lunes">L</th><th scope="col" abbr="martes">M</th><th scope="col" abbr="miércoles">X</th><th scope="col" abbr="jueves">J</th><th scope="col" abbr="viernes">V</th><th scope="col" abbr="sábado">S</th><th scope="col" abbr="domingo">D</th></tr></thead>
+            <tbody></tbody>
+          </table>
+          <p class="fem-agenda__leyenda"><span class="fem-agenda__punto"></span> Día con evento <span class="fem-agenda__hoy-muestra"></span> Hoy</p>
+        </div>
+        <div class="fem-agenda__lista-wrap">
+          <div class="fem-agenda__lista-cabecera">
+            <h3 class="fem-agenda__subtitulo">Todos los eventos</h3>
+            <button type="button" class="fem-agenda__todo" hidden>Ver todo el mes</button>
+          </div>
+          <ul class="fem-agenda__lista">
+${evs.map(item).join('\n')}
+          </ul>
+          <p class="fem-agenda__vacio" hidden>No hay eventos este mes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="${scriptSrc}" defer></script>
+`;
+}
