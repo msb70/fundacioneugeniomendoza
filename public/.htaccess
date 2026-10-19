@@ -21,6 +21,8 @@ RewriteRule ^sitemap\.rss$ /sitemap.xml [L,R=301]
 # Entrada renombrada en el WordPress (2026-10): "Emprender con foco" -> "Negociar en el día a día"
 RewriteRule ^\xE2\x8F\xB1\xEF\xB8\x8Femprender-con-foco-en-medio-de-las-distracciones/?$ /negociar-en-el-dia-a-dia-de-una-microempresa/ [L,R=301,NE]
 # Feed RSS: el de WordPress vivía en /feed/; ahora lo genera Astro en /feed.xml
+# La categoría Cultura de WordPress redirige al sitio de la Sala Mendoza (igual aquí)
+RewriteRule ^category/cultura(/.*)?$ https://www.fundacionsalamendoza.com [L,R=301]
 RewriteRule ^feed/?$ /feed.xml [L,R=301]
 RewriteRule ^(.*/)?feed/?$ /blog/ [L,R=301]
 # Etiquetas que quedaron vacías al borrar entradas en WordPress (ya no se generan)

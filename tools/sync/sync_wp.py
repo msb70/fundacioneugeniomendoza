@@ -131,6 +131,11 @@ while todo:
         continue
     done.add(route)
     r = fresh(route)
+    # Una categoría que en WordPress redirige a otro sitio (p. ej. Cultura → fundacionsalamendoza.com)
+    # no se copia: su HTML no es una página del tema y convert.py fallaba (19-10-2026).
+    if urllib.parse.urlsplit(r.url).netloc != urllib.parse.urlsplit(SRC).netloc:
+        print(f'  OMITIDA {route}: redirige a {r.url}')
+        continue
     if r.status_code != 200:
         abort(f'{route} respondió {r.status_code}')
     r.encoding = 'utf-8'
