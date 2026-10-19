@@ -52,11 +52,26 @@
       "enlace": "/foro-afe-prosperidad-compartida-medellin-2026/"
     },
     {
+      "titulo": "XXXVI Congreso Internacional de ÁPICE",
+      "inicio": "2026-10-27",
+      "fin": "2026-10-29",
+      "hora": "8:30 a. m. a 1:00 p. m. (Colombia)",
+      "lugar": "Virtual (Zoom)",
+      "enlace": "/xxxvi-congreso-internacional-apice-2026/"
+    },
+    {
       "titulo": "11º Simposio Niñas, Niños y Adolescentes en Internet",
       "inicio": "2026-10-29",
       "fin": "2026-10-30",
       "lugar": "São Paulo, Brasil, y en línea · gratuito",
       "enlace": "/simposio-ninos-adolescentes-internet-2026/"
+    },
+    {
+      "titulo": "I Congreso de Innovación Educativa de la Cordillera Patagónica",
+      "inicio": "2026-10-31",
+      "hora": "9:00 a. m. a 6:00 p. m. (Argentina)",
+      "lugar": "Salón Central, Trevelin, Chubut, Argentina",
+      "enlace": "/congreso-innovacion-educativa-cordillera-patagonica-2026/"
     }
   ]
 }
