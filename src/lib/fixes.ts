@@ -3,6 +3,7 @@
 // con el WordPress: los scripts de tools/migracion reescriben las páginas, no este archivo.
 // Revisión del sitio del 19-10-2026 (hallazgos C1, M3, M4, M5, M6, M7, M8, B1, B2, B4).
 import seo from '../site/seo.json';
+import carrusel from '../site/carrusel.json';
 
 const SITE = 'https://fundacioneugeniomendoza.com';
 const HONEYPOT = 'sitio_web_alt'; // mismo nombre que FEM_HONEYPOT en public/api/lib.php
@@ -122,6 +123,9 @@ export function fixBody(body: string, route: string, seoHtml: string): { body: s
     return `<main id="contenido"${attrs}>`;
   });
 
+  // Diapositivas propias del carrusel de la home (src/site/carrusel.json).
+  if (route === '/') b = addSlides(b);
+
   // M4: la home no tenía H1 (el carrusel es solo imágenes).
   if (route === '/' && !/<h1\b/.test(b)) {
     b = b.replace(
@@ -145,4 +149,51 @@ export function fixBody(body: string, route: string, seoHtml: string): { body: s
   b = b.replace(/<a\b(?![^>]*\brel=)([^>]*\btarget="_blank")/g, '<a rel="noopener"$1');
 
   return { body: b, mainId };
+}
+
+type Slide = {
+  id: string; imagen: string; enlace?: string; nuevaPestana?: boolean; texto: string;
+  movil?: string; primera?: boolean; hasta?: string | null;
+};
+
+// Posiciones de fondo que el tema asigna por orden (style.css del tema, .fem-hero-slide:nth-child(n)).
+// Al insertar diapositivas delante, se mantienen para las originales.
+const THEME_POS = { tablet: ['75% center', '75% center', '75% center'], movil: ['78% center', '80% center', '85% center'] };
+
+/** Inserta en el carrusel de la home las diapositivas vigentes de carrusel.json. */
+export function addSlides(html: string, today = new Date().toISOString().slice(0, 10)): string {
+  const slides = (carrusel.slides as Slide[]).filter((s) => !s.hasta || s.hasta >= today);
+  if (!slides.length || !html.includes('<div class="fem-hero-track">')) return html;
+  const first = slides.filter((s) => s.primera);
+  const last = slides.filter((s) => !s.primera);
+
+  const slideHtml = (s: Slide, active: boolean) =>
+    `\n    <!-- Diapositiva propia: ${s.id} (src/site/carrusel.json) -->\n` +
+    `    <a class="fem-hero-slide fem-slide--${s.id}${active ? ' active' : ''}" href="${esc(s.enlace ?? '#')}"` +
+    (s.nuevaPestana ? ' target="_blank" rel="noopener"' : '') +
+    ` style="background-image: url('${esc(s.imagen)}');" aria-label="${esc(s.texto)}"></a>\n`;
+  const dot = (s: Slide, active: boolean) =>
+    `\n    <button${active ? ' class="active"' : ''} type="button" aria-label="Ver: ${esc(s.texto.split(',')[0])}"></button>`;
+
+  let h = html;
+  if (first.length) {
+    h = h.replace('class="fem-hero-slide active"', 'class="fem-hero-slide"');
+    h = h.replace(/(<div class="fem-hero-dots"[^>]*>\s*<button) class="active"/, '$1');
+  }
+  h = h.replace('<div class="fem-hero-track">', '<div class="fem-hero-track">' + first.map((s, i) => slideHtml(s, i === 0)).join(''));
+  if (last.length) {
+    h = h.replace(/(<div class="fem-hero-track">[\s\S]*?)(\n\s*<\/div>\s*<button class="fem-hero-arrow)/,
+      (_m, a: string, z: string) => a + last.map((s) => slideHtml(s, false)).join('') + z);
+  }
+  h = h.replace(/(<div class="fem-hero-dots"[^>]*>)/, '$1' + first.map((s, i) => dot(s, i === 0)).join(''));
+  if (last.length) h = h.replace(/(<div class="fem-hero-dots"[^>]*>[\s\S]*?)(\n\s*<\/div>)/, (_m, a: string, z: string) => a + last.map((s) => dot(s, false)).join('') + z);
+
+  // CSS: posición en móvil de las nuevas y la que tenían las originales antes de desplazarse.
+  const n = first.length;
+  const shift = (bp: 'tablet' | 'movil') =>
+    THEME_POS[bp].map((p, i) => `.fem-hero-track > .fem-hero-slide:nth-child(${i + 1 + n}){background-position:${p} !important}`).join('');
+  const own = slides.filter((s) => s.movil).map((s) => `.fem-hero-slide.fem-slide--${s.id}{background-position:${s.movil} !important}`).join('');
+  const css = `<style>@media (min-width:769px) and (max-width:1180px){${n ? shift('tablet') : ''}}` +
+    `@media (max-width:768px){${n ? shift('movil') : ''}${own}}</style>`;
+  return h.replace('<section class="fem-hero-carousel"', css + '\n  <section class="fem-hero-carousel"');
 }

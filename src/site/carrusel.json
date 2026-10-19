@@ -1,0 +1,15 @@
+{
+  "_comment": "Diapositivas propias del carrusel de la home. Se insertan en el build (src/lib/fixes.ts) y sobreviven a la sincronización con WordPress. 'hasta' (AAAA-MM-DD, opcional): a partir de ese día la diapositiva deja de publicarse en el siguiente build. 'movil': posición del fondo en móvil (la parte que se ve).",
+  "slides": [
+    {
+      "id": "panel-asomicrofinanzas-2026",
+      "imagen": "/wp-content/themes/fem-conversion-theme/assets/images/panel-asomicrofinanzas-2026.jpg",
+      "enlace": "/assets/img/panel-asomicrofinanzas-2026-cartel.jpg",
+      "nuevaPestana": true,
+      "texto": "Panel «Formalizar para crecer: nuevas rutas para fortalecer la microempresa» en el 16º Congreso Internacional Asomicrofinanzas AMF, con María Claudia Lacouture, Nicolás Botero y Miguel McAllister; modera Rodrigo Torres",
+      "movil": "93% center",
+      "primera": true,
+      "hasta": null
+    }
+  ]
+}
