@@ -47,10 +47,9 @@ jobs:
           WP_URL: ${{ vars.WP_URL }}
         run: python3 tools/sync/sync_wp.py
 
-      - name: Optimizar imágenes nuevas (WebP) e iconos usados (Font Awesome)
+      - name: Iconos usados (Font Awesome reducido)
         run: |
-          pip install pillow fonttools brotli
-          python3 tools/optimizar_imagenes.py
+          pip install fonttools brotli
           python3 tools/fa_subset.py
 
       - name: Compilar (comprobación antes de publicar)

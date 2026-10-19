@@ -31,7 +31,7 @@ Actions → *Sincronizar blog desde WordPress* → *Run workflow*:
    aliados, cabecera, pie y `/recursos/` no se tocan. El homenaje temporal de la home se conserva.
 3. Una entrada borrada en WordPress se retira y se redirige con 301 a su nueva URL o a `/blog/`
    (bloque `sync-redirects` de `.htaccess`).
-4. Genera WebP de las imágenes nuevas y recalcula el subconjunto de Font Awesome.
+4. Recalcula el subconjunto de Font Awesome por si una entrada nueva usa otros iconos.
 5. Compila, hace commit en `main` y publica (llama a `deploy.yml`).
 
 Salvaguardas: si la API falla, devuelve menos del 80 % de las entradas o desaparecerían más de 3
@@ -41,7 +41,9 @@ Settings → Secrets and variables → Actions. Si cambia de dirección, crear l
 
 ## Rendimiento
 
-- Imágenes: `tools/optimizar_imagenes.py` crea una `.webp` junto a cada JPG/PNG y el build la sirve.
+- Imágenes: se sirven los JPG/PNG originales a propósito. El CDN de Hostinger ya los convierte a
+  WebP y los redimensiona para móvil (p. ej. 285 KB → 88 KB); una `.webp` estática se salta esa
+  optimización y pesa más. No convertir imágenes a mano.
 - Fuentes Inter y Playfair Display auto-alojadas en `public/assets/fonts/` (antes Google Fonts).
 - Iconos: `tools/fa_subset.py` genera `public/assets/fa/` con solo los iconos usados (antes Font
   Awesome completo desde cdnjs). Tras añadir iconos nuevos: `npm ci && python3 tools/fa_subset.py`.

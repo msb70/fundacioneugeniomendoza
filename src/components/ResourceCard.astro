@@ -1,5 +1,4 @@
 ---
-import { toWebp } from '../lib/fixes';
 interface Enlace { texto: string; url: string; principal?: boolean }
 interface Item {
   nombre: string;
@@ -24,14 +23,14 @@ const principal = item.enlaces.find((e) => e.principal) ?? item.enlaces[0];
      {...(externo(principal.url) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
      style={item.icono ? `background:${item.iconoFondo}` : undefined}>
     {item.imagen && (
-      <img src={toWebp(item.imagen)} alt={item.imagenAlt ?? item.nombre} loading="lazy" decoding="async"
+      <img src={item.imagen} alt={item.imagenAlt ?? item.nombre} loading="lazy" decoding="async"
            class={item.imagenAjuste === 'contain' ? 'is-contain' : undefined}
            style={item.imagenPosicion ? `object-position:${item.imagenPosicion}` : undefined} />
     )}
-    {item.icono && <img class="fem-recurso__icono" src={toWebp(item.icono)} alt="" loading="lazy" decoding="async" />}
+    {item.icono && <img class="fem-recurso__icono" src={item.icono} alt="" loading="lazy" decoding="async" />}
     {item.logo && (
       <span class="fem-recurso__logo" style={`background:${item.logoFondo ?? '#fff'}`}>
-        <img src={toWebp(item.logo)} alt="" loading="lazy" decoding="async" />
+        <img src={item.logo} alt="" loading="lazy" decoding="async" />
       </span>
     )}
   </a>
