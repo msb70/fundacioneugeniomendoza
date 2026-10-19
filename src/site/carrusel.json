@@ -1,5 +1,5 @@
 {
-  "_comment": "Diapositivas propias del carrusel de la home. Se insertan en el build (src/lib/fixes.ts) y sobreviven a la sincronización con WordPress. 'hasta' (AAAA-MM-DD, opcional): a partir de ese día la diapositiva deja de publicarse en el siguiente build. 'movil': posición del fondo en móvil (la parte que se ve).",
+  "_comment": "Diapositivas propias del carrusel de la home. Se insertan en el build (src/lib/fixes.ts) y sobreviven a la sincronización con WordPress. 'hasta' (AAAA-MM-DD, opcional): a partir de ese día la diapositiva deja de publicarse en el siguiente build. 'movil': posición del fondo en móvil (la parte que se ve). Además, cada evento de eventos.json que aún no ha terminado genera su propia diapositiva (imagen destacada de su entrada en WordPress) y desaparece al terminar el último día del evento (hora de Caracas); si aquí hay una diapositiva manual con el mismo enlace, se usa la manual.",
   "slides": [
     {
       "id": "premio-eugenio-mendoza-xvii-2026",

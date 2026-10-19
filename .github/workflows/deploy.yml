@@ -7,6 +7,10 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # Build diario a las 00:07 de Caracas (04:07 UTC): saca del HTML las diapositivas de eventos
+  # que ya terminaron (en el navegador ya se ocultan solas al acabar el día).
+  schedule:
+    - cron: '7 4 * * *'
   # La sincronización con WordPress (sync-wordpress.yml) llama a este workflow tras su commit:
   # los push hechos con GITHUB_TOKEN no disparan otros workflows por sí solos.
   workflow_call:

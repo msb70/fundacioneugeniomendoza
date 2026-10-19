@@ -1,5 +1,5 @@
 {
-  "_comentario": "Calendario de /category/eventos/. Cada evento enlaza a su entrada del blog (categoría Eventos en WordPress). Fechas AAAA-MM-DD; 'fin' solo si dura más de un día.",
+  "_comentario": "Calendario de /category/eventos/. Cada evento enlaza a su entrada del blog (categoría Eventos en WordPress). Fechas AAAA-MM-DD; 'fin' solo si dura más de un día. Los eventos que aún no han terminado aparecen también en el carrusel de la home con la imagen destacada de su entrada ('imagen' opcional para usar otra).",
   "eventos": [
     {
       "titulo": "Olimpiadas Matemática Matific",

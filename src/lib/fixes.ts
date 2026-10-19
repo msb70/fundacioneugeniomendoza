@@ -4,7 +4,7 @@
 // Revisión del sitio del 19-10-2026 (hallazgos C1, M3, M4, M5, M6, M7, M8, B1, B2, B4).
 import seo from '../site/seo.json';
 import carrusel from '../site/carrusel.json';
-import { agendaHtml, ordenarListadoEventos } from './agenda';
+import { agendaHtml, ordenarListadoEventos, eventos, rangoFechas } from './agenda';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -186,27 +186,78 @@ export function fixBody(body: string, route: string, seoHtml: string): { body: s
 
 type Slide = {
   id: string; imagen: string; enlace?: string; nuevaPestana?: boolean; texto: string;
-  movil?: string; primera?: boolean; hasta?: string | null;
+  movil?: string; primera?: boolean; hasta?: string | null; evento?: boolean;
 };
+
+/** Imagen destacada (la mayor del srcset) de una entrada ya sincronizada en src/site/pages. */
+function imagenDestacada(enlace: string): string | undefined {
+  const slug = enlace.replace(/^\/|\/$/g, '');
+  let html: string;
+  try {
+    html = readFileSync(join(process.cwd(), 'src/site/pages', `${slug}.html`), 'utf8');
+  } catch {
+    return undefined;
+  }
+  const img = html.match(/<img\b[^>]*\bwp-post-image\b[^>]*>/)?.[0];
+  if (!img) return undefined;
+  const set = img.match(/\bsrcset="([^"]+)"/)?.[1];
+  if (set) {
+    const best = set.split(',').map((c) => c.trim().split(/\s+/))
+      .map(([u, w]) => ({ u, w: parseInt(w, 10) || 0 })).sort((a, b) => b.w - a.w)[0];
+    if (best?.u) return best.u;
+  }
+  return img.match(/\bsrc="([^"]+)"/)?.[1];
+}
+
+/**
+ * Diapositivas automáticas: una por cada evento de eventos.json que aún no ha terminado
+ * (fin, o inicio si dura un día, >= hoy). Usa la imagen destacada de su entrada; si la entrada
+ * aún no está sincronizada o no tiene imagen, se omite. Si una diapositiva manual de carrusel.json
+ * enlaza al mismo evento, manda la manual.
+ */
+function slidesDeEventos(today: string, manuales: Slide[]): Slide[] {
+  const enlaces = new Set(manuales.map((s) => s.enlace));
+  return eventos()
+    .filter((e) => (e.fin ?? e.inicio) >= today && !enlaces.has(e.enlace))
+    .flatMap((e) => {
+      const imagen = (e as { imagen?: string }).imagen ?? imagenDestacada(e.enlace);
+      if (!imagen) return [];
+      const slug = e.enlace.replace(/^\/|\/$/g, '');
+      return [{
+        id: `evento-${slug}`, imagen, enlace: e.enlace, primera: true, hasta: e.fin ?? e.inicio, evento: true,
+        texto: `Evento: ${e.titulo}, ${rangoFechas(e)}${e.lugar ? `, ${e.lugar}` : ''}`,
+      }];
+    });
+}
 
 // Posiciones de fondo que el tema asigna por orden (style.css del tema, .fem-hero-slide:nth-child(n)).
 // Al insertar diapositivas delante, se mantienen para las originales.
+const CADUCIDAD_JS = `<script>(function(){var c=document.querySelector('.fem-hero-carousel');if(!c)return;var now=Date.now(),act=false;
+c.querySelectorAll('[data-fem-hasta]').forEach(function(el){if(now>Date.parse(el.getAttribute('data-fem-hasta')+'T23:59:59-04:00')){if(el.classList.contains('active'))act=true;el.remove();}});
+if(act){var s=c.querySelector('.fem-hero-slide'),d=c.querySelector('.fem-hero-dots button');if(s)s.classList.add('active');if(d)d.classList.add('active');}})();</script>`;
+
 const THEME_POS = { tablet: ['75% center', '75% center', '75% center'], movil: ['78% center', '80% center', '85% center'] };
 
 /** Inserta en el carrusel de la home las diapositivas vigentes de carrusel.json. */
 export function addSlides(html: string, today = new Date().toISOString().slice(0, 10)): string {
-  const slides = (carrusel.slides as Slide[]).filter((s) => !s.hasta || s.hasta >= today);
+  const manuales = (carrusel.slides as Slide[]).filter((s) => !s.hasta || s.hasta >= today);
+  // Orden: manuales marcadas como primeras, eventos próximos (el más cercano primero), el resto.
+  const slides = [...manuales.filter((s) => s.primera), ...slidesDeEventos(today, manuales), ...manuales.filter((s) => !s.primera)];
   if (!slides.length || !html.includes('<div class="fem-hero-track">')) return html;
   const first = slides.filter((s) => s.primera);
   const last = slides.filter((s) => !s.primera);
 
   const slideHtml = (s: Slide, active: boolean) =>
     `\n    <!-- Diapositiva propia: ${s.id} (src/site/carrusel.json) -->\n` +
-    `    <a class="fem-hero-slide fem-slide--${s.id}${active ? ' active' : ''}" href="${esc(s.enlace ?? '#')}"` +
+    `    <a class="fem-hero-slide fem-slide--${s.id}${s.evento ? ' fem-slide--evento' : ''}${active ? ' active' : ''}" href="${esc(s.enlace ?? '#')}"` +
     (s.nuevaPestana ? ' target="_blank" rel="noopener"' : '') +
-    ` style="background-image: url('${esc(s.imagen)}');" aria-label="${esc(s.texto)}"></a>\n`;
+    (s.hasta ? ` data-fem-hasta="${s.hasta}"` : '') +
+    (s.evento
+      ? ` style="--fem-slide-img: url('${esc(s.imagen)}');"`
+      : ` style="background-image: url('${esc(s.imagen)}');"`) +
+    ` aria-label="${esc(s.texto)}"></a>\n`;
   const dot = (s: Slide, active: boolean) =>
-    `\n    <button${active ? ' class="active"' : ''} type="button" aria-label="Ver: ${esc(s.texto.split(',')[0])}"></button>`;
+    `\n    <button${active ? ' class="active"' : ''} type="button"${s.hasta ? ` data-fem-hasta="${s.hasta}"` : ''} aria-label="Ver: ${esc(s.texto.split(',')[0])}"></button>`;
 
   let h = html;
   if (first.length) {
@@ -228,5 +279,8 @@ export function addSlides(html: string, today = new Date().toISOString().slice(0
   const own = slides.filter((s) => s.movil).map((s) => `.fem-hero-slide.fem-slide--${s.id}{background-position:${s.movil} !important}`).join('');
   const css = `<style>@media (min-width:769px) and (max-width:1180px){${n ? shift('tablet') : ''}}` +
     `@media (max-width:768px){${n ? shift('movil') : ''}${own}}</style>`;
-  return h.replace('<section class="fem-hero-carousel"', css + '\n  <section class="fem-hero-carousel"');
+  h = h.replace('<section class="fem-hero-carousel"', css + '\n  <section class="fem-hero-carousel"');
+  // Retira en el navegador las diapositivas cuya fecha ya pasó (hora de Caracas), aunque no haya
+  // habido un build nuevo. Corre antes que el script del carrusel (DOMContentLoaded).
+  return h.replace(/(<section class="fem-hero-carousel"[\s\S]*?<\/section>)/, '$1\n' + CADUCIDAD_JS);
 }
