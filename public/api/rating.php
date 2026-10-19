@@ -55,7 +55,7 @@ if (!isset($data[$postId])) {
 }
 $voter = fem_ip_hash();
 $voters = $data[$postId]['voters'] ?? [];
-if (in_array($voter, $voters, true)) {
+if (in_array($voter, $voters, true) || in_array(fem_ip_hash_legacy(), $voters, true)) {
     flock($fh, LOCK_UN);
     fem_json(false, ['message' => 'Ya registraste tu valoración para este artículo.']);
 }

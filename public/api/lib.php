@@ -14,6 +14,7 @@ const FEM_TO        = 'contacto@fundacioneugeniomendoza.com';   // destinatario 
 const FEM_FROM      = 'no-reply@fundacioneugeniomendoza.com';   // remitente (debe ser un buzón del dominio)
 const FEM_FROM_NAME = 'Web Fundación Eugenio Mendoza';
 const FEM_RATE_MAX  = 5;      // envíos por IP y hora, por formulario
+const FEM_HONEYPOT  = 'sitio_web_alt'; // campo trampa que añade Base.astro a todos los formularios
 
 /** Carpeta de datos FUERA de public_html: los despliegues por Git no la tocan. */
 function fem_data_dir(): string
@@ -39,7 +40,50 @@ function fem_header_safe(string $v): string
 
 function fem_ip_hash(): string
 {
+    return hash_hmac('sha256', $_SERVER['REMOTE_ADDR'] ?? '', fem_secret());
+}
+
+/** Hash usado hasta oct-2026 (solo para reconocer votos antiguos en rating.php). */
+function fem_ip_hash_legacy(): string
+{
     return hash('sha256', ($_SERVER['REMOTE_ADDR'] ?? '') . '|fem');
+}
+
+/** Clave aleatoria propia del servidor (fuera de public_html) para no guardar IPs reversibles. */
+function fem_secret(): string
+{
+    $file = fem_data_dir() . '/secret.key';
+    $key = @file_get_contents($file);
+    if (!$key) {
+        $key = bin2hex(random_bytes(32));
+        @file_put_contents($file, $key, LOCK_EX);
+        @chmod($file, 0600);
+    }
+    return $key;
+}
+
+/** true si un bot ha rellenado el campo trampa (se responde como si todo fuera bien). */
+function fem_is_bot(): bool
+{
+    return trim((string)($_POST[FEM_HONEYPOT] ?? '')) !== '';
+}
+
+/** La petición viene de fetch() y espera JSON (si no, es un envío clásico de formulario). */
+function fem_wants_json(): bool
+{
+    return ($_SERVER['HTTP_X_REQUESTED_WITH'] ?? '') !== ''
+        || str_contains((string)($_SERVER['HTTP_ACCEPT'] ?? ''), 'application/json');
+}
+
+/** Copia de cada envío en fem-data/envios/AAAA-MM.log: si el correo falla, el mensaje no se pierde. */
+function fem_log_submission(string $form, string $body, bool $mailed): void
+{
+    $dir = fem_data_dir() . '/envios';
+    if (!is_dir($dir)) {
+        @mkdir($dir, 0750, true);
+    }
+    $line = '=== ' . date('c') . " | $form | correo " . ($mailed ? 'OK' : 'FALLÓ') . " ===\n$body\n";
+    @file_put_contents($dir . '/' . date('Y-m') . '.log', $line, FILE_APPEND | LOCK_EX);
 }
 
 /** Límite simple de envíos por IP y hora (anti-spam básico). */
@@ -49,6 +93,7 @@ function fem_rate_limited(string $bucket): bool
     $now = time();
     $fh = @fopen($file, 'c+');
     if (!$fh) {
+        error_log('FEM: no se puede escribir ' . $file . ' (límite anti-spam desactivado)');
         return false;
     }
     flock($fh, LOCK_EX);
@@ -76,11 +121,17 @@ function fem_rate_limited(string $bucket): bool
 /** Ruta interna segura para redirigir (evita open-redirect). */
 function fem_back(string $fallback = '/'): string
 {
-    $ref = (string)($_POST['_wp_http_referer'] ?? '');
-    if ($ref === '' || $ref[0] !== '/' || str_starts_with($ref, '//')) {
-        $ref = $fallback;
+    return fem_safe_path((string)($_POST['_wp_http_referer'] ?? ''), $fallback);
+}
+
+/** Solo rutas internas del tipo /a/b/ (evita open-redirect con //dominio, \\dominio, etc.). */
+function fem_safe_path(string $path, string $fallback = '/'): string
+{
+    $path = (string)strtok($path, '?#');
+    if (!preg_match('#^/(?:[\p{L}\p{N}\p{So}\x{FE0F}%._-]+/)*$#u', $path) || str_contains($path, '//')) {
+        return $fallback;
     }
-    return strtok($ref, '?#');
+    return $path;
 }
 
 /**

@@ -5,8 +5,8 @@ Mismo diseño, mismas URLs, mismas fotos y mismo contenido; sin base de datos ni
 
 | Entorno | URL | Rama que publica |
 |---|---|---|
-| Pruebas | https://rosybrown-partridge-192653.hostingersite.com | `deploy` (auto) |
-| Producción (pendiente) | https://fundacioneugeniomendoza.com | — (sigue en WordPress) |
+| Producción | https://fundacioneugeniomendoza.com | `deploy` (auto) |
+| Pruebas | sitio de Hostinger a conectar en hPanel → Git | `deploy-staging` (auto, siempre noindex) |
 
 ## Cómo funciona
 
@@ -17,6 +17,23 @@ push a main → GitHub Actions: npm ci + astro build → fuerza dist/ a la rama 
 
 - `main`: código fuente. **Nunca** conectar `main` a Hostinger (publicaría `tools/`, etc.).
 - `deploy`: solo el sitio compilado. La genera el CI; no se edita a mano.
+- `deploy-staging`: el mismo sitio compilado en modo pruebas (noindex, robots bloqueado). La genera el CI en cada push.
+
+## Correcciones que sobreviven a la sincronización con WordPress
+
+Las páginas de `src/site/pages/` se regeneran desde el WordPress. Por eso las correcciones de la
+revisión del 19-10-2026 no están en ellas, sino en capas que la sincronización no toca:
+
+| Dónde | Qué corrige |
+|---|---|
+| `src/lib/fixes.ts` | meta descriptions, og:image por defecto, canónicas, H1 de la home y categorías, campo anti-spam en formularios, id del `<main>`, enlaces rotos, `rel="noopener"`, fuentes rotas, scripts de Elementor sobrantes |
+| `src/site/seo.json` | textos de las meta descriptions de las páginas principales |
+| `src/layouts/Base.astro` | robots: etiquetas y fichas de aliados vacías con `noindex, follow`; enlace "Saltar al contenido"; feed RSS |
+| `public/assets/fem-fixes.css` | contraste, menú móvil, desbordes en móvil, tamaños táctiles |
+| `tools/migracion/localizar_es.py` | quita el `@import` vacío del `style.css` del tema (ejecutar tras cada sincronización) |
+
+Las etiquetas sin entradas no se generan y `.htaccess` las redirige a `/blog/`. Etiquetas y aliados
+quedan fuera del sitemap hasta que tengan contenido propio.
 
 ## Estructura
 
@@ -50,6 +67,10 @@ tools/migracion/            scripts usados para extraer el sitio de WordPress
 | Trabaja con nosotros (CV adjunto) | `admin-ajax.php` | `api/careers.php` → correo con adjunto |
 | Valoración con estrellas | `admin-ajax.php` + BD | `api/rating.php` → `../fem-data/ratings.json` (fuera de public_html) |
 | Comentarios | `wp-comments-post.php` | `api/comment.php` → correo para moderación (no se publican solos) |
+
+Todos los formularios llevan un campo trampa anti-spam (`sitio_web_alt`) y guardan copia de cada envío en
+`../fem-data/envios/AAAA-MM.log` (fuera de public_html), para que un fallo de correo no pierda mensajes.
+El formulario de empleo funciona con y sin JavaScript.
 
 Destinatario y remitente de correos: `public/api/lib.php` (`FEM_TO`, `FEM_FROM`).
 

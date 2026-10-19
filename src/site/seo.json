@@ -1,0 +1,14 @@
+{
+  "_comment": "Meta descriptions propias por ruta. Se aplican en el build (src/lib/fixes.ts) y sobreviven a la sincronización con WordPress. Máx. ~155 caracteres.",
+  "descriptions": {
+    "/blog/": "Noticias, historias de impacto y novedades de los programas de primera infancia, desarrollo social, emprendimiento y cultura de la Fundación Eugenio Mendoza.",
+    "/colaborar/": "Colabora con la Fundación Eugenio Mendoza: donaciones, voluntariado y alianzas corporativas para transformar la vida de niños, familias y emprendedores.",
+    "/contacto/": "Contacta con la Fundación Eugenio Mendoza: escríbenos para resolver dudas, proponer alianzas o participar en nuestros talleres y actividades en Venezuela.",
+    "/nuestro-impacto/": "75 años construyendo desarrollo: niños, familias, madres cuidadoras y emprendedores alcanzados por los programas de la Fundación Eugenio Mendoza.",
+    "/nuestros-programas/": "Primera Infancia (CEDAIN), Desarrollo Social y Cultura: las tres líneas programáticas con las que la Fundación Eugenio Mendoza transforma vidas desde 1951.",
+    "/sobre-nosotros/": "Organización privada sin fines de lucro creada en 1951 en Venezuela. Conoce la historia, la misión y el equipo de la Fundación Eugenio Mendoza.",
+    "/trabaja-con-nosotros/": "Únete al equipo de la Fundación Eugenio Mendoza. Envía tu CV y forma parte de una organización comprometida con la educación y el desarrollo social."
+  },
+  "defaultOgImage": "/wp-content/themes/fem-conversion-theme/assets/images/impacto-hero.jpeg",
+  "emptyTagRedirect": "/blog/"
+}

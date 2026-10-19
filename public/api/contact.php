@@ -14,6 +14,10 @@ $email  = fem_clean('email', 200);
 $asunto = fem_clean('asunto', 200);
 $msg    = fem_clean('mensaje', 5000);
 
+if (fem_is_bot()) {
+    header('Location: ' . $back . '?contacto=ok', true, 303);
+    exit;
+}
 if ($nombre === '' || $msg === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     header('Location: ' . $back . '?contacto=error', true, 303);
     exit;
@@ -28,5 +32,6 @@ $body = "Nuevo mensaje desde la web ($back)\n\n"
       . ($asunto !== '' ? "Asunto: $asunto\n" : '')
       . "\nMensaje:\n$msg\n";
 $ok = fem_mail('Contacto web: ' . ($asunto !== '' ? $asunto : $nombre), $body, $email);
+fem_log_submission('contacto', $body, $ok);
 
 header('Location: ' . $back . '?contacto=' . ($ok ? 'ok' : 'error'), true, 303);

@@ -48,7 +48,7 @@
                 <h2>Envía tu Aplicación</h2>
                 <p class="tcn-form__subtitle">Completa el formulario y adjunta tu CV para ser considerado en futuras oportunidades.</p>
 
-                <form id="tcn-application-form" class="tcn-form" enctype="multipart/form-data">
+                <form id="tcn-application-form" class="tcn-form" action="/api/careers.php" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="_wp_http_referer" value="/trabaja-con-nosotros/" />
                     <div class="tcn-form__field">
                         <label for="tcn_nombre">Nombre Completo *</label>
@@ -121,119 +121,65 @@
     </section>
 </main>
 <script>
-console.log('JavaScript inline cargado correctamente');
+// Formulario "Trabaja con nosotros": envío con fetch nativo (el original dependía de jQuery,
+// que esta página nunca cargó). Sin JS, el formulario hace un POST normal a /api/careers.php.
+(function () {
+  var form = document.getElementById('tcn-application-form');
+  if (!form) return;
+  var input = document.getElementById('tcn_cv');
+  var txt = form.querySelector('.tcn-file-upload__text');
+  var name = form.querySelector('.tcn-file-upload__name');
+  var box = form.querySelector('.tcn-file-upload__display');
+  var ok = form.querySelector('.tcn-form__success');
+  var err = form.querySelector('.tcn-form__error');
+  var btn = form.querySelector('.tcn-form__submit');
+  var MAX = 5 * 1024 * 1024;
+  var EXT = /\.(pdf|docx?)$/i;
 
-jQuery(document).ready(function($) {
-  console.log('jQuery ready');
-  
-  // File upload display
-  $('#tcn_cv').on('change', function(e) {
-    console.log('File input changed');
-    const file = e.target.files[0];
-    
-    if (file) {
-      console.log('File selected:', file.name);
-      
-      // Validar tamaño (5MB)
-      if (file.size > 5 * 1024 * 1024) {
-        alert('El archivo debe ser menor a 5MB');
-        $(this).val('');
-        return;
-      }
-      
-      // Validar tipo
-      const validTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
-      if (!validTypes.includes(file.type)) {
-        alert('Solo se permiten archivos PDF, DOC o DOCX');
-        $(this).val('');
-        return;
-      }
-      
-      // Mostrar nombre del archivo
-      $('.tcn-file-upload__text').hide();
-      $('.tcn-file-upload__name').text('✓ ' + file.name).show();
-      $('.tcn-file-upload__display').css('border-color', '#28a745');
-      console.log('File display updated');
-    } else {
-      $('.tcn-file-upload__text').show();
-      $('.tcn-file-upload__name').text('').hide();
-      $('.tcn-file-upload__display').css('border-color', '#ddd');
-    }
+  function resetFile() {
+    txt.style.display = ''; name.textContent = ''; name.style.display = 'none'; box.style.borderColor = '';
+  }
+  function showError(msg) {
+    ok.style.display = 'none';
+    err.querySelector('span').textContent = msg;
+    err.style.display = '';
+    err.setAttribute('role', 'alert');
+  }
+  function busy(on) {
+    btn.disabled = on;
+    btn.querySelector('.tcn-form__submit-text').style.display = on ? 'none' : '';
+    btn.querySelector('.tcn-form__submit-loading').style.display = on ? '' : 'none';
+  }
+
+  input.addEventListener('change', function () {
+    var file = input.files[0];
+    if (!file) return resetFile();
+    if (file.size > MAX) { input.value = ''; resetFile(); return showError('El archivo debe ser menor a 5 MB.'); }
+    if (!EXT.test(file.name)) { input.value = ''; resetFile(); return showError('Solo se permiten archivos PDF, DOC o DOCX.'); }
+    err.style.display = 'none';
+    txt.style.display = 'none';
+    name.textContent = '✓ ' + file.name; name.style.display = '';
+    box.style.borderColor = '#28a745';
   });
 
-  // Form submission
-  $('#tcn-application-form').on('submit', function(e) {
+  form.addEventListener('submit', function (e) {
+    if (!window.fetch || !window.FormData) return; // envío clásico
     e.preventDefault();
-    console.log('Form submitted');
-
-    const form = $(this);
-    const submitBtn = form.find('.tcn-form__submit');
-    const formData = new FormData(this);
-    formData.append('action', 'tcn_submit_application');
-
-    // Validar que hay archivo
-    if (!$('#tcn_cv')[0].files[0]) {
-      console.log('No file attached');
-      $('.tcn-form__error span').text('Por favor adjunta tu CV');
-      $('.tcn-form__error').fadeIn();
-      return;
-    }
-
-    console.log('File attached:', $('#tcn_cv')[0].files[0].name);
-
-    // Hide messages
-    $('.tcn-form__success, .tcn-form__error').hide();
-
-    // Disable button and show loading
-    submitBtn.prop('disabled', true);
-    submitBtn.find('.tcn-form__submit-text').hide();
-    submitBtn.find('.tcn-form__submit-loading').show();
-
-    console.log('Sending AJAX request to:', '/api/careers.php');
-
-    $.ajax({
-      url: '/api/careers.php',
-      type: 'POST',
-      data: formData,
-      processData: false,
-      contentType: false,
-      success: function(response) {
-        console.log('AJAX Success:', response);
-        
-        if (response.success) {
-          console.log('Form submitted successfully');
-          $('.tcn-form__success').fadeIn();
-          form[0].reset();
-          $('.tcn-file-upload__text').show();
-          $('.tcn-file-upload__name').text('').hide();
-          $('.tcn-file-upload__display').css('border-color', '#ddd');
-          
-          // Scroll to success message
-          $('html, body').animate({
-            scrollTop: $('.tcn-form__success').offset().top - 100
-          }, 500);
-        } else {
-          console.log('Form error:', response.data);
-          $('.tcn-form__error span').text(response.data.message || 'Error al enviar la aplicación');
-          $('.tcn-form__error').fadeIn();
-        }
-      },
-      error: function(xhr, status, error) {
-        console.log('AJAX Error:', {xhr: xhr, status: status, error: error});
-        console.log('Response text:', xhr.responseText);
-        $('.tcn-form__error span').text('Error de conexión. Por favor intenta nuevamente.');
-        $('.tcn-form__error').fadeIn();
-      },
-      complete: function() {
-        console.log('AJAX Complete');
-        // Re-enable button
-        submitBtn.prop('disabled', false);
-        submitBtn.find('.tcn-form__submit-text').show();
-        submitBtn.find('.tcn-form__submit-loading').hide();
-      }
-    });
+    if (!input.files[0]) return showError('Por favor adjunta tu CV.');
+    ok.style.display = 'none'; err.style.display = 'none';
+    busy(true);
+    fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'X-Requested-With': 'fetch' } })
+      .then(function (r) { return r.json(); })
+      .then(function (res) {
+        if (!res.success) throw new Error(res.data && res.data.message);
+        form.reset(); resetFile();
+        ok.style.display = ''; ok.setAttribute('role', 'status');
+        ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      })
+      .catch(function (x) { showError((x && x.message) || 'Error de conexión. Por favor intenta nuevamente.'); })
+      .then(function () { busy(false); });
   });
-});
+})();
 </script>
 
 

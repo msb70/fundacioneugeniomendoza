@@ -1,0 +1,157 @@
+/*
+ * Correcciones de la revisión del sitio (19-10-2026). Se carga al final del <head> desde Base.astro,
+ * después de todo el CSS heredado del tema de WordPress, así que no se pierde al sincronizar.
+ */
+
+/* ---------- Utilidades ---------- */
+.fem-sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+/* Campo trampa anti-spam (M8): fuera de la vista y del lector de pantalla. */
+.fem-hp { position: absolute !important; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+
+/* Enlace "Saltar al contenido" (M7): visible solo al recibir foco con teclado. */
+.fem-skip-link {
+  position: absolute; left: 1rem; top: -100px; z-index: 10000;
+  background: #22323d; color: #fff; padding: .75rem 1.25rem; border-radius: .4rem;
+  font-weight: 600; text-decoration: none;
+}
+.fem-skip-link:focus { top: 1rem; outline: 3px solid #ff9635; outline-offset: 2px; }
+
+/* ---------- Contraste (M7, WCAG AA 4.5:1) ---------- */
+/* Botones naranjas: texto oscuro sobre el naranja de marca (2,2:1 → 6,1:1). */
+.primary-nav .nav-cta > a,
+.primary-nav .nav-cta a,
+.home-blog-more > a.button,
+.button.primary,
+a.fem-recurso__btn {
+  color: #22323d !important;
+}
+.primary-nav .nav-cta > a:hover,
+.home-blog-more > a.button:hover,
+.button.primary:hover,
+a.fem-recurso__btn:hover { color: #22323d !important; }
+
+.home-blog-kicker { color: #a65300 !important; }               /* naranja oscuro 5,4:1 sobre blanco */
+.program-body > p,
+.pilar p { color: #475569 !important; }                        /* 6,6:1 sobre gris claro */
+.blog-hero p { color: #fff !important; opacity: 1 !important; }/* blanco pleno sobre turquesa, 5,1:1 */
+.fem-recurso__tag { color: #005f72 !important; }               /* 6,4:1 */
+a.wp-block-file__button { color: #fff !important; }            /* el texto era turquesa sobre azul marino */
+
+/* Etiquetas de categoría del blog */
+html body .fem-badge.fem-badge--ayuda-a-la-infancia,
+html body .fem-badge.fem-badge--emprendimiento { color: #22323d !important; }
+html body .fem-badge.fem-badge--blog { background: #0369a1 !important; }
+html body .fem-badge.fem-badge--educacion { background: #047857 !important; }
+html body .fem-badge.fem-badge--eventos { background: #c81e1e !important; }
+
+/* ---------- Contacto en móvil (M1): la rejilla de 4 columnas no se adaptaba ---------- */
+@media (max-width: 1024px) {
+  .pilares-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+@media (max-width: 600px) {
+  .pilares-grid { grid-template-columns: minmax(0, 1fr) !important; }
+  .pilar p { text-align: left; hyphens: auto; }
+}
+
+/* Formulario de empleo: los campos desbordaban 15 px en móvil */
+.tcn-form input,
+.tcn-form select,
+.tcn-form textarea { max-width: 100%; box-sizing: border-box; }
+@media (max-width: 640px) {
+  .tcn-form__row { display: grid !important; grid-template-columns: minmax(0, 1fr) !important; gap: 0 !important; }
+}
+
+/* Cualquier imagen o tabla del contenido, como mucho el ancho de la pantalla */
+main img, main video, main iframe { max-width: 100%; height: auto; }
+main table { display: block; max-width: 100%; overflow-x: auto; }
+
+/* ---------- Menú móvil (M2) ---------- */
+.fem-menu-toggle { display: none; }
+
+@media (max-width: 768px) {
+  header.site-header { padding: .5rem 0; }
+  header.site-header .container {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    justify-content: space-between !important;
+    align-items: center;
+  }
+  header.site-header .custom-logo { width: 150px; height: auto; }
+
+  .fem-menu-toggle {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: transparent; color: #fff; border: 1px solid rgba(255, 255, 255, .5);
+    border-radius: .4rem; padding: .55rem .8rem; font: inherit; font-weight: 600; cursor: pointer;
+    min-height: 44px;
+  }
+  .fem-menu-toggle:focus-visible { outline: 3px solid #ff9635; outline-offset: 2px; }
+  .fem-menu-toggle__bars, .fem-menu-toggle__bars::before, .fem-menu-toggle__bars::after {
+    display: block; width: 20px; height: 2px; background: currentColor; border-radius: 2px;
+    position: relative; transition: transform .2s ease, opacity .2s ease;
+  }
+  .fem-menu-toggle__bars::before, .fem-menu-toggle__bars::after { content: ''; position: absolute; left: 0; }
+  .fem-menu-toggle__bars::before { top: -6px; }
+  .fem-menu-toggle__bars::after { top: 6px; }
+  .fem-menu-toggle[aria-expanded="true"] .fem-menu-toggle__bars { background: transparent; }
+  .fem-menu-toggle[aria-expanded="true"] .fem-menu-toggle__bars::before { transform: translateY(6px) rotate(45deg); }
+  .fem-menu-toggle[aria-expanded="true"] .fem-menu-toggle__bars::after { transform: translateY(-6px) rotate(-45deg); }
+
+  /* Sin JS el menú queda visible (como antes); con JS se pliega. */
+  .fem-js nav.primary-nav { display: none; flex-basis: 100%; }
+  .fem-js nav.primary-nav.is-open { display: block; }
+  nav.primary-nav ul#menu-primary-menu {
+    flex-direction: column; align-items: stretch; gap: 0 !important; padding: .5rem 0 .75rem;
+  }
+  nav.primary-nav ul#menu-primary-menu > li > a {
+    display: block; padding: .8rem .25rem; border-bottom: 1px solid rgba(255, 255, 255, .12);
+  }
+  nav.primary-nav ul#menu-primary-menu > li.nav-cta { margin-top: .75rem; }
+  nav.primary-nav ul#menu-primary-menu > li.nav-cta > a { text-align: center; border-bottom: 0; border-radius: 999px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fem-menu-toggle__bars, .fem-menu-toggle__bars::before, .fem-menu-toggle__bars::after { transition: none; }
+}
+
+/* Colaborar: la rejilla del formulario desbordaba 2 px en móvil */
+.colaborar-form-grid { min-width: 0; }
+@media (max-width: 900px) {
+  .colaborar-form-grid { grid-template-columns: minmax(0, 1fr) !important; }
+}
+.colaborar-form-grid > * { min-width: 0; }
+
+/* Sobre nosotros: la línea de tiempo se salía de la pantalla en móvil (columna de 636 px) */
+.fem-infografia__grid > * { min-width: 0; }
+@media (max-width: 768px) {
+  .fem-infografia__grid { grid-template-columns: minmax(0, 1fr) !important; }
+  .fem-timeline .twae-content { max-width: 100%; }
+}
+
+/* Botón "Contáctanos" centrado dentro del menú móvil */
+@media (max-width: 768px) {
+  nav.primary-nav ul#menu-primary-menu > li.nav-cta { display: flex; justify-content: center; padding: 0; }
+  nav.primary-nav ul#menu-primary-menu > li.nav-cta > a { width: 100%; padding: .85rem 1rem; }
+}
+
+/* Contacto: jerarquía de encabezados corregida (h3→h2 en pilares, h4→h3 en datos) con el mismo aspecto */
+.pilar h2.pilar__titulo { font-size: 1.25rem; margin-bottom: .5rem; color: var(--color-primary); }
+.contacto-info__text h3.contacto-info__titulo { font-size: .98rem; font-weight: 700; margin: 0 0 .15rem; color: #22323d; font-family: inherit; }
+
+/* Contraste restante */
+html body main.blog-page .blog-hero p { color: #fff !important; opacity: 1 !important; }
+html body .fem-footer-col > h3 { color: #fff !important; }
+
+/* Puntos del carrusel: área táctil de 24 px sin cambiar su aspecto */
+html body .fem-hero-dots button {
+  box-sizing: content-box; padding: 0 !important; border: 6px solid transparent !important; background-clip: padding-box;
+}
+
+/* Sobre nosotros, tarjetas ODS: blanco sobre turquesa aclarado (3,6:1) → tarjeta oscurecida (6,6:1) */
+html body.page .page-nosotros .nos-ods-card,
+html body .page-nosotros .nos-ods-card { background: rgba(0, 0, 0, .18) !important; }
+html body .page-nosotros .nos-ods-card p { color: #fff !important; }

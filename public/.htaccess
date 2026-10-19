@@ -6,6 +6,10 @@ ErrorDocument 404 /404.html
 <IfModule mod_rewrite.c>
 RewriteEngine On
 
+# Dominio canónico sin www (www respondía 200 con el sitio duplicado)
+RewriteCond %{HTTP_HOST} ^www\.(fundacioneugeniomendoza\.com)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
 # Forzar HTTPS
 RewriteCond %{HTTPS} !=on
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
@@ -16,7 +20,11 @@ RewriteRule ^(sitemap_index|wp-sitemap|post-sitemap|page-sitemap|fem_aliado-site
 RewriteRule ^sitemap\.rss$ /sitemap.xml [L,R=301]
 # Entrada renombrada en el WordPress (2026-10): "Emprender con foco" -> "Negociar en el día a día"
 RewriteRule ^\xE2\x8F\xB1\xEF\xB8\x8Femprender-con-foco-en-medio-de-las-distracciones/?$ /negociar-en-el-dia-a-dia-de-una-microempresa/ [L,R=301,NE]
+# Feed RSS: el de WordPress vivía en /feed/; ahora lo genera Astro en /feed.xml
+RewriteRule ^feed/?$ /feed.xml [L,R=301]
 RewriteRule ^(.*/)?feed/?$ /blog/ [L,R=301]
+# Etiquetas que quedaron vacías al borrar entradas en WordPress (ya no se generan)
+RewriteRule ^tag/(enfoque|foco|gestion-del-tiempo|habitos|organizacion)/?$ /blog/ [L,R=301]
 
 # Endpoints de WordPress que ya no existen
 RewriteRule ^(wp-login\.php|xmlrpc\.php|wp-admin/?.*)$ - [G,L]
@@ -37,6 +45,8 @@ RewriteRule ^(.*)$ /$1/ [L,R=301]
   Header always set X-Content-Type-Options "nosniff"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
   <FilesMatch "\.(jpg|jpeg|png|webp|gif|svg|woff2?|ttf|eot|css|js|pdf)$">
     Header set Cache-Control "public, max-age=2592000"
   </FilesMatch>

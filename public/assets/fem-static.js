@@ -11,6 +11,10 @@
       error: 'No pudimos enviar tu mensaje. Revisa los datos e inténtalo de nuevo.',
       limite: 'Has enviado demasiados mensajes. Inténtalo más tarde.'
     },
+    postulacion: {
+      ok: '¡Aplicación enviada! Gracias por tu interés. Nos pondremos en contacto contigo pronto.',
+      error: 'No pudimos enviar tu aplicación. Revisa los datos y el archivo e inténtalo de nuevo.'
+    },
     comentario: {
       pendiente: 'Gracias. Tu comentario está pendiente de moderación.',
       error: 'No pudimos enviar tu comentario. Revisa los datos e inténtalo de nuevo.',
@@ -27,6 +31,21 @@
         history.replaceState(null, '', location.pathname + (s ? '?' + s : '') + location.hash);
       });
     }
+  });
+
+  // Menú móvil plegable (la cabecera ocupaba un tercio de la pantalla en móvil).
+  document.addEventListener('DOMContentLoaded', function () {
+    var btn = document.querySelector('.fem-menu-toggle');
+    var nav = document.getElementById('fem-primary-nav');
+    if (!btn || !nav) return;
+    function set(open) {
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      nav.classList.toggle('is-open', open);
+    }
+    btn.addEventListener('click', function () { set(btn.getAttribute('aria-expanded') !== 'true'); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { set(false); btn.focus(); }
+    });
   });
 
   document.addEventListener('DOMContentLoaded', function () {

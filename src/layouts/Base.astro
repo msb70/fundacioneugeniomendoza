@@ -4,6 +4,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { fragment, parseAttrs, IS_PRODUCTION, type PageMeta } from '../lib/site';
+import { isThin } from '../lib/fixes';
 
 interface Props { meta: PageMeta; extraHead?: string }
 const { meta, extraHead = '' } = Astro.props;
@@ -11,7 +12,9 @@ const { meta, extraHead = '' } = Astro.props;
 let seo = meta.seo;
 if (IS_PRODUCTION) {
   // El WordPress original tenía noindex en todas las páginas: en producción se indexa.
-  seo = seo.replace(/<meta name="robots" content="[^"]*" \/>/, '<meta name="robots" content="index, follow, max-image-preview:large" />');
+  // Excepción: etiquetas y fichas de aliados vacías (contenido escaso) → noindex, follow.
+  const robots = isThin(meta.route) ? 'noindex, follow' : 'index, follow, max-image-preview:large';
+  seo = seo.replace(/<meta name="robots" content="[^"]*" \/>/, `<meta name="robots" content="${robots}" />`);
 } else {
   // Entorno de pruebas: nunca indexable (evita contenido duplicado en Google).
   seo = seo.replace(/<meta name="robots" content="[^"]*" \/>/, '<meta name="robots" content="noindex, nofollow" />');
@@ -26,11 +29,15 @@ const htmlAttrs = parseAttrs(meta.htmlAttrs);
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<script is:inline>document.documentElement.classList.add('fem-js');</script>
 	<Fragment set:html={seo} />
 	<Fragment set:html={head} />
 	<Fragment set:html={extraHead} />
+	<link rel="stylesheet" href="/assets/fem-fixes.css" />
+	<link rel="alternate" type="application/rss+xml" title="Fundación Eugenio Mendoza" href="/feed.xml" />
 </head>
 <body class={meta.bodyClass}>
+<a class="fem-skip-link" href={`#${meta.mainId ?? 'main-content'}`}>Saltar al contenido</a>
 <Fragment set:html={meta.pre} />
 <Header menu={meta.menu} />
 <slot />

@@ -17,6 +17,7 @@ const robots = (base.seo.match(/<meta name="robots" content="([^"]*)"/) ?? [])[1
 const meta: PageMeta = {
   ...base,
   route: '/recursos/',
+  mainId: 'main-content',
   bodyClass: 'page page-recursos wp-custom-logo wp-embed-responsive wp-theme-fem-conversion-theme',
   seo: [
     `<title>${title}</title>`,
@@ -30,6 +31,21 @@ const meta: PageMeta = {
     `<meta property="og:url" content="${url}" />`,
     `<meta property="og:image" content="https://fundacioneugeniomendoza.com/assets/recursos/vidas-en-movimiento.webp" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
+    `<script type="application/ld+json">${JSON.stringify({
+      '@context': 'https://schema.org',
+      '@graph': [
+        { '@type': 'CollectionPage', '@id': `${url}#collectionpage`, url, name: title, description, inLanguage: 'es',
+          isPartOf: { '@id': 'https://fundacioneugeniomendoza.com/#website' },
+          breadcrumb: { '@id': `${url}#breadcrumblist` } },
+        { '@type': 'BreadcrumbList', '@id': `${url}#breadcrumblist`, itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://fundacioneugeniomendoza.com/' },
+          { '@type': 'ListItem', position: 2, name: 'Recursos', item: url } ] },
+        { '@type': 'Organization', '@id': 'https://fundacioneugeniomendoza.com/#organization', name: 'Fundación Eugenio Mendoza',
+          url: 'https://fundacioneugeniomendoza.com/' },
+        { '@type': 'WebSite', '@id': 'https://fundacioneugeniomendoza.com/#website', url: 'https://fundacioneugeniomendoza.com/',
+          name: 'Fundación Eugenio Mendoza', inLanguage: 'es', publisher: { '@id': 'https://fundacioneugeniomendoza.com/#organization' } },
+      ],
+    })}</script>`,
   ].join('\n'),
   menu: {
     overrides: {

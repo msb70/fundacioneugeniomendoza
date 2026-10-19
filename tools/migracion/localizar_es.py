@@ -6,6 +6,10 @@
 - Migas de pan "Home"/"Page N" -> "Inicio"/"Página N"
 - Fechas "26 de September" -> "26 de septiembre"
 - Textos del formulario de comentarios
+- style.css del tema: quita el @import vacío a Google Fonts
+
+El resto de correcciones de la revisión del 19-10-2026 se aplican en el build (src/lib/fixes.ts)
+y en public/assets/fem-fixes.css, así que no hace falta repetirlas tras sincronizar.
 
 Uso: python3 tools/migracion/localizar_es.py   (desde la raíz del repo)
 """
@@ -83,7 +87,23 @@ def meta(path: str) -> bool:
     return out != raw
 
 
+THEME_CSS = 'public/wp-content/themes/fem-conversion-theme/style.css'
+
+
+def theme_css():
+    """Quita el @import vacío a Google Fonts del style.css del tema (petición fallida en cada página)."""
+    try:
+        raw = open(THEME_CSS, encoding='utf-8').read()
+    except FileNotFoundError:
+        return False
+    out = re.sub(r"^@import url\('https://fonts\.googleapis\.com/css2'\);\n", '', raw, flags=re.M)
+    if out != raw:
+        open(THEME_CSS, 'w', encoding='utf-8').write(out)
+    return out != raw
+
+
 if __name__ == '__main__':
     n_html = sum(html(p) for p in glob.glob(f'{PAGES}/*.html'))
     n_json = sum(meta(p) for p in glob.glob(f'{PAGES}/*.json'))
-    print(f'HTML modificados: {n_html} · metadatos modificados: {n_json}')
+    n_css = theme_css()
+    print(f'HTML modificados: {n_html} · metadatos modificados: {n_json} · style.css corregido: {n_css}')

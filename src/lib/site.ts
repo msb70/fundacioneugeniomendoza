@@ -1,5 +1,6 @@
 // Acceso a los datos del sitio (extraídos del WordPress original).
 import fragments from '../site/fragments.json';
+import { fixBody, fixHead, fixSeo, isTag, postCount } from './fixes';
 
 export type MenuState = {
   overrides: Record<string, string>; // menu-item-id -> clases completas del <li>
@@ -10,6 +11,7 @@ export type MenuState = {
 
 export type PageMeta = {
   route: string;
+  mainId?: string; // id del <main> (destino del enlace "Saltar al contenido")
   htmlAttrs: string;
   bodyClass: string;
   seo: string;
@@ -24,12 +26,33 @@ const bodies = import.meta.glob<string>('../site/pages/*.html', { eager: true, q
 
 export type Page = PageMeta & { key: string; body: string };
 
+export const SITE_ENV = import.meta.env.PUBLIC_SITE_ENV ?? 'staging';
+export const IS_PRODUCTION = SITE_ENV === 'production';
+
+let cache: Page[] | undefined;
+
+/**
+ * Todas las páginas migradas, con las correcciones de src/lib/fixes.ts aplicadas.
+ * Las etiquetas sin ninguna entrada (restos de entradas borradas en WordPress) no se generan:
+ * public/.htaccess las redirige a /blog/.
+ */
 export function allPages(): Page[] {
-  return Object.entries(metas).map(([path, meta]) => {
-    const key = path.split('/').pop()!.replace(/\.json$/, '');
-    const body = bodies[path.replace(/\.json$/, '.html')] ?? '';
-    return { ...meta, key, body };
-  });
+  cache ??= Object.entries(metas)
+    .map(([path, meta]) => {
+      const key = path.split('/').pop()!.replace(/\.json$/, '');
+      const raw = bodies[path.replace(/\.json$/, '.html')] ?? '';
+      const { body, mainId } = fixBody(raw, meta.route, meta.seo);
+      return { ...meta, key, body, mainId, seo: fixSeo(meta.seo, meta.route) };
+    })
+    .filter((p) => !(isTag(p.route) && postCount(p.body) === 0));
+  return cache;
+}
+
+/** Rutas de etiquetas vacías que se dejan de generar (para la redirección 301). */
+export function emptyTagRoutes(): string[] {
+  return Object.entries(metas)
+    .filter(([path, meta]) => isTag(meta.route) && postCount(bodies[path.replace(/\.json$/, '.html')] ?? '') === 0)
+    .map(([, meta]) => meta.route);
 }
 
 export function pageByRoute(route: string): Page | undefined {
@@ -39,11 +62,8 @@ export function pageByRoute(route: string): Page | undefined {
 export function fragment(hash: string): string {
   const html = (fragments as Record<string, string>)[hash];
   if (html === undefined) throw new Error(`Fragmento inexistente: ${hash}`);
-  return html;
+  return fixHead(html);
 }
-
-export const SITE_ENV = import.meta.env.PUBLIC_SITE_ENV ?? 'staging';
-export const IS_PRODUCTION = SITE_ENV === 'production';
 
 /** Convierte 'lang="es" dir="ltr"' en objeto de atributos. */
 export function parseAttrs(s: string): Record<string, string> {

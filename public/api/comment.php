@@ -17,10 +17,16 @@ $email   = fem_clean('email', 100);
 $url     = fem_clean('url', 200);
 
 $ref  = (string)($_SERVER['HTTP_REFERER'] ?? '');
-$path = parse_url($ref, PHP_URL_PATH) ?: '/blog/';
 $host = parse_url($ref, PHP_URL_HOST);
+$path = fem_safe_path(rawurldecode((string)parse_url($ref, PHP_URL_PATH)), '/blog/');
 if ($host !== null && $host !== strtok((string)($_SERVER['HTTP_HOST'] ?? ''), ':')) {
     $path = '/blog/';
+}
+$path = implode('/', array_map('rawurlencode', explode('/', $path)));
+
+if (fem_is_bot()) {
+    header('Location: ' . $path . '?comentario=pendiente#comentarios', true, 303);
+    exit;
 }
 
 if ($comment === '' || $author === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -36,6 +42,7 @@ $body = "Nuevo comentario pendiente de moderación\n\n"
       . "Artículo: $path (ID $postId)\nNombre: $author\nEmail: $email\n"
       . ($url !== '' ? "Web: $url\n" : '')
       . "\nComentario:\n$comment\n";
-$ok = fem_mail("Comentario en $path", $body, $email);
+$ok = fem_mail('Comentario en ' . rawurldecode($path), $body, $email);
+fem_log_submission('comentario', $body, $ok);
 
 header('Location: ' . $path . '?comentario=' . ($ok ? 'pendiente' : 'error') . '#comentarios', true, 303);
