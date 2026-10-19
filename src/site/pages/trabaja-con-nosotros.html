@@ -176,7 +176,11 @@
         ok.style.display = ''; ok.setAttribute('role', 'status');
         ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
       })
-      .catch(function (x) { showError((x && x.message) || 'Error de conexión. Por favor intenta nuevamente.'); })
+      .catch(function (x) {
+        // TypeError = fallo de red ("Failed to fetch"): mensaje propio en español.
+        var msg = x && x.message && !(x instanceof TypeError) ? x.message : '';
+        showError(msg || 'Error de conexión. Por favor intenta nuevamente.');
+      })
       .then(function () { busy(false); });
   });
 })();
