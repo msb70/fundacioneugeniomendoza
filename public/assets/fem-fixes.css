@@ -218,3 +218,17 @@ html body .page-nosotros .nos-ods-card p { color: #fff !important; }
 .fem-agenda__evento.is-pasado .fem-agenda__fecha { background: #94a3b8; }
 .fem-agenda__vacio { color: #64748b; margin: .5rem 0 0; }
 @media (max-width: 480px) { .fem-agenda__panel { padding: 1rem; } .fem-agenda__grid td > span, .fem-agenda__grid td > button, .fem-agenda__grid td { height: 2.4rem; } }
+
+/* ---------- Página 404 (src/pages/404.astro) ---------- */
+.fem-404 { background: #f7f9fa; padding-bottom: 4rem; }
+.fem-404__codigo { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(3rem, 10vw, 5.5rem); line-height: 1; margin: 0 0 .5rem; opacity: .35; }
+.fem-404__accesos .container { max-width: 1000px; margin: 0 auto; padding: 2.5rem 1.25rem 0; }
+.fem-404__accesos ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); }
+.fem-404__accesos a {
+  display: flex; flex-direction: column; gap: .25rem; height: 100%; padding: 1.1rem 1.25rem; border-radius: .75rem;
+  background: #fff; border: 1px solid #e2e8f0; color: #22323D; text-decoration: none; font-family: 'Inter', sans-serif;
+  transition: border-color .2s, box-shadow .2s;
+}
+.fem-404__accesos a:hover, .fem-404__accesos a:focus-visible { border-color: #007991; box-shadow: 0 4px 18px rgba(0,121,145,.15); }
+.fem-404__accesos strong { color: #007991; font-size: 1.05rem; }
+.fem-404__accesos span { color: #64748b; font-size: .9rem; }

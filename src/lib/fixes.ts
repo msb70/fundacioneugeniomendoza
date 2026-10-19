@@ -4,7 +4,7 @@
 // Revisión del sitio del 19-10-2026 (hallazgos C1, M3, M4, M5, M6, M7, M8, B1, B2, B4).
 import seo from '../site/seo.json';
 import carrusel from '../site/carrusel.json';
-import { agendaHtml } from './agenda';
+import { agendaHtml, ordenarListadoEventos } from './agenda';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -99,6 +99,9 @@ export function fixSeo(seoHtml: string, route: string): string {
 /** Hojas de estilo y scripts compartidos (fragments.json). */
 export function fixHead(html: string): string {
   return html
+    // QA-10: el icono es PNG (no x-icon); además existe /favicon.ico para quien lo pida directamente.
+    .replace('<link rel="icon" href="/favicon.png" type="image/x-icon">',
+      '<link rel="icon" href="/favicon.png" type="image/png"><link rel="icon" href="/favicon.ico" sizes="any">')
     // M6: "Segoe UI" no existe en Google Fonts (devolvía 400 en las 158 páginas).
     .replace(/<link rel='stylesheet' id='fem-conversion-font-css'[^>]*\/>\s*/g, '')
     // M3: scripts del timeline horizontal de Elementor. La página usa el timeline vertical (solo CSS),
@@ -163,7 +166,12 @@ export function fixBody(body: string, route: string, seoHtml: string): { body: s
   // Calendario de eventos encima del listado de la categoría Eventos (src/site/eventos.json).
   if (route === '/category/eventos/') {
     b = b.replace(/(\s*<!-- ===== POSTS)/, agendaHtml(asset('/assets/eventos/agenda.js')) + '$1');
+    b = ordenarListadoEventos(b);
   }
+
+  // QA-06: campos que solo tenían placeholder (formulario de la portada): nombre accesible.
+  b = b.replace(/<(input|textarea)\b(?![^>]*\baria-label)([^>]*?\bplaceholder="([^"]+)")/g, (m, tag, rest, ph) =>
+    /\bid="/.test(rest) && b.includes(`for="${(rest.match(/\bid="([^"]+)"/) ?? [])[1]}"`) ? m : `<${tag} aria-label="${ph}"${rest}`);
 
   // B1: enlaces rotos heredados del WordPress.
   b = b

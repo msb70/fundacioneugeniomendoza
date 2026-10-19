@@ -1,0 +1,49 @@
+---
+// Página de error 404 (.htaccess: ErrorDocument 404 /404.html).
+// La del WordPress era una plantilla de bloques vacía: el visitante veía la pantalla en blanco (QA-01).
+import Base from '../layouts/Base.astro';
+import { pageByRoute, type PageMeta } from '../lib/site';
+
+const base = pageByRoute('/blog/')!;
+const title = 'Página no encontrada - Fundación Eugenio Mendoza';
+const meta: PageMeta = {
+  ...base,
+  route: '/404/',
+  mainId: 'main-content',
+  bodyClass: 'error404 wp-custom-logo wp-embed-responsive wp-theme-fem-conversion-theme',
+  seo: [
+    `<title>${title}</title>`,
+    `<meta name="robots" content="noindex, follow" />`,
+    `<meta name="description" content="La página que buscas no existe o cambió de dirección." />`,
+  ].join('\n'),
+  menu: { overrides: {}, aria: [], logoCurrent: false, hrefs: {} },
+};
+const enlaces = [
+  { href: '/', texto: 'Inicio', desc: 'Conoce a la Fundación Eugenio Mendoza' },
+  { href: '/blog/', texto: 'Blog', desc: 'Noticias, historias de impacto y artículos' },
+  { href: '/category/eventos/', texto: 'Eventos', desc: 'Calendario y próximos eventos' },
+  { href: '/recursos/', texto: 'Recursos', desc: 'Plataformas, apps y publicaciones' },
+  { href: '/nuestros-programas/', texto: 'Programas', desc: 'Lo que hacemos y con quién' },
+  { href: '/contacto/', texto: 'Contacto', desc: 'Escríbenos y te ayudamos' },
+];
+---
+<Base meta={meta}>
+<main class="blog-page fem-404" id="main-content">
+  <section class="blog-hero">
+    <div class="container">
+      <p class="fem-404__codigo" aria-hidden="true">404</p>
+      <h1>No encontramos esta página</h1>
+      <p>Puede que el enlace esté mal escrito o que el contenido haya cambiado de dirección. Estos accesos te pueden ayudar:</p>
+    </div>
+  </section>
+  <section class="fem-404__accesos" aria-label="Accesos principales">
+    <div class="container">
+      <ul>
+        {enlaces.map((e) => (
+          <li><a href={e.href}><strong>{e.texto}</strong><span>{e.desc}</span></a></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</main>
+</Base>

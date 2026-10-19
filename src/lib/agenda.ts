@@ -73,3 +73,43 @@ ${evs.map(item).join('\n')}
   <script src="${scriptSrc}" defer></script>
 `;
 }
+
+/**
+ * Listado de /category/eventos/: ordena las tarjetas por fecha del evento (la más reciente primero)
+ * en lugar de por fecha de publicación, y muestra la fecha del evento en la tarjeta.
+ * Las entradas sin fecha en eventos.json usan su fecha de publicación.
+ */
+export function ordenarListadoEventos(html: string): string {
+  const ini = html.indexOf('<!-- ===== POST DESTACADO');
+  const fin = html.indexOf('<div class="blog-pagination">');
+  if (ini < 0 || fin < 0) return html;
+  const tramo = html.slice(ini, fin);
+  const arts = tramo.match(/<article class="fem-(?:featured|post)-card"[\s\S]*?<\/article>/g);
+  if (!arts || arts.length < 2) return html;
+
+  const porEnlace = new Map(eventos().map((e) => [e.enlace, e]));
+  const tarjetas = arts.map((a) => {
+    // Normaliza todo a tarjeta de grid
+    let g = a.replace(/fem-featured-card/g, 'fem-post-card')
+      .replace(/<h2 class="fem-post-card__title">([\s\S]*?)<\/h2>/, '<h3 class="fem-post-card__title">$1</h3>')
+      .replace(/\s*<a class="fem-post-card__link"[^>]*>[^<]*<\/a>/, '')
+      .replace(' fetchpriority="high"', ' loading="lazy"');
+    const href = (g.match(/<h3 class="fem-post-card__title">\s*<a href="([^"]+)"/) ?? [])[1] ?? '';
+    const ev = porEnlace.get(href);
+    const pub = (g.match(/<time datetime="([^"]+)"/) ?? [])[1]?.slice(0, 10) ?? '';
+    if (ev) {
+      g = g.replace(/<time datetime="[^"]*">[^<]*<\/time>/, `<time datetime="${ev.inicio}">Evento: ${rangoFechas(ev)}</time>`);
+    }
+    return { g, fecha: ev ? ev.inicio : pub, href };
+  });
+  tarjetas.sort((a, b) => b.fecha.localeCompare(a.fecha));
+
+  const destacada = tarjetas[0].g
+    .replace(/fem-post-card/g, 'fem-featured-card')
+    .replace(/<h3 class="fem-featured-card__title">([\s\S]*?)<\/h3>/, '<h2 class="fem-featured-card__title">$1</h2>')
+    .replace(' loading="lazy"', ' fetchpriority="high"')
+    .replace(/(\s*<\/div>\s*<\/article>)$/, `\n    <a class="fem-featured-card__link" href="${tarjetas[0].href}">Leer más →</a>$1`);
+  const nuevo = `<!-- ===== POST DESTACADO (ordenado por fecha del evento, src/lib/agenda.ts) ===== -->\n${destacada}\n` +
+    `<div class="blog-grid">\n${tarjetas.slice(1).map((t) => t.g).join('\n')}\n</div>\n      `;
+  return html.slice(0, ini) + nuevo + html.slice(fin);
+}

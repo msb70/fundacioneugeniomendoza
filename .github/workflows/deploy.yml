@@ -69,6 +69,13 @@ jobs:
           if grep -rl --exclude-dir=blog-home "fonts.googleapis.com/css2?family=Segoe" dist --include=index.html | head -1 | grep -q .; then echo "Fuente rota de vuelta"; exit 1; fi
           echo "Páginas: $(find dist -name index.html | wc -l)"
 
+      # QA automática (auditoría del 19-10-2026): excepciones JS y recursos propios rotos bloquean la publicación.
+      - name: QA del sitio compilado
+        if: matrix.branch == 'deploy'
+        run: |
+          npx playwright install --with-deps chromium
+          node tools/qa/smoke.mjs
+
       - name: Publicar dist/ en la rama ${{ matrix.branch }}
         run: |
           cd dist
