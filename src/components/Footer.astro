@@ -1,4 +1,5 @@
 ---
 import footerHtml from '../site/footer.html?raw';
+import { toWebp } from '../lib/fixes';
 ---
-<Fragment set:html={footerHtml} />
+<Fragment set:html={toWebp(footerHtml)} />

@@ -7,6 +7,14 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # La sincronización con WordPress (sync-wordpress.yml) llama a este workflow tras su commit:
+  # los push hechos con GITHUB_TOKEN no disparan otros workflows por sí solos.
+  workflow_call:
+    inputs:
+      ref:
+        description: Rama o commit a compilar
+        type: string
+        default: main
 
 permissions:
   contents: write
@@ -31,6 +39,8 @@ jobs:
             env: staging
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref || github.sha }}
 
       - uses: actions/setup-node@v4
         with:
@@ -54,6 +64,8 @@ jobs:
           test -f dist/api/contact.php
           test -f dist/feed.xml
           test -f dist/assets/fem-fixes.css
+          test -f dist/assets/fa/fa.css
+          test -f dist/assets/fonts/fonts.css
           if grep -rl --exclude-dir=blog-home "fonts.googleapis.com/css2?family=Segoe" dist --include=index.html | head -1 | grep -q .; then echo "Fuente rota de vuelta"; exit 1; fi
           echo "Páginas: $(find dist -name index.html | wc -l)"
 

@@ -2,6 +2,8 @@
 // Viven aquí (y no en src/site/pages/*.html) para que sobrevivan a cada sincronización
 // con el WordPress: los scripts de tools/migracion reescriben las páginas, no este archivo.
 // Revisión del sitio del 19-10-2026 (hallazgos C1, M3, M4, M5, M6, M7, M8, B1, B2, B4).
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import seo from '../site/seo.json';
 
 const SITE = 'https://fundacioneugeniomendoza.com';
@@ -75,6 +77,33 @@ export function fixSeo(seoHtml: string, route: string): string {
   return s;
 }
 
+// ---------- Rendimiento (M6) ----------
+const PUBLIC = join(process.cwd(), 'public');
+const webpCache = new Map<string, boolean>();
+const IMG = /(\/(?:wp-content|assets)\/[^"'\s,()<>?#]+?)\.(?:jpe?g|png)(?=[?"'\s,)<>]|$)/gi;
+
+/** Sirve la versión .webp (tools/optimizar_imagenes.py) de cada JPG/PNG local cuando existe. */
+// Fondos en línea con nombres que llevan espacios: url('/…/Mi foto.png')
+const IMG_QUOTED = /(url\(\s*(['"]))(\/(?:wp-content|assets)\/[^'"]+?)\.(?:jpe?g|png)(?=\2\s*\))/gi;
+
+function hasWebp(stem: string): boolean {
+  let ok = webpCache.get(stem);
+  if (ok === undefined) {
+    let p = stem;
+    try { p = decodeURI(stem); } catch { /* ruta con % sueltos: se usa tal cual */ }
+    ok = existsSync(join(PUBLIC, p + '.webp'));
+    webpCache.set(stem, ok);
+  }
+  return ok;
+}
+
+export function toWebp<T extends string | undefined>(html: T): T {
+  if (!html) return html;
+  return html
+    .replace(IMG_QUOTED, (m, pre: string, _q: string, stem: string) => (hasWebp(stem) ? pre + stem + '.webp' : m))
+    .replace(IMG, (m, stem: string) => (hasWebp(stem) ? stem + '.webp' : m)) as T;
+}
+
 /** Hojas de estilo y scripts compartidos (fragments.json). */
 export function fixHead(html: string): string {
   return html
@@ -83,6 +112,16 @@ export function fixHead(html: string): string {
     // M3: scripts del timeline horizontal de Elementor. La página usa el timeline vertical (solo CSS),
     // y estos scripts necesitan Elementor (elementorModules) y además se cargaban dos veces.
     .replace(/<script id="twae-js-[^"]*" src="[^"]*twae-horizontal(?:\.min)?\.js"><\/script>\s*/g, '')
+    // M6: fuentes auto-alojadas (antes Google Fonts) e iconos reducidos (antes Font Awesome completo
+    // desde cdnjs, más una segunda copia de Essential Blocks). Ver tools/fa_subset.py.
+    .replace(/<link rel='stylesheet' id='fem-google-fonts-css'[^>]*\/>/g,
+      `<link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />` +
+      `<link rel="preload" href="/assets/fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin />` +
+      `<link rel='stylesheet' id='fem-google-fonts-css' href='/assets/fonts/fonts.css' media='all' />`)
+    .replace(/<link rel='stylesheet' id='fontawesome-css' href='https:\/\/cdnjs\.cloudflare\.com\/[^']*' media='all' \/>/g,
+      `<link rel='stylesheet' id='fontawesome-css' href='/assets/fa/fa.css' media='all' />`)
+    .replace(/<link rel='stylesheet' id='essential-blocks-fontawesome-css'[^>]*\/>\s*/g, '')
+    .replace(/<link rel='dns-prefetch' href='\/\/(?:fonts\.googleapis\.com|cdnjs\.cloudflare\.com)' \/>\s*/g, '')
     // B4: restos de WordPress sin uso.
     .replace(/<link rel='dns-prefetch' href='\/\/www\.googletagmanager\.com' \/>\s*/g, '')
     .replace(/<link rel="https:\/\/api\.w\.org\/"[^>]*>\s*/g, '')
@@ -133,6 +172,9 @@ export function fixBody(body: string, route: string, seoHtml: string): { body: s
 
   // M7: enlaces que abren pestaña nueva sin rel de seguridad.
   b = b.replace(/<a\b(?![^>]*\brel=)([^>]*\btarget="_blank")/g, '<a rel="noopener"$1');
+
+  // M6: imágenes en WebP.
+  b = toWebp(b);
 
   return { body: b, mainId };
 }

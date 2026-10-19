@@ -1,0 +1,85 @@
+name: Sincronizar blog desde WordPress
+
+# El equipo publica en el WordPress temporal; este workflow trae al sitio Astro las entradas,
+# listados, categorías, etiquetas, home y medios nuevos o cambiados, y publica.
+# Detalles y salvaguardas: tools/sync/sync_wp.py.
+#
+# Si el WordPress está protegido con contraseña (hPanel → Protección de directorios), crear los
+# secretos WP_USER y WP_PASS en Settings → Secrets and variables → Actions.
+
+on:
+  schedule:
+    - cron: '17 * * * *'   # cada hora (UTC); GitHub puede retrasarlo unos minutos
+  workflow_dispatch:       # "Run workflow" para sincronizar al momento
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-wordpress
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      - name: Sincronizar con WordPress
+        env:
+          WP_USER: ${{ secrets.WP_USER }}
+          WP_PASS: ${{ secrets.WP_PASS }}
+          WP_URL: ${{ vars.WP_URL }}
+        run: python3 tools/sync/sync_wp.py
+
+      - name: Optimizar imágenes nuevas (WebP) e iconos usados (Font Awesome)
+        run: |
+          pip install pillow fonttools brotli
+          python3 tools/optimizar_imagenes.py
+          python3 tools/fa_subset.py
+
+      - name: Compilar (comprobación antes de publicar)
+        env:
+          PUBLIC_SITE_ENV: production
+        run: |
+          npm run build
+          test -f dist/index.html
+          test "$(find dist -name index.html | wc -l)" -gt 100
+
+      - name: Commit
+        id: commit
+        run: |
+          git add -A src public
+          if git diff --cached --quiet; then
+            echo "Sin cambios en WordPress"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -q -m "Sync WordPress: $(git diff --cached --name-only -- src/site/pages | grep -c '\.html$') páginas" \
+            -m "Sincronización automática desde el WordPress temporal (tools/sync/sync_wp.py)."
+          git push origin HEAD:main
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+  deploy:
+    needs: sync
+    if: needs.sync.outputs.changed == 'true'
+    uses: ./.github/workflows/deploy.yml
+    with:
+      ref: main

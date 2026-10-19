@@ -7,6 +7,11 @@ S = os.path.dirname(os.path.abspath(__file__))
 M = os.path.join(S, 'mirror', 'fundacioneugeniomendoza.com')
 PUB = sys.argv[1]  # repo/public
 DOM = 'https://fundacioneugeniomendoza.com'
+# Origen de las descargas: en la sincronización automática es el WordPress temporal (el dominio ya
+# sirve el sitio Astro). Con FEM_REPO_PUBLIC, los medios que ya están en el repo no se vuelven a bajar.
+SRC = os.environ.get('FEM_ASSET_SRC', DOM).rstrip('/')
+REPO_PUBLIC = os.environ.get('FEM_REPO_PUBLIC')
+AUTH = ['-u', os.environ['WP_USER'] + ':' + os.environ['WP_PASS']] if os.environ.get('WP_USER') else []
 
 ref_re = re.compile(r'(?:https?:)?//fundacioneugeniomendoza\.com(/(?:wp-content|wp-includes)/[^\s"\'()<>,]+)|(?<=["\'(\s,])(/(?:wp-content|wp-includes)/[^\s"\'()<>,]+)')
 
@@ -50,11 +55,16 @@ for r in sorted(refs):
 print('refs', len(refs), 'missing', len(missing))
 for r in missing:
     dest = M + urllib.parse.unquote(r.split('#')[0])
+    clean = urllib.parse.unquote(r.split('?')[0].split('#')[0])
+    if REPO_PUBLIC and not clean.endswith(('.css', '.js')) and os.path.isfile(REPO_PUBLIC + clean):
+        os.makedirs(os.path.dirname(dest), exist_ok=True)
+        shutil.copyfile(REPO_PUBLIC + clean, dest)  # medio ya publicado: no se descarga otra vez
+        continue
     try:
         os.makedirs(os.path.dirname(dest), exist_ok=True)
     except OSError as e:
         print('  SKIP', r, e); continue
-    rc = subprocess.run(['curl', '-sS', '-f', '-m', '60', '-o', dest, DOM + r.split('#')[0]], capture_output=True)
+    rc = subprocess.run(['curl', '-sS', '-f', '-m', '60', *AUTH, '-o', dest, SRC + r.split('#')[0]], capture_output=True)
     if rc.returncode != 0:
         print('  FAIL', r, rc.stderr.decode()[:80])
         if os.path.exists(dest) and os.path.getsize(dest) == 0:

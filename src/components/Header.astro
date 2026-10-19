@@ -4,11 +4,12 @@
 // se comporte exactamente igual.
 import headerHtml from '../site/header.html?raw';
 import type { MenuState } from '../lib/site';
+import { toWebp } from '../lib/fixes';
 
 interface Props { menu: MenuState }
 const { menu } = Astro.props;
 
-let html = headerHtml;
+let html = toWebp(headerHtml);
 for (const [id, cls] of Object.entries(menu.overrides)) {
   html = html.replace(new RegExp(`(<li id="menu-item-${id}" class=")[^"]*(")`), `$1${cls}$2`);
 }

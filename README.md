@@ -19,6 +19,33 @@ push a main → GitHub Actions: npm ci + astro build → fuerza dist/ a la rama 
 - `deploy`: solo el sitio compilado. La genera el CI; no se edita a mano.
 - `deploy-staging`: el mismo sitio compilado en modo pruebas (noindex, robots bloqueado). La genera el CI en cada push.
 
+## Publicación automática desde WordPress
+
+El equipo sigue publicando en el WordPress temporal. El workflow **Sincronizar blog desde WordPress**
+(`.github/workflows/sync-wordpress.yml`) se ejecuta cada hora, o al momento desde
+Actions → *Sincronizar blog desde WordPress* → *Run workflow*:
+
+1. `tools/sync/sync_wp.py` pide a la API REST de WordPress las entradas, categorías y etiquetas
+   publicadas, descarga esas páginas y las convierte con `tools/migracion/assets.py` y `convert.py`.
+2. Copia al repo solo entradas, listados, categorías, etiquetas, home y medios. Las páginas fijas,
+   aliados, cabecera, pie y `/recursos/` no se tocan. El homenaje temporal de la home se conserva.
+3. Una entrada borrada en WordPress se retira y se redirige con 301 a su nueva URL o a `/blog/`
+   (bloque `sync-redirects` de `.htaccess`).
+4. Genera WebP de las imágenes nuevas y recalcula el subconjunto de Font Awesome.
+5. Compila, hace commit en `main` y publica (llama a `deploy.yml`).
+
+Salvaguardas: si la API falla, devuelve menos del 80 % de las entradas o desaparecerían más de 3
+entradas de golpe, el workflow se detiene sin tocar nada y GitHub avisa por correo del fallo.
+Si el WordPress se protege con contraseña, crear los secretos `WP_USER` y `WP_PASS` en
+Settings → Secrets and variables → Actions. Si cambia de dirección, crear la variable `WP_URL`.
+
+## Rendimiento
+
+- Imágenes: `tools/optimizar_imagenes.py` crea una `.webp` junto a cada JPG/PNG y el build la sirve.
+- Fuentes Inter y Playfair Display auto-alojadas en `public/assets/fonts/` (antes Google Fonts).
+- Iconos: `tools/fa_subset.py` genera `public/assets/fa/` con solo los iconos usados (antes Font
+  Awesome completo desde cdnjs). Tras añadir iconos nuevos: `npm ci && python3 tools/fa_subset.py`.
+
 ## Correcciones que sobreviven a la sincronización con WordPress
 
 Las páginas de `src/site/pages/` se regeneran desde el WordPress. Por eso las correcciones de la
