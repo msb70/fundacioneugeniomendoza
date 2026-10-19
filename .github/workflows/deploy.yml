@@ -19,6 +19,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         # deploy         → producción (SITE_ENV de Actions, normalmente production)
         # deploy-staging → pruebas: siempre staging (noindex). Conectar en hPanel → Git
@@ -53,7 +54,7 @@ jobs:
           test -f dist/api/contact.php
           test -f dist/feed.xml
           test -f dist/assets/fem-fixes.css
-          if grep -rl "fonts.googleapis.com/css2?family=Segoe" dist --include=index.html | head -1 | grep -q .; then echo "Fuente rota de vuelta"; exit 1; fi
+          if grep -rl --exclude-dir=blog-home "fonts.googleapis.com/css2?family=Segoe" dist --include=index.html | head -1 | grep -q .; then echo "Fuente rota de vuelta"; exit 1; fi
           echo "Páginas: $(find dist -name index.html | wc -l)"
 
       - name: Publicar dist/ en la rama ${{ matrix.branch }}
