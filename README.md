@@ -6,7 +6,7 @@ Mismo diseño, mismas URLs, mismas fotos y mismo contenido; sin base de datos ni
 | Entorno | URL | Rama que publica |
 |---|---|---|
 | Producción | https://fundacioneugeniomendoza.com | `deploy` (auto) |
-| Pruebas | sitio de Hostinger a conectar en hPanel → Git | `deploy-staging` (auto, siempre noindex) |
+| Pruebas | https://pruebas.fundacioneugeniomendoza.com | `deploy-staging` (auto, siempre noindex) |
 
 ## Cómo funciona
 
@@ -100,6 +100,17 @@ Todos los formularios llevan un campo trampa anti-spam (`sitio_web_alt`) y guard
 El formulario de empleo funciona con y sin JavaScript.
 
 Destinatario y remitente de correos: `public/api/lib.php` (`FEM_TO`, `FEM_FROM`).
+
+**SMTP autenticado (recomendado):** crear el buzón `no-reply@fundacioneugeniomendoza.com` en hPanel y,
+con el Administrador de archivos, el archivo `fem-data/smtp.php` (carpeta hermana de `public_html`,
+nunca dentro):
+
+```php
+<?php return ['host' => 'smtp.hostinger.com', 'port' => 465, 'secure' => 'ssl',
+              'user' => 'no-reply@fundacioneugeniomendoza.com', 'pass' => 'CONTRASEÑA_DEL_BUZÓN'];
+```
+
+Sin ese archivo, o si SMTP falla, se usa `mail()` de PHP.
 
 ## Desarrollo local
 

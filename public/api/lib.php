@@ -148,7 +148,7 @@ function fem_smtp_config(): ?array
         return null;
     }
     $cfg = include $file;
-    return is_array($cfg) && !empty($cfg['host']) && !empty($cfg['user']) ? $cfg : null;
+    return is_array($cfg) && !empty($cfg['host']) && !empty($cfg['user']) && !empty($cfg['pass']) ? $cfg : null;
 }
 
 /**
