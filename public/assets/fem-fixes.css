@@ -253,3 +253,7 @@ html body .fem-hero-slide.fem-slide--evento::before,
 html body .fem-hero-slide.fem-slide--evento::after { content: ""; position: absolute; background-image: var(--fem-slide-img); background-position: center; background-repeat: no-repeat; }
 html body .fem-hero-slide.fem-slide--evento::before { inset: -30px; background-size: cover; filter: blur(22px) brightness(.55); }
 html body .fem-hero-slide.fem-slide--evento::after { inset: 0; background-size: contain; }
+
+/* Tarjetas de /category/eventos/ filtradas por el mes del calendario (agenda.js) */
+html body article.fem-post-card[hidden], html body article.fem-featured-card[hidden] { display: none !important; }
+html body .fem-agenda__sin-entradas { text-align: center; color: #4a5a63; padding: 1.5rem 0 2.5rem; }

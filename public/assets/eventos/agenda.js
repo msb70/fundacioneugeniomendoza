@@ -2,6 +2,8 @@
  * Calendario de /category/eventos/. Lee las fechas de la lista (data-inicio / data-fin),
  * abre en el mes actual, marca los días con eventos y muestra solo los eventos del mes.
  * Al pulsar un día se filtra la lista; "Ver todo el mes" vuelve a mostrarlos todos.
+ * Las tarjetas de entradas de la página (data-inicio / data-fin, src/lib/agenda.ts) siguen el
+ * mismo filtro: solo se ven las del mes (o día) elegido en el calendario.
  */
 (function () {
   var root = document.querySelector('.fem-agenda');
@@ -13,6 +15,8 @@
   var todo = root.querySelector('.fem-agenda__todo');
   var vacio = root.querySelector('.fem-agenda__vacio');
   var items = Array.prototype.slice.call(root.querySelectorAll('.fem-agenda__evento'));
+  var tarjetas = Array.prototype.slice.call(document.querySelectorAll('article[data-inicio]'));
+  var sinEntradas = document.querySelector('.fem-agenda__sin-entradas');
   var MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
 
   function pad(n) { return (n < 10 ? '0' : '') + n; }
@@ -68,6 +72,14 @@
       li.hidden = !ok;
       if (ok) visibles++;
     });
+    var tVisibles = 0;
+    tarjetas.forEach(function (a) {
+      var ok = dia ? (a.dataset.inicio <= dia && a.dataset.fin >= dia)
+                   : (a.dataset.inicio <= hasta && a.dataset.fin >= desde);
+      a.hidden = !ok;
+      if (ok) tVisibles++;
+    });
+    if (sinEntradas) sinEntradas.hidden = tVisibles > 0;
     sub.textContent = dia ? 'Eventos del ' + Number(dia.slice(8)) + ' de ' + MESES[m]
                           : 'Eventos de ' + MESES[m] + ' de ' + y;
     todo.hidden = !dia;

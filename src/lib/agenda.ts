@@ -2,6 +2,8 @@
 // El HTML lleva la lista completa de eventos (funciona sin JS) y los datos en JSON;
 // /assets/eventos/agenda.js dibuja el calendario del mes actual y filtra la lista.
 import data from '../site/eventos.json';
+import { readdirSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
 
 export type Evento = {
   titulo: string; inicio: string; fin?: string; hora?: string; lugar?: string; enlace: string;
@@ -79,13 +81,39 @@ ${evs.map(item).join('\n')}
  * en lugar de por fecha de publicación, y muestra la fecha del evento en la tarjeta.
  * Las entradas sin fecha en eventos.json usan su fecha de publicación.
  */
+const ARTICULO = /<article class="fem-(?:featured|post)-card"[\s\S]*?<\/article>/g;
+
+/** Tarjetas de las páginas 2, 3… de la categoría Eventos (src/site/pages/category__eventos__page__N.html). */
+function tarjetasDeOtrasPaginas(): string[] {
+  const dir = join(process.cwd(), 'src/site/pages');
+  let files: string[] = [];
+  try {
+    files = readdirSync(dir).filter((f) => /^category__eventos__page__\d+\.html$/.test(f));
+  } catch {
+    return [];
+  }
+  return files.flatMap((f) => {
+    const h = readFileSync(join(dir, f), 'utf8');
+    const i = h.indexOf('<!-- ===== POST DESTACADO'), j = h.indexOf('<div class="blog-pagination">');
+    return (i >= 0 && j > i ? h.slice(i, j) : h).match(ARTICULO) ?? [];
+  });
+}
+
 export function ordenarListadoEventos(html: string): string {
   const ini = html.indexOf('<!-- ===== POST DESTACADO');
   const fin = html.indexOf('<div class="blog-pagination">');
   if (ini < 0 || fin < 0) return html;
   const tramo = html.slice(ini, fin);
-  const arts = tramo.match(/<article class="fem-(?:featured|post)-card"[\s\S]*?<\/article>/g);
-  if (!arts || arts.length < 2) return html;
+  // Todas las entradas de Eventos en una sola página: el calendario filtra por mes en el navegador
+  // y no puede mostrar las de septiembre si están en /page/2/. Se quita la paginación.
+  const vistos = new Set<string>();
+  const arts = [...(tramo.match(ARTICULO) ?? []), ...tarjetasDeOtrasPaginas()].filter((a) => {
+    const href = (a.match(/__title">\s*<a href="([^"]+)"/) ?? [])[1] ?? a;
+    if (vistos.has(href)) return false;
+    vistos.add(href);
+    return true;
+  });
+  if (arts.length < 2) return html;
 
   const porEnlace = new Map(eventos().map((e) => [e.enlace, e]));
   const tarjetas = arts.map((a) => {
@@ -100,7 +128,9 @@ export function ordenarListadoEventos(html: string): string {
     if (ev) {
       g = g.replace(/<time datetime="[^"]*">[^<]*<\/time>/, `<time datetime="${ev.inicio}">Evento: ${rangoFechas(ev)}</time>`);
     }
-    return { g, fecha: ev ? ev.inicio : pub, href };
+    const desde = ev ? ev.inicio : pub, hasta = ev ? ev.fin ?? ev.inicio : pub;
+    g = g.replace(/^<article class="fem-post-card"/, `<article class="fem-post-card" data-inicio="${desde}" data-fin="${hasta}"`);
+    return { g, fecha: desde, href };
   });
   tarjetas.sort((a, b) => b.fecha.localeCompare(a.fecha));
 
@@ -110,6 +140,8 @@ export function ordenarListadoEventos(html: string): string {
     .replace(' loading="lazy"', ' fetchpriority="high"')
     .replace(/(\s*<\/div>\s*<\/article>)$/, `\n    <a class="fem-featured-card__link" href="${tarjetas[0].href}">Leer más →</a>$1`);
   const nuevo = `<!-- ===== POST DESTACADO (ordenado por fecha del evento, src/lib/agenda.ts) ===== -->\n${destacada}\n` +
-    `<div class="blog-grid">\n${tarjetas.slice(1).map((t) => t.g).join('\n')}\n</div>\n      `;
-  return html.slice(0, ini) + nuevo + html.slice(fin);
+    `<div class="blog-grid">\n${tarjetas.slice(1).map((t) => t.g).join('\n')}\n</div>\n` +
+    `<p class="fem-agenda__sin-entradas" hidden>No hay entradas de eventos en este mes.</p>\n      `;
+  const resto = html.slice(fin).replace(/<div class="blog-pagination">[\s\S]*?<\/nav>\s*<\/div>/, '');
+  return html.slice(0, ini) + nuevo + resto;
 }

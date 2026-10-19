@@ -25,6 +25,9 @@ RewriteRule ^\xE2\x8F\xB1\xEF\xB8\x8Femprender-con-foco-en-medio-de-las-distracc
 RewriteRule ^category/cultura(/.*)?$ https://www.fundacionsalamendoza.com [L,R=301]
 RewriteRule ^feed/?$ /feed.xml [L,R=301]
 RewriteRule ^(.*/)?feed/?$ /blog/ [L,R=301]
+# Eventos: todas las entradas están en /category/eventos/ (el calendario filtra por mes); sin paginación
+RewriteRule ^category/eventos/page/\d+/?$ /category/eventos/ [L,R=301]
+
 # Etiquetas que quedaron vacías al borrar entradas en WordPress (ya no se generan)
 RewriteRule ^tag/(enfoque|foco|gestion-del-tiempo|habitos|organizacion)/?$ /blog/ [L,R=301]
 
