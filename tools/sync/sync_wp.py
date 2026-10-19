@@ -28,6 +28,8 @@ import sys
 import tempfile
 import urllib.parse
 
+import time
+
 import requests
 
 REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -43,6 +45,19 @@ DRY = '--dry-run' in sys.argv
 S = requests.Session()
 S.auth = AUTH
 S.headers['User-Agent'] = 'FEM-sync/1.0 (+https://fundacioneugeniomendoza.com)'
+
+# El WordPress tiene caché de páginas (LiteSpeed) que no se purga en los listados: sin esto,
+# /category/eventos/ o /blog/ llegaban sin las entradas nuevas (19-10-2026). Un parámetro
+# distinto en cada ejecución obliga a generar la página; luego se borra del HTML.
+BUST = f'fem_sync={int(time.time())}'
+
+
+def fresh(route, **kw):
+    return S.get(SRC + urllib.parse.quote(route), params=BUST, timeout=60, **kw)
+
+
+def unbust(html):
+    return re.sub(r'(?:\?|&#0?38;|&amp;|&)' + BUST + r'(?=["\'&#<\s])', '', html)
 
 
 def abort(msg):
@@ -115,15 +130,18 @@ while todo:
     if route in done:
         continue
     done.add(route)
-    r = S.get(SRC + urllib.parse.quote(route), timeout=60)
+    r = fresh(route)
     if r.status_code != 200:
         abort(f'{route} respondió {r.status_code}')
     r.encoding = 'utf-8'
-    save(route, r.text)
+    html = unbust(r.text)
+    if BUST in html:
+        abort(f'{route}: quedó el parámetro anti-caché en el HTML')
+    save(route, html)
     # paginaciones de listados (/blog/page/2/, /category/x/page/2/…)
     if route == '/blog/' or route.startswith(('/blog/page/', '/category/', '/tag/')):
         base = re.sub(r'page/\d+/$', '', route)
-        for n in re.findall(re.escape(SRC + urllib.parse.quote(base)) + r'page/(\d+)/', r.text):
+        for n in re.findall(re.escape(SRC + urllib.parse.quote(base)) + r'page/(\d+)/', html):
             todo.append(f'{base}page/{n}/')
 r = S.get(SRC + '/fem-sync-no-existe/', timeout=60)
 r.encoding = 'utf-8'
