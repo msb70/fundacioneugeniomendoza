@@ -9,6 +9,7 @@ Se ejecuta en cada sincronización con WordPress (una entrada nueva puede traer 
 tras añadir iconos. Requiere: npm ci (paquete @fortawesome/fontawesome-free) y pip install fonttools brotli.
 """
 import glob
+import hashlib
 import os
 import re
 import subprocess
@@ -63,6 +64,9 @@ for font in ('fa-solid-900', 'fa-regular-400', 'fa-brands-400'):
                     '--unicodes=' + ','.join('U+' + c for c in codepoints), '--flavor=woff2',
                     '--output-file=' + os.path.join(OUT, font + '.woff2'), '--no-hinting', '--layout-features='],
                    check=True, capture_output=True)
+    # ?v=<hash>: el CDN guarda /assets/* 30 días; una fuente con iconos nuevos debe cambiar de URL.
+    digest = hashlib.sha1(open(os.path.join(OUT, font + '.woff2'), 'rb').read()).hexdigest()[:10]
+    small = small.replace(f'url({font}.woff2)', f'url({font}.woff2?v={digest})')
 
 header = ('/*! Font Awesome Free 6.5.1 (subconjunto) by @fontawesome - https://fontawesome.com '
           'License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) */\n'

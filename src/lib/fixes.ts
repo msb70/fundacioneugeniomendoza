@@ -4,8 +4,27 @@
 // Revisión del sitio del 19-10-2026 (hallazgos C1, M3, M4, M5, M6, M7, M8, B1, B2, B4).
 import seo from '../site/seo.json';
 import carrusel from '../site/carrusel.json';
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 
 const SITE = 'https://fundacioneugeniomendoza.com';
+/**
+ * URL de un archivo propio de public/ con ?v=<hash del contenido>. El CDN de Hostinger y los
+ * navegadores guardan /assets/* 30 días (max-age=2592000): sin versión, un cambio en fem-static.js
+ * o fem-fixes.css no llega a los visitantes (el menú móvil no respondía por eso, 19-10-2026).
+ */
+const assetCache = new Map<string, string>();
+export function asset(path: string): string {
+  let url = assetCache.get(path);
+  if (!url) {
+    const hash = createHash('sha1').update(readFileSync(join(process.cwd(), 'public', path))).digest('hex').slice(0, 10);
+    url = `${path}?v=${hash}`;
+    assetCache.set(path, url);
+  }
+  return url;
+}
+
 const HONEYPOT = 'sitio_web_alt'; // mismo nombre que FEM_HONEYPOT en public/api/lib.php
 
 export const isTag = (route: string) => route.startsWith('/tag/');
@@ -89,9 +108,9 @@ export function fixHead(html: string): string {
     .replace(/<link rel='stylesheet' id='fem-google-fonts-css'[^>]*\/>/g,
       `<link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />` +
       `<link rel="preload" href="/assets/fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin />` +
-      `<link rel='stylesheet' id='fem-google-fonts-css' href='/assets/fonts/fonts.css' media='all' />`)
+      `<link rel='stylesheet' id='fem-google-fonts-css' href='${asset('/assets/fonts/fonts.css')}' media='all' />`)
     .replace(/<link rel='stylesheet' id='fontawesome-css' href='https:\/\/cdnjs\.cloudflare\.com\/[^']*' media='all' \/>/g,
-      `<link rel='stylesheet' id='fontawesome-css' href='/assets/fa/fa.css' media='all' />`)
+      `<link rel='stylesheet' id='fontawesome-css' href='${asset('/assets/fa/fa.css')}' media='all' />`)
     .replace(/<link rel='stylesheet' id='essential-blocks-fontawesome-css'[^>]*\/>\s*/g, '')
     .replace(/<link rel='dns-prefetch' href='\/\/(?:fonts\.googleapis\.com|cdnjs\.cloudflare\.com)' \/>\s*/g, '')
     // B4: restos de WordPress sin uso.

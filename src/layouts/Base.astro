@@ -4,7 +4,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { fragment, parseAttrs, IS_PRODUCTION, type PageMeta } from '../lib/site';
-import { isThin } from '../lib/fixes';
+import { isThin, asset } from '../lib/fixes';
 
 interface Props { meta: PageMeta; extraHead?: string }
 const { meta, extraHead = '' } = Astro.props;
@@ -33,7 +33,7 @@ const htmlAttrs = parseAttrs(meta.htmlAttrs);
 	<Fragment set:html={seo} />
 	<Fragment set:html={head} />
 	<Fragment set:html={extraHead} />
-	<link rel="stylesheet" href="/assets/fem-fixes.css" />
+	<link rel="stylesheet" href={asset('/assets/fem-fixes.css')} />
 	<link rel="alternate" type="application/rss+xml" title="Fundación Eugenio Mendoza" href="/feed.xml" />
 </head>
 <body class={meta.bodyClass}>
@@ -43,6 +43,6 @@ const htmlAttrs = parseAttrs(meta.htmlAttrs);
 <slot />
 <Footer />
 <Fragment set:html={tail} />
-<script is:inline src="/assets/fem-static.js" defer></script>
+<script is:inline src={asset('/assets/fem-static.js')} defer></script>
 </body>
 </html>
