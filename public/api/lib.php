@@ -135,10 +135,66 @@ function fem_safe_path(string $path, string $fallback = '/'): string
 }
 
 /**
- * Envía un correo (texto plano, con adjunto opcional) usando mail() de Hostinger.
- * Para máxima entregabilidad se recomienda migrar a SMTP autenticado.
+ * Configuración SMTP: archivo fem-data/smtp.php FUERA de public_html (los despliegues no lo tocan y
+ * nunca está en el repo). Debe devolver un array, p. ej.:
+ *   <?php return ['host' => 'smtp.hostinger.com', 'port' => 465, 'secure' => 'ssl',
+ *                 'user' => 'no-reply@fundacioneugeniomendoza.com', 'pass' => '********'];
+ * Si no existe, se usa mail() de PHP como hasta ahora.
+ */
+function fem_smtp_config(): ?array
+{
+    $file = fem_data_dir() . '/smtp.php';
+    if (!is_file($file)) {
+        return null;
+    }
+    $cfg = include $file;
+    return is_array($cfg) && !empty($cfg['host']) && !empty($cfg['user']) ? $cfg : null;
+}
+
+/**
+ * Envía un correo de texto plano (con adjunto opcional) a FEM_TO.
+ * Con fem-data/smtp.php usa SMTP autenticado (PHPMailer); si no, mail() de Hostinger.
+ * Si SMTP falla, lo registra y reintenta con mail() para no perder el mensaje.
  */
 function fem_mail(string $subject, string $body, string $replyTo = '', ?array $attachment = null): bool
+{
+    $cfg = fem_smtp_config();
+    if ($cfg !== null) {
+        require_once __DIR__ . '/vendor/phpmailer/Exception.php';
+        require_once __DIR__ . '/vendor/phpmailer/PHPMailer.php';
+        require_once __DIR__ . '/vendor/phpmailer/SMTP.php';
+        $m = new PHPMailer\PHPMailer\PHPMailer(true);
+        try {
+            $m->isSMTP();
+            $m->Host = (string)$cfg['host'];
+            $m->Port = (int)($cfg['port'] ?? 465);
+            $m->SMTPSecure = ($cfg['secure'] ?? 'ssl') === 'tls' ? PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS
+                                                                 : PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
+            $m->SMTPAuth = true;
+            $m->Username = (string)$cfg['user'];
+            $m->Password = (string)$cfg['pass'];
+            $m->Timeout = 15;
+            $m->CharSet = 'UTF-8';
+            $m->setFrom((string)($cfg['from'] ?? $cfg['user']), FEM_FROM_NAME);
+            $m->addAddress((string)($cfg['to'] ?? FEM_TO));
+            if ($replyTo !== '' && filter_var($replyTo, FILTER_VALIDATE_EMAIL)) {
+                $m->addReplyTo($replyTo);
+            }
+            $m->Subject = fem_header_safe($subject);
+            $m->Body = $body;
+            if ($attachment !== null) {
+                $m->addStringAttachment($attachment['data'], fem_header_safe($attachment['name']), 'base64', $attachment['type']);
+            }
+            return $m->send();
+        } catch (\Throwable $e) {
+            error_log('FEM SMTP: ' . $e->getMessage() . ' — se reintenta con mail()');
+        }
+    }
+    return fem_mail_php($subject, $body, $replyTo, $attachment);
+}
+
+/** Envío con mail() de PHP (sin autenticación: menor entregabilidad). */
+function fem_mail_php(string $subject, string $body, string $replyTo = '', ?array $attachment = null): bool
 {
     $subject = '=?UTF-8?B?' . base64_encode(fem_header_safe($subject)) . '?=';
     $headers = [
