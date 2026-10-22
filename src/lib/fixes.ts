@@ -163,6 +163,9 @@ export function fixBody(body: string, route: string, seoHtml: string): { body: s
     if (name) b = b.replace(/<h1>Blog/, `<h1>Blog: ${name}`);
   }
 
+  // Contenido añadido a una entrada fuera de WordPress (src/site/extras/<slug>.html).
+  b = addExtras(b, route);
+
   // Calendario de eventos encima del listado de la categoría Eventos (src/site/eventos.json).
   if (route === '/category/eventos/') {
     b = b.replace(/(\s*<!-- ===== POSTS)/, agendaHtml(asset('/assets/eventos/agenda.js')) + '$1');
@@ -182,6 +185,32 @@ export function fixBody(body: string, route: string, seoHtml: string): { body: s
   b = b.replace(/<a\b(?![^>]*\brel=)([^>]*\btarget="_blank")/g, '<a rel="noopener"$1');
 
   return { body: b, mainId };
+}
+
+/**
+ * Bloques extra de una entrada: src/site/extras/<slug>.html se inserta antes del último H2 de la
+ * entrada (o al final del contenido si no hay H2). Sirve cuando no se puede editar la entrada en
+ * WordPress; la sincronización no toca src/site/extras. Si la entrada de WordPress ya trae un
+ * elemento con el mismo id que el primer encabezado del extra (p. ej. id="agenda"), no se duplica.
+ */
+function addExtras(html: string, route: string): string {
+  const slug = route.replace(/^\/|\/$/g, '');
+  if (!slug || slug.includes('/')) return html;
+  let extra: string;
+  try {
+    extra = readFileSync(join(process.cwd(), 'src/site/extras', `${slug}.html`), 'utf8');
+  } catch {
+    return html;
+  }
+  const id = extra.match(/<h2\b[^>]*\bid="([^"]+)"/)?.[1];
+  if (id && new RegExp(`\\bid="${id}"`).test(html)) return html;
+  const content = html.match(/<div class="single-content"[^>]*>/);
+  if (!content || content.index === undefined) return html;
+  const start = content.index;
+  const h2s = [...html.matchAll(/<h2 class="wp-block-heading"[^>]*>/g)].filter((m) => (m.index ?? 0) > start);
+  const at = h2s.length ? h2s[h2s.length - 1].index! : -1;
+  if (at < 0) return html;
+  return html.slice(0, at) + extra + '\n' + html.slice(at);
 }
 
 type Slide = {
