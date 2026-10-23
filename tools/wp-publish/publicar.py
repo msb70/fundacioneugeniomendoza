@@ -50,7 +50,8 @@ def api(method, route, **kw):
 
 def comprobar_credencial():
     if not S.auth:
-        raise SystemExit('Faltan WP_APP_USER/WP_APP_PASS (o WP_USER/WP_PASS).')
+        raise SystemExit('Faltan credenciales: usuario %s, contraseña %s (secretos WP_USER/WP_PASS o WP_APP_USER/WP_APP_PASS).'
+                         % ('OK' if USER else 'NO LLEGA', 'OK' if PASS else 'NO LLEGA'))
     me = api('GET', 'users/me', params={'context': 'edit', '_fields': 'id,name,capabilities'})
     if not me.get('capabilities', {}).get('publish_posts'):
         raise SystemExit(f'El usuario {me.get("name")} no puede publicar entradas.')
