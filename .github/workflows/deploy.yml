@@ -6,6 +6,8 @@ name: Build y publicar en rama deploy
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'contenido/**'   # lo publica publicar-wordpress.yml (WP → sync → deploy)
   workflow_dispatch:
   # Build diario a las 00:07 de Caracas (04:07 UTC): saca del HTML las diapositivas de eventos
   # que ya terminaron (en el navegador ya se ocultan solas al acabar el día).

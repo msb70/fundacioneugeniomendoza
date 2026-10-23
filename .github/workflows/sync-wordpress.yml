@@ -11,6 +11,11 @@ on:
   schedule:
     - cron: '17 * * * *'   # cada hora (UTC); GitHub puede retrasarlo unos minutos
   workflow_dispatch:       # "Run workflow" para sincronizar al momento
+  workflow_call:           # lo llama publicar-wordpress.yml tras crear/actualizar entradas
+    outputs:
+      changed:
+        description: true si la sincronización commiteó cambios (y ya llamó a deploy.yml)
+        value: ${{ jobs.sync.outputs.changed }}
 
 permissions:
   contents: write

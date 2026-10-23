@@ -1,0 +1,86 @@
+name: Publicar entradas en WordPress
+
+# Crea o actualiza en el WordPress las entradas definidas en contenido/publicar/<slug>/
+# (entrada.json + contenido.html + medios), sin navegador, con una contraseña de aplicación.
+# Después sincroniza el sitio (sync-wordpress.yml → deploy.yml).
+#
+# Secretos (Settings → Secrets and variables → Actions):
+#   WP_APP_USER / WP_APP_PASS  usuario y contraseña de aplicación de WordPress
+#   (si no existen se usan WP_USER / WP_PASS)
+# Detalles: tools/wp-publish/publicar.py
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'contenido/publicar/**'
+  workflow_dispatch:
+    inputs:
+      carpeta:
+        description: 'Carpeta a publicar (vacío = todas las nuevas o cambiadas), p. ej. contenido/publicar/mi-entrada'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: publicar-wordpress
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: pip install requests
+
+      - name: Publicar en WordPress
+        env:
+          WP_APP_USER: ${{ secrets.WP_APP_USER || secrets.WP_USER }}
+          WP_APP_PASS: ${{ secrets.WP_APP_PASS || secrets.WP_PASS }}
+          WP_URL: ${{ vars.WP_URL }}
+          CARPETA: ${{ inputs.carpeta }}
+        run: |
+          if [ -n "$CARPETA" ]; then
+            python3 tools/wp-publish/publicar.py "$CARPETA"
+          else
+            python3 tools/wp-publish/publicar.py --todas
+          fi
+
+      - name: Commit (estado de publicación y calendario)
+        id: commit
+        run: |
+          git add -A contenido src/site/eventos.json
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -q -m "Publicado en WordPress: $(git diff --cached --name-only -- contenido | grep -c '\.publicado\.json$') entrada(s)" \
+            -m "tools/wp-publish/publicar.py"
+          git push origin HEAD:main
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+  sync:
+    needs: publicar
+    uses: ./.github/workflows/sync-wordpress.yml
+    secrets: inherit
+
+  # Si la sincronización no encontró cambios (p. ej. solo cambió el calendario), publicar igualmente.
+  deploy:
+    needs: [publicar, sync]
+    if: needs.publicar.outputs.changed == 'true' && needs.sync.outputs.changed != 'true'
+    uses: ./.github/workflows/deploy.yml
+    with:
+      ref: main
+    secrets: inherit

@@ -1,0 +1,26 @@
+{
+  "titulo": "🎓 Conversación con Nuno Crato: los desafíos de la educación en Colombia desde una visión global",
+  "slug": "conversacion-nuno-crato-educacion-colombia-2026",
+  "estado": "publish",
+  "categorias": ["eventos", "educacion"],
+  "etiquetas": ["Nuno Crato", "Política educativa", "Educación basada en evidencia", "Colombia"],
+  "comentarios": false,
+  "extracto": "Conversación con Nuno Crato, exministro de Educación de Portugal, sobre los desafíos de la educación en Colombia desde una visión global. Viernes 23 de octubre, 2:00 p. m., Auditorio Pablo VI de la Universidad Javeriana, Bogotá. Presencial, con inscripción.",
+  "imagen_destacada": "nuno-crato-portada.jpg",
+  "medios": {
+    "nuno-crato-portada.jpg": {
+      "titulo": "Conversación con Nuno Crato – portada",
+      "alt": "Portada: Conversación con Nuno Crato, 23 de octubre, Universidad Javeriana, Bogotá"
+    },
+    "nuno-crato-afiche.jpg": {
+      "titulo": "Conversación con Nuno Crato – afiche",
+      "alt": "Afiche de la Conversación con Nuno Crato: viernes 23 de octubre, 2:00 a 4:00 p. m., Auditorio Pablo VI de la Universidad Javeriana, Bogotá"
+    }
+  },
+  "evento": {
+    "titulo": "Conversación con Nuno Crato: los desafíos de la educación en Colombia desde una visión global",
+    "inicio": "2026-10-23",
+    "hora": "2:00 p. m. a 4:00 p. m. (Colombia)",
+    "lugar": "Auditorio Pablo VI, Pontificia Universidad Javeriana, Bogotá, Colombia · presencial con inscripción"
+  }
+}
