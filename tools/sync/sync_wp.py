@@ -44,6 +44,12 @@ DRY = '--dry-run' in sys.argv
 
 S = requests.Session()
 S.auth = AUTH
+# Reintentos ante cortes de red puntuales del runner o del WP (22-10-2026: Errno 101 Network is unreachable).
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
+S.mount('https://', HTTPAdapter(max_retries=Retry(total=5, connect=5, read=3, backoff_factor=3,
+                                                  status_forcelist=(429, 500, 502, 503, 504),
+                                                  allowed_methods=('GET',))))
 S.headers['User-Agent'] = 'FEM-sync/1.0 (+https://fundacioneugeniomendoza.com)'
 
 # El WordPress tiene caché de páginas (LiteSpeed) que no se purga en los listados: sin esto,
