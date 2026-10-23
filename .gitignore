@@ -7,3 +7,4 @@ node_modules/
 .env.*
 fem-data/
 __pycache__/
+tools/wp-plugin/*.zip
