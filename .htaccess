@@ -1,0 +1,65 @@
+# Fundación Eugenio Mendoza — sitio estático (Astro) en Hostinger
+Options -Indexes
+DirectoryIndex index.html index.php
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Dominio canónico sin www (www respondía 200 con el sitio duplicado)
+RewriteCond %{HTTP_HOST} ^www\.(fundacioneugeniomendoza\.com)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+# Forzar HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Sitemaps y feeds heredados de WordPress / All in One SEO
+RewriteRule ^(sitemap_index|wp-sitemap|post-sitemap|page-sitemap|fem_aliado-sitemap|category-sitemap|post_tag-sitemap)\.xml$ /sitemap.xml [L,R=301]
+RewriteRule ^sitemap\.rss$ /sitemap.xml [L,R=301]
+# Entrada renombrada en el WordPress (2026-10): "Emprender con foco" -> "Negociar en el día a día"
+RewriteRule ^\xE2\x8F\xB1\xEF\xB8\x8Femprender-con-foco-en-medio-de-las-distracciones/?$ /negociar-en-el-dia-a-dia-de-una-microempresa/ [L,R=301,NE]
+# Feed RSS: el de WordPress vivía en /feed/; ahora lo genera Astro en /feed.xml
+# La categoría Cultura de WordPress redirige al sitio de la Sala Mendoza (igual aquí)
+RewriteRule ^category/cultura(/.*)?$ https://www.fundacionsalamendoza.com [L,R=301]
+RewriteRule ^feed/?$ /feed.xml [L,R=301]
+RewriteRule ^(.*/)?feed/?$ /blog/ [L,R=301]
+# Eventos: todas las entradas están en /category/eventos/ (el calendario filtra por mes); sin paginación
+RewriteRule ^category/eventos/page/\d+/?$ /category/eventos/ [L,R=301]
+
+# Etiquetas que quedaron vacías al borrar entradas en WordPress (ya no se generan)
+RewriteRule ^tag/(enfoque|foco|gestion-del-tiempo|habitos|organizacion)/?$ /blog/ [L,R=301]
+
+# Endpoints de WordPress que ya no existen
+RewriteRule ^(wp-login\.php|xmlrpc\.php|wp-admin/?.*)$ - [G,L]
+
+# Añadir barra final a las rutas de páginas (como hacía WordPress)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !/$
+RewriteCond %{REQUEST_FILENAME}/index.html -f
+RewriteRule ^(.*)$ /$1/ [L,R=301]
+</IfModule>
+
+# Bloquear acceso directo a utilidades internas
+<Files "lib.php">
+  Require all denied
+</Files>
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  <FilesMatch "\.(jpg|jpeg|png|webp|gif|svg|woff2?|ttf|eot|css|js|pdf)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=300"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml application/xml text/plain
+</IfModule>
