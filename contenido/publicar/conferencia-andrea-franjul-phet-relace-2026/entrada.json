@@ -1,0 +1,26 @@
+{
+  "titulo": "💡 Conferencia de Andrea Franjul: aprendizaje auténtico con simulaciones PhET, en la Expo RELACE",
+  "slug": "conferencia-andrea-franjul-phet-relace-2026",
+  "estado": "publish",
+  "categorias": ["eventos", "educacion"],
+  "etiquetas": ["RELACE", "Andrea Franjul", "PhET", "Simulaciones", "Innovación educativa", "Aprendizaje auténtico", "República Dominicana"],
+  "comentarios": false,
+  "extracto": "Conferencia magistral de la Dra. Andrea Franjul Sánchez en la 1ra. Expo Internacional de Evidencias y Experiencias de Aprendizaje (RELACE): «Del “¿Qué pasaría si…?” a comprender haciendo: experiencias de aprendizaje auténtico con simulaciones PhET». Lunes 26 de octubre de 2026, 8:30 a. m. México · 9:30 Colombia · 10:30 Rep. Dominicana y Caracas · 11:30 Argentina. Virtual, con registro.",
+  "imagen_destacada": "andrea-franjul-portada.jpg",
+  "medios": {
+    "andrea-franjul-portada.jpg": {
+      "titulo": "Conferencia de Andrea Franjul en la Expo RELACE – portada",
+      "alt": "Portada: conferencia de la Dra. Andrea Franjul sobre simulaciones PhET, 26 de octubre de 2026, Expo RELACE"
+    },
+    "andrea-franjul-afiche.jpg": {
+      "titulo": "Conferencia de Andrea Franjul en la Expo RELACE – afiche",
+      "alt": "Afiche de RELACE: conferencia «Del ¿Qué pasaría si…? a comprender haciendo: experiencias de aprendizaje auténtico con simulaciones PhET», Dra. Andrea Franjul, lunes 26 de octubre de 2026, 8:30 a. m. México, 9:30 Colombia, 10:30 Dominicana, 11:30 Argentina"
+    }
+  },
+  "evento": {
+    "titulo": "Conferencia de Andrea Franjul: aprendizaje auténtico con simulaciones PhET (Expo RELACE)",
+    "inicio": "2026-10-26",
+    "hora": "8:30 a. m. México · 9:30 Colombia · 10:30 Rep. Dominicana y Caracas · 11:30 Argentina",
+    "lugar": "Virtual, con registro · 1ra. Expo Internacional de Evidencias y Experiencias de Aprendizaje (RELACE)"
+  }
+}
