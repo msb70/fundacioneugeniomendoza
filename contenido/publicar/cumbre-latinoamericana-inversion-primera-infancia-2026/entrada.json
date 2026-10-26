@@ -1,0 +1,31 @@
+{
+  "titulo": "🌎 1ª Cumbre Latinoamericana de Inversión en Primera Infancia 2026",
+  "slug": "cumbre-latinoamericana-inversion-primera-infancia-2026",
+  "estado": "publish",
+  "categorias": ["eventos", "ayuda-a-la-infancia"],
+  "etiquetas": ["Primera infancia", "Inversión en primera infancia", "Pacto por la Primera Infancia", "UNICEF", "Act for Early Years", "Somos Crianza", "México", "Financiamiento", "Políticas públicas"],
+  "comentarios": false,
+  "extracto": "México será sede de la 1ª Cumbre Latinoamericana de Inversión en Primera Infancia, del 10 al 12 de noviembre de 2026 en la Ciudad de México. Más de 30 países de la región buscarán acordar una Declaración Regional sobre financiamiento para la primera infancia. Transmisión en vivo en el sitio oficial.",
+  "imagen_destacada": "cumbre-primera-infancia-portada.jpg",
+  "medios": {
+    "cumbre-primera-infancia-portada.jpg": {
+      "titulo": "1ª Cumbre Latinoamericana de Inversión en Primera Infancia 2026 – portada",
+      "alt": "1ª Cumbre Latinoamericana de Inversión en Primera Infancia 2026: ilustración con el mapa de América Latina y niñas y niños"
+    },
+    "cumbre-primera-infancia-mexico-inversion.jpg": {
+      "titulo": "¿Cuánto se invierte en primera infancia? México 2025 – infografía",
+      "alt": "Infografía: en 2025 México invirtió 216.560 millones de pesos en primera infancia (fuente: SHCP, Cuenta Pública del PEF 2025, Anexo 18)"
+    },
+    "cumbre-primera-infancia-mexico-89.jpg": {
+      "titulo": "Inversión pública en primera infancia en México, 2015–2021 – infografía",
+      "alt": "Infografía: la inversión pública en primera infancia en México aumentó 89 % en términos reales entre 2015 y 2021, pero aún es insuficiente"
+    }
+  },
+  "evento": {
+    "titulo": "1ª Cumbre Latinoamericana de Inversión en Primera Infancia 2026",
+    "inicio": "2026-11-10",
+    "fin": "2026-11-12",
+    "hora": "Programa por confirmar en el sitio oficial",
+    "lugar": "Ciudad de México, México · transmisión en vivo en cumbrelatinoamericanadeinversionenprimerainfancia.org"
+  }
+}
