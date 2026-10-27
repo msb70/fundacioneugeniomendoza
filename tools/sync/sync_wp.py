@@ -27,6 +27,7 @@ import subprocess
 import sys
 import tempfile
 import urllib.parse
+from concurrent.futures import ThreadPoolExecutor
 
 import time
 
@@ -44,12 +45,17 @@ DRY = '--dry-run' in sys.argv
 
 S = requests.Session()
 S.auth = AUTH
-# Reintentos ante cortes de red puntuales del runner o del WP (22-10-2026: Errno 101 Network is unreachable).
+# Reintentos cortos ante cortes puntuales del WP (429/5xx, lectura cortada). Los fallos de conexión
+# (Errno 101 Network is unreachable, 22-10 y 27-10-2026) duran toda la vida del runner: reintentar
+# 13 minutos en el mismo runner no sirve; el workflow comprueba el acceso al arrancar y, si no hay
+# ruta, se relanza en un runner nuevo. Aquí solo dos reintentos de conexión (~6 s).
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
-S.mount('https://', HTTPAdapter(max_retries=Retry(total=5, connect=5, read=3, backoff_factor=3,
+S.mount('https://', HTTPAdapter(pool_maxsize=16,
+                                max_retries=Retry(total=4, connect=2, read=3, backoff_factor=2,
                                                   status_forcelist=(429, 500, 502, 503, 504),
                                                   allowed_methods=('GET',))))
+WORKERS = int(os.environ.get('SYNC_WORKERS') or 8)   # descargas en paralelo (27-10-2026: 97 s en serie → ~15 s)
 S.headers['User-Agent'] = 'FEM-sync/1.0 (+https://fundacioneugeniomendoza.com)'
 
 # El WordPress tiene caché de páginas (LiteSpeed) que no se purga en los listados: sin esto,
@@ -130,30 +136,45 @@ def save(route, html):
     open(dest, 'w', encoding='utf-8').write(rewrite(html))
 
 
-todo, done = sorted(routes), set()
-while todo:
-    route = todo.pop()
-    if route in done:
-        continue
-    done.add(route)
-    r = fresh(route)
+def download(route):
+    """Descarga una URL del WP. Devuelve ('ok', html), ('omitida', destino) o ('error', mensaje).
+    Se ejecuta en hilos: no aborta aquí, lo decide el hilo principal."""
+    try:
+        r = fresh(route)
+    except requests.RequestException as e:
+        return 'error', f'{route}: {e}'
     # Una categoría que en WordPress redirige a otro sitio (p. ej. Cultura → fundacionsalamendoza.com)
     # no se copia: su HTML no es una página del tema y convert.py fallaba (19-10-2026).
     if urllib.parse.urlsplit(r.url).netloc != urllib.parse.urlsplit(SRC).netloc:
-        print(f'  OMITIDA {route}: redirige a {r.url}')
-        continue
+        return 'omitida', r.url
     if r.status_code != 200:
-        abort(f'{route} respondió {r.status_code}')
+        return 'error', f'{route} respondió {r.status_code}'
     r.encoding = 'utf-8'
     html = unbust(r.text)
     if BUST in html:
-        abort(f'{route}: quedó el parámetro anti-caché en el HTML')
-    save(route, html)
-    # paginaciones de listados (/blog/page/2/, /category/x/page/2/…)
-    if route == '/blog/' or route.startswith(('/blog/page/', '/category/', '/tag/')):
-        base = re.sub(r'page/\d+/$', '', route)
-        for n in re.findall(re.escape(SRC + urllib.parse.quote(base)) + r'page/(\d+)/', html):
-            todo.append(f'{base}page/{n}/')
+        return 'error', f'{route}: quedó el parámetro anti-caché en el HTML'
+    return 'ok', html
+
+
+# Descarga por tandas en paralelo: cada tanda puede descubrir paginaciones nuevas
+# (/blog/page/2/, /category/x/page/2/…) que van a la tanda siguiente.
+todo, done = set(routes), set()
+with ThreadPoolExecutor(max_workers=WORKERS) as pool:
+    while todo:
+        tanda = sorted(todo - done)
+        todo.clear()
+        done.update(tanda)
+        for route, (estado, dato) in zip(tanda, pool.map(download, tanda)):
+            if estado == 'omitida':
+                print(f'  OMITIDA {route}: redirige a {dato}')
+                continue
+            if estado == 'error':
+                abort(dato)
+            save(route, dato)
+            if route == '/blog/' or route.startswith(('/blog/page/', '/category/', '/tag/')):
+                base = re.sub(r'page/\d+/$', '', route)
+                for n in re.findall(re.escape(SRC + urllib.parse.quote(base)) + r'page/(\d+)/', dato):
+                    todo.add(f'{base}page/{n}/')
 r = S.get(SRC + '/fem-sync-no-existe/', timeout=60)
 r.encoding = 'utf-8'
 save('/__404.html', r.text)
