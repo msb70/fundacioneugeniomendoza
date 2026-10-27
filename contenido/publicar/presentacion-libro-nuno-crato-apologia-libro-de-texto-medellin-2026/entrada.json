@@ -1,0 +1,26 @@
+{
+  "titulo": "📚 Presentación del nuevo libro de Nuno Crato: «Apología del libro de texto»",
+  "slug": "presentacion-libro-nuno-crato-apologia-libro-de-texto-medellin-2026",
+  "estado": "publish",
+  "categorias": ["eventos", "educacion"],
+  "etiquetas": ["Nuno Crato", "Libro de texto", "Política educativa", "Educación basada en evidencia", "Colombia"],
+  "comentarios": false,
+  "extracto": "Presentación del nuevo libro de Nuno Crato, exministro de Educación de Portugal: «Apología del libro de texto». Martes 27 de octubre, 9:30 a. m., Auditorio Antioquia del Centro Cívico Plaza de la Libertad, Medellín. Presencial, con inscripción.",
+  "imagen_destacada": "nuno-crato-libro-portada.jpg",
+  "medios": {
+    "nuno-crato-libro-portada.jpg": {
+      "titulo": "Presentación del libro de Nuno Crato – portada",
+      "alt": "Portada: presentación del libro «Apología del libro de texto» de Nuno Crato, 27 de octubre, Medellín"
+    },
+    "nuno-crato-libro-afiche.jpg": {
+      "titulo": "Presentación del libro de Nuno Crato – afiche",
+      "alt": "Afiche de la presentación del libro «Apología del libro de texto» de Nuno Crato: martes 27 de octubre, 9:30 a. m., Auditorio Antioquia, Centro Cívico Plaza de la Libertad, Medellín"
+    }
+  },
+  "evento": {
+    "titulo": "Presentación del nuevo libro de Nuno Crato: «Apología del libro de texto»",
+    "inicio": "2026-10-27",
+    "hora": "9:30 a. m. (Colombia)",
+    "lugar": "Auditorio Antioquia, Centro Cívico Plaza de la Libertad, Medellín, Colombia · presencial con inscripción"
+  }
+}
