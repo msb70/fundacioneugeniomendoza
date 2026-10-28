@@ -1,0 +1,26 @@
+{
+  "titulo": "💬 Foro-chat «La comunicación asertiva: una clave para la vida»",
+  "slug": "foro-chat-comunicacion-asertiva-luz-y-vida-2026",
+  "estado": "publish",
+  "categorias": ["eventos", "ayuda-a-la-infancia"],
+  "etiquetas": ["Fundación Luz y Vida", "Centro Comunitario Colibrí", "Comunicación asertiva", "Jóvenes", "Familia"],
+  "comentarios": false,
+  "extracto": "La Fundación Luz y Vida y su Centro Comunitario Colibrí invitan al foro-chat «La comunicación asertiva: una clave para la vida», a cargo de la Red de Jóvenes «Acción y Futuro». Viernes 30 de octubre de 2026, 2:00 p. m., vía WhatsApp.",
+  "imagen_destacada": "comunicacion-asertiva-portada.jpg",
+  "medios": {
+    "comunicacion-asertiva-portada.jpg": {
+      "titulo": "Foro-chat La comunicación asertiva: una clave para la vida – portada",
+      "alt": "Portada: foro-chat La comunicación asertiva, una clave para la vida, Fundación Luz y Vida, viernes 30 de octubre, 2:00 p. m."
+    },
+    "comunicacion-asertiva-afiche.jpg": {
+      "titulo": "Foro-chat La comunicación asertiva: una clave para la vida – afiche",
+      "alt": "Afiche de la Fundación Luz y Vida y el Centro Comunitario Colibrí: foro-chat La comunicación asertiva, viernes 30 de octubre a las 2:00 p. m., vía WhatsApp"
+    }
+  },
+  "evento": {
+    "titulo": "Foro-chat «La comunicación asertiva: una clave para la vida»",
+    "inicio": "2026-10-30",
+    "hora": "2:00 p. m.",
+    "lugar": "Vía WhatsApp · virtual"
+  }
+}

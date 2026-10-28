@@ -1,0 +1,26 @@
+{
+  "titulo": "🔬 Mesa Regional en Metodologías Activas STEM+: «STEM+ para transformar», con Pablo Aránguiz Mesías",
+  "slug": "mesa-regional-metodologias-activas-stem-pablo-aranguiz-2026",
+  "estado": "publish",
+  "categorias": ["eventos", "educacion"],
+  "etiquetas": ["STEM", "Metodologías activas", "Red STEM Latinoamérica", "CIDSTEM", "Docentes", "Pablo Aránguiz Mesías"],
+  "comentarios": false,
+  "extracto": "La Red STEM Latinoamérica convoca a una nueva reunión de su Mesa Regional en Metodologías Activas STEM+, con la charla de Pablo Aránguiz Mesías (Universidad de York). Jueves 29 de octubre de 2026, 2:00 p. m. (Venezuela), en línea.",
+  "imagen_destacada": "mesa-stem-portada.jpg",
+  "medios": {
+    "mesa-stem-portada.jpg": {
+      "titulo": "Mesa Regional en Metodologías Activas STEM+ con Pablo Aránguiz Mesías – portada",
+      "alt": "Portada: Mesa Regional en Metodologías Activas STEM+, charla STEM+ para transformar con Pablo Aránguiz Mesías, jueves 29 de octubre"
+    },
+    "mesa-stem-afiche.jpg": {
+      "titulo": "Mesa Regional en Metodologías Activas STEM+ con Pablo Aránguiz Mesías – afiche",
+      "alt": "Afiche de la Red STEM Latinoamérica: charla STEM+ para transformar, metodologías activas, colaboración y justicia, por Pablo Aránguiz Mesías, jueves 29 de octubre, 14:00 h Venezuela"
+    }
+  },
+  "evento": {
+    "titulo": "Mesa Regional en Metodologías Activas STEM+: «STEM+ para transformar»",
+    "inicio": "2026-10-29",
+    "hora": "2:00 p. m. (Venezuela y Bolivia) · 1:00 p. m. (Colombia, Perú y Ecuador) · 3:00 p. m. (Chile y Argentina)",
+    "lugar": "En línea (Google Meet) · virtual"
+  }
+}
