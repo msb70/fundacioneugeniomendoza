@@ -1,0 +1,20 @@
+{
+  "titulo": "🌎 Materias primas en tensión: lo que anticipa el Banco Mundial para 2026 y 2027",
+  "slug": "materias-primas-banco-mundial-octubre-2026",
+  "estado": "publish",
+  "categorias": ["desarrollo-social", "emprendimiento"],
+  "etiquetas": ["Banco Mundial", "Materias primas", "Precios de los alimentos", "Energía", "Inflación", "Seguridad alimentaria", "El Niño", "Microempresas", "Resiliencia económica", "Desarrollo económico"],
+  "comentarios": false,
+  "extracto": "Resumen en español del informe Commodity Markets Outlook de octubre de 2026 del Banco Mundial: los precios de las materias primas subirán 23 % este año, con la energía a la cabeza (+32 %) y los alimentos en alza (+10 %). Qué hay detrás, qué riesgos vienen y qué significa para hogares y microempresas.",
+  "imagen_destacada": "materias-primas-octubre-2026-portada.jpg",
+  "medios": {
+    "materias-primas-octubre-2026-portada.jpg": {
+      "titulo": "Materias primas en tensión, Banco Mundial octubre 2026 – portada",
+      "alt": "Portada: Materias primas, precios en tensión. Resumen en español del informe Commodity Markets Outlook del Banco Mundial, octubre de 2026"
+    },
+    "banco-mundial-commodity-markets-outlook-octubre-2026.pdf": {
+      "titulo": "Banco Mundial – Commodity Markets Outlook, octubre de 2026 (PDF, inglés)",
+      "alt": ""
+    }
+  }
+}

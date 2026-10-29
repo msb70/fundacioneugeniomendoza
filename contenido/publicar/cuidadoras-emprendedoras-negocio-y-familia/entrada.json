@@ -1,0 +1,24 @@
+{
+  "titulo": "🌱 Tu negocio crece cuando el hogar trabaja en equipo: guía para cuidadoras emprendedoras",
+  "slug": "cuidadoras-emprendedoras-negocio-y-familia",
+  "estado": "publish",
+  "categorias": ["emprendimiento", "desarrollo-social"],
+  "etiquetas": ["mujeres cuidadoras", "economía del cuidado", "Emprendimiento femenino", "Microempresas", "Gestión del tiempo", "Educación financiera", "bienestar familiar", "Vidas en Movimiento", "Aprender en Familia"],
+  "comentarios": false,
+  "extracto": "Cuidar y emprender pueden avanzar juntos. Una infografía práctica de la Fundación Eugenio Mendoza con tres pasos (acordar en casa, ordenar el negocio y crecer en red) y una reunión semanal de 15 minutos para cuidadoras que tienen un negocio.",
+  "imagen_destacada": "cuidadoras-negocio-familia-portada.jpg",
+  "medios": {
+    "cuidadoras-negocio-familia-portada.jpg": {
+      "titulo": "Tu negocio crece cuando el hogar trabaja en equipo – portada",
+      "alt": "Portada: Tu negocio crece cuando el hogar trabaja en equipo, guía práctica para cuidadoras emprendedoras de la Fundación Eugenio Mendoza"
+    },
+    "infografia-cuidadoras-negocio-familia.jpg": {
+      "titulo": "Infografía: Tu negocio crece cuando el hogar trabaja en equipo",
+      "alt": "Infografía para cuidadoras emprendedoras: 1. acuerden en casa una meta y repartan tareas; 2. ordena el negocio registrando ventas y gastos y calculando costos; 3. aprende y crece en red; y una reunión semanal de 15 minutos con cuatro preguntas"
+    },
+    "infografia-fem-cuidadoras-negocio-y-familia.pdf": {
+      "titulo": "Infografía FEM – Cuidadoras: negocio y familia (PDF)",
+      "alt": ""
+    }
+  }
+}

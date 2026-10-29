@@ -1,0 +1,24 @@
+{
+  "titulo": "✨ Oportunidades que se multiplican: 75 años frente a la desigualdad",
+  "slug": "oportunidades-que-se-multiplican-fem-75-anos",
+  "estado": "publish",
+  "categorias": ["desarrollo-social", "ayuda-a-la-infancia"],
+  "etiquetas": ["Fundación Eugenio Mendoza", "75 años", "Desigualdad", "pobreza", "oportunidades", "primera infancia", "Emprendimiento", "Cultura", "Banco Mundial", "Medición de impacto"],
+  "comentarios": false,
+  "extracto": "Cerca de 1 de cada 5 personas en el mundo vive en economías de alta desigualdad, y América Latina está entre las regiones más afectadas. En sus 75 años, la Fundación Eugenio Mendoza resume en una infografía su ruta de contribución: primera infancia, emprendimiento y cultura, y cómo medir los cambios que importan.",
+  "imagen_destacada": "oportunidades-75-anos-portada.jpg",
+  "medios": {
+    "oportunidades-75-anos-portada.jpg": {
+      "titulo": "Oportunidades que se multiplican, FEM 75 años – portada",
+      "alt": "Portada: Oportunidades que se multiplican, Fundación Eugenio Mendoza 75 años, primera infancia, emprendimiento y cultura frente a la desigualdad"
+    },
+    "infografia-oportunidades-que-se-multiplican-75-anos.jpg": {
+      "titulo": "Infografía: Oportunidades que se multiplican (FEM 75 años)",
+      "alt": "Infografía de la Fundación Eugenio Mendoza, 75 años desde 1951: 1.700 millones de personas vivían en economías de alta desigualdad en 2022; ruta de contribución de cuidado, capacidades, autonomía productiva y bienestar; programas de primera infancia, emprendimiento y cultura, y qué medir en cada uno"
+    },
+    "infografia-fem-oportunidades-que-se-multiplican-75-anos.pdf": {
+      "titulo": "Infografía FEM – Oportunidades que se multiplican, 75 años (PDF)",
+      "alt": ""
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "titulo": "📚 Aprender en Familia: factores clave para una alianza entre familias y escuelas",
+  "slug": "aprender-en-familia-alianza-familia-escuela-fundacion-cap",
+  "estado": "publish",
+  "categorias": ["educacion", "ayuda-a-la-infancia"],
+  "etiquetas": ["Fundación CAP", "Aprender en Familia", "Alianza familia-escuela", "Parentalidad positiva", "Involucramiento familiar", "Fomento lector", "Educación basada en evidencia", "J-PAL", "Chile", "familia"],
+  "comentarios": false,
+  "extracto": "Fundación CAP publica «Aprender en Familia», un libro que sistematiza 16 años del programa del mismo nombre: tres ámbitos de gestión y once factores clave para que escuelas y familias trabajen juntas por los aprendizajes y el bienestar de niñas, niños y adolescentes.",
+  "imagen_destacada": "aprender-en-familia-portada.jpg",
+  "medios": {
+    "aprender-en-familia-portada.jpg": {
+      "titulo": "Aprender en Familia, de Fundación CAP – portada",
+      "alt": "Portada: Aprender en Familia, factores clave para una alianza entre familias y escuelas, libro de Fundación CAP 2026"
+    },
+    "aprender-en-familia-libro-tapa.jpg": {
+      "titulo": "Aprender en Familia, de Fundación CAP – tapa del libro",
+      "alt": "Tapa del libro Aprender en Familia: factores clave para una cultura de alianza familia-escuela, de Fundación CAP, ilustrada con familias y niños construyendo juntos una torre de bloques de colores"
+    }
+  }
+}
