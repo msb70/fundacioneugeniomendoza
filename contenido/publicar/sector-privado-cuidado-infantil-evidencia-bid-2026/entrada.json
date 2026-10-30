@@ -1,0 +1,37 @@
+{
+  "titulo": "📘 El sector privado en el cuidado infantil: lo que muestra la evidencia internacional para América Latina",
+  "slug": "sector-privado-cuidado-infantil-evidencia-bid-2026",
+  "estado": "publish",
+  "categorias": [
+    "ayuda-a-la-infancia",
+    "desarrollo-social"
+  ],
+  "etiquetas": [
+    "BID",
+    "Cuidado infantil",
+    "primera infancia",
+    "economía del cuidado",
+    "Sector privado",
+    "Políticas públicas",
+    "Calidad del cuidado",
+    "Autonomía económica",
+    "América Latina"
+  ],
+  "comentarios": false,
+  "extracto": "Resumen del estudio del BID (julio de 2026) que revisa más de 220 documentos sobre cómo las políticas públicas pueden incentivar, regular y acompañar a proveedores privados y comunitarios de cuidado infantil de 0 a 4 años: qué funciona, bajo qué condiciones y qué implica para América Latina y el Caribe.",
+  "imagen_destacada": "sector-privado-cuidado-infantil-portada.jpg",
+  "medios": {
+    "sector-privado-cuidado-infantil-portada.jpg": {
+      "titulo": "El sector privado en el cuidado infantil, BID 2026 – portada",
+      "alt": "Portada: Cuidado infantil, el papel del sector privado. Resumen del estudio del BID de julio de 2026"
+    },
+    "sector-privado-cuidado-infantil-bid-tapa.jpg": {
+      "titulo": "El sector privado en la provisión de servicios de cuidado infantil, BID 2026 – tapa",
+      "alt": "Tapa del estudio del BID El sector privado en la provisión de servicios de cuidado infantil: evidencia internacional e implicancias para América Latina y el Caribe, de Agustina Suaya, con bloques de juguete de colores"
+    },
+    "bid-sector-privado-provision-cuidado-infantil-2026.pdf": {
+      "titulo": "BID – El sector privado en la provisión de servicios de cuidado infantil (PDF, 2026)",
+      "alt": ""
+    }
+  }
+}

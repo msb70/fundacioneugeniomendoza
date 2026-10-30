@@ -1,0 +1,34 @@
+{
+  "titulo": "🤲 Cuidar también es construir futuro: el aporte del sector privado y comunitario al cuidado infantil",
+  "slug": "cuidar-tambien-es-construir-futuro-cuidado-infantil",
+  "estado": "publish",
+  "categorias": [
+    "ayuda-a-la-infancia",
+    "desarrollo-social"
+  ],
+  "etiquetas": [
+    "Cuidado infantil",
+    "primera infancia",
+    "economía del cuidado",
+    "mujeres cuidadoras",
+    "Familias Fuertes",
+    "Cuidado comunitario",
+    "BID",
+    "Limmat",
+    "Colombia",
+    "Venezuela"
+  ],
+  "comentarios": false,
+  "extracto": "Una reflexión de la Fundación Eugenio Mendoza a partir del estudio del BID sobre el sector privado en el cuidado infantil: por qué la participación privada y comunitaria solo suma con calidad, reglas claras y alianzas responsables, y qué aprendemos desde Familias Fuertes, Infancia Segura.",
+  "imagen_destacada": "cuidar-construir-futuro-portada.jpg",
+  "medios": {
+    "cuidar-construir-futuro-portada.jpg": {
+      "titulo": "Cuidar también es construir futuro – portada",
+      "alt": "Portada: Cuidar también es construir futuro. El aporte del sector privado y comunitario a servicios de cuidado infantil de calidad, una reflexión de la Fundación Eugenio Mendoza"
+    },
+    "fem-cuidar-tambien-es-construir-futuro.pdf": {
+      "titulo": "Cuidar también es construir futuro – Fundación Eugenio Mendoza (PDF)",
+      "alt": ""
+    }
+  }
+}
