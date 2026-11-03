@@ -1,0 +1,32 @@
+{
+  "titulo": "🧒 Niñez migrante: cuidar también es proteger el derecho a aprender",
+  "slug": "ninez-migrante-cuidar-proteger-derecho-a-aprender",
+  "estado": "publish",
+  "categorias": [
+    "ayuda-a-la-infancia",
+    "educacion",
+    "desarrollo-social"
+  ],
+  "etiquetas": [
+    "Niñez migrante",
+    "Migración",
+    "Xenofobia",
+    "Acoso escolar",
+    "Laboratorio Migrante",
+    "Paula Andrea Jiménez",
+    "economía del cuidado",
+    "primera infancia",
+    "Familias Fuertes",
+    "Colombia",
+    "Venezuela"
+  ],
+  "comentarios": false,
+  "extracto": "La investigación de Paula Andrea Jiménez (Laboratorio Migrante) visibiliza cómo la xenofobia y el acoso escolar atraviesan la experiencia educativa de niñas y niños venezolanos en Colombia. Una lectura de la Fundación Eugenio Mendoza desde la economía del cuidado.",
+  "imagen_destacada": "ninez-migrante-portada.jpg",
+  "medios": {
+    "ninez-migrante-portada.jpg": {
+      "titulo": "Niñez migrante: cuidar también es proteger el derecho a aprender – portada",
+      "alt": "Portada: Niñez migrante, cuidar también es proteger el derecho a aprender. Xenofobia y acoso escolar contra niñas y niños venezolanos en Colombia, una lectura de la Fundación Eugenio Mendoza desde la economía del cuidado"
+    }
+  }
+}
