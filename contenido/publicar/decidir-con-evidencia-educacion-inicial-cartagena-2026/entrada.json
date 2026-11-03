@@ -1,0 +1,21 @@
+{
+  "titulo": "🧒 «Decidir con evidencia»: jornada por una educación inicial de calidad en Cartagena",
+  "slug": "decidir-con-evidencia-educacion-inicial-cartagena-2026",
+  "estado": "publish",
+  "categorias": ["eventos", "ayuda-a-la-infancia"],
+  "etiquetas": ["primera infancia", "Educación inicial", "Decidir con Evidencia", "CEPE", "Alianza en Educación Inicial", "Fundación Santo Domingo", "Políticas públicas", "Colombia"],
+  "comentarios": false,
+  "extracto": "La Alianza en Educación Inicial y Colombia Evidencia Potencial en Educación (CEPE) convocan la jornada «Decidir con evidencia», con dos talleres técnicos sobre aprendizajes y medición, y sobre financiación y gobernanza de la educación inicial. Martes 3 de noviembre de 2026, de 9:30 a. m. a 12:00 m., en el Hotel Radisson Ocean Pavillion de Cartagena de Indias.",
+  "imagen_destacada": "decidir-con-evidencia-portada.jpg",
+  "medios": {
+    "decidir-con-evidencia-portada.jpg": {"titulo": "Decidir con evidencia – Cartagena 2026 – portada", "alt": "Invitación a la jornada «Decidir con evidencia: por una educación inicial de calidad», Cartagena 2026"},
+    "decidir-con-evidencia-afiche.jpg": {"titulo": "Decidir con evidencia – Cartagena 2026 – invitación", "alt": "Invitación a «Decidir con evidencia», martes 3 de noviembre de 2026, 9:30 a. m. a 12:00 m., Hotel Radisson Ocean Pavillion, Cartagena de Indias; convocan la Alianza en Educación Inicial y CEPE"},
+    "decidir-con-evidencia-agenda.jpg": {"titulo": "Decidir con evidencia – Cartagena 2026 – agenda", "alt": "Agenda de la jornada de la mañana de «Decidir con evidencia»: registro, dos talleres técnicos en paralelo, cierre y almuerzo"}
+  },
+  "evento": {
+    "titulo": "Decidir con evidencia: por una educación inicial de calidad",
+    "inicio": "2026-11-03",
+    "hora": "9:30 a. m. a 12:00 m. (Colombia)",
+    "lugar": "Hotel Radisson Ocean Pavillion, Cartagena de Indias, Colombia"
+  }
+}
