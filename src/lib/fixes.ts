@@ -172,6 +172,11 @@ export function fixBody(body: string, route: string, seoHtml: string): { body: s
     b = ordenarListadoEventos(b);
   }
 
+  // En /category/X/ cada tarjeta mostraba la primera categoría de la entrada en WP (p. ej.
+  // «Ayuda a la Infancia» dentro de Educación) y parecía que el filtro no funcionaba.
+  // En los listados de categoría la insignia de cada tarjeta pasa a ser la categoría actual.
+  if (isCategory(route)) b = badgeDeCategoria(b, route);
+
   // QA-06: campos que solo tenían placeholder (formulario de la portada): nombre accesible.
   b = b.replace(/<(input|textarea)\b(?![^>]*\baria-label)([^>]*?\bplaceholder="([^"]+)")/g, (m, tag, rest, ph) =>
     /\bid="/.test(rest) && b.includes(`for="${(rest.match(/\bid="([^"]+)"/) ?? [])[1]}"`) ? m : `<${tag} aria-label="${ph}"${rest}`);
@@ -185,6 +190,18 @@ export function fixBody(body: string, route: string, seoHtml: string): { body: s
   b = b.replace(/<a\b(?![^>]*\brel=)([^>]*\btarget="_blank")/g, '<a rel="noopener"$1');
 
   return { body: b, mainId };
+}
+
+/** Sustituye la insignia de las tarjetas del listado por la de la categoría de la ruta. */
+function badgeDeCategoria(html: string, route: string): string {
+  const slug = route.match(/^\/category\/([a-z0-9-]+)\//)?.[1];
+  if (!slug) return html;
+  // Nombre visible tomado del botón de filtro de esa categoría.
+  const pill = html.match(new RegExp(`<a class="cat-pill cat-pill--${slug}\\b[^"]*"[^>]*>\\s*([^<]+?)\\s*</a>`));
+  if (!pill) return html;
+  const badge = `<a class="fem-badge fem-badge--${slug}" href="/category/${slug}/">${pill[1]}</a>`;
+  return html.replace(/<article class="fem-(?:post|featured)-card"[\s\S]*?<\/article>/g, (card) =>
+    card.replace(/<a class="fem-badge fem-badge--[a-z0-9-]+" href="[^"]*">[^<]*<\/a>/, badge));
 }
 
 /**
