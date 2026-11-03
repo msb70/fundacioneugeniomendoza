@@ -1,0 +1,14 @@
+{
+  "titulo": "💙 PsicoData Venezuela: atención psicológica gratuita, anónima y confidencial por teléfono",
+  "slug": "psicodata-venezuela-atencion-psicologica-gratuita",
+  "estado": "publish",
+  "categorias": ["desarrollo-social"],
+  "etiquetas": ["salud mental", "PsicoData Venezuela", "UCAB", "Primeros auxilios psicológicos", "Bienestar emocional", "Apoyo psicológico", "Venezuela"],
+  "comentarios": false,
+  "extracto": "PsicoData Venezuela, iniciativa de la Escuela de Psicología de la UCAB, ofrece primeros auxilios psicológicos gratuitos, anónimos y confidenciales por llamada telefónica, todos los días de 1:00 p. m. a 9:00 p. m.",
+  "imagen_destacada": "psicodata-portada.jpg",
+  "medios": {
+    "psicodata-portada.jpg": {"titulo": "PsicoData Venezuela – portada", "alt": "Afiche de PsicoData Venezuela: atención psicológica gratuita, anónima y confidencial, solo llamadas, todos los días de 1 p. m. a 9 p. m."},
+    "psicodata-afiche.jpg": {"titulo": "PsicoData Venezuela – afiche", "alt": "Afiche de PsicoData Venezuela y la UCAB: primeros auxilios psicológicos ante crisis emocionales, solo llamadas, todos los días de 1 p. m. a 9 p. m., teléfonos +58 414 121-7882 y +58 424 172-3981"}
+  }
+}
