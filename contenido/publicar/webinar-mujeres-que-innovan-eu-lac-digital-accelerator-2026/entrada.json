@@ -1,0 +1,26 @@
+{
+  "titulo": "👩‍💻 Webinar «Mujeres que innovan, negocios que cruzan fronteras» de EU-LAC Digital Accelerator",
+  "slug": "webinar-mujeres-que-innovan-eu-lac-digital-accelerator-2026",
+  "estado": "publish",
+  "categorias": ["eventos", "emprendimiento"],
+  "etiquetas": ["EU-LAC Digital Accelerator", "Unión Europea", "Emprendedora LAC", "WeInvest Latam", "Global Gateway", "Mujeres emprendedoras", "Innovación", "Startups", "Venezuela", "América Latina"],
+  "comentarios": false,
+  "extracto": "La Delegación de la Unión Europea en Venezuela invita al webinar gratuito «Mujeres que innovan, negocios que cruzan fronteras», de EU-LAC Digital Accelerator con Emprendedora LAC y WeInvest Latam. Jueves 5 de noviembre de 2026, 11:00 a. m. (Venezuela), en línea.",
+  "imagen_destacada": "mujeres-que-innovan-portada.jpg",
+  "medios": {
+    "mujeres-que-innovan-portada.jpg": {
+      "titulo": "Webinar Mujeres que innovan, negocios que cruzan fronteras – portada",
+      "alt": "Portada: webinar Mujeres que innovan, negocios que cruzan fronteras, jueves 5 de noviembre de 2026, 11:00 a. m. hora de Venezuela, EU-LAC Digital Accelerator"
+    },
+    "mujeres-que-innovan-afiche.jpg": {
+      "titulo": "Webinar Mujeres que innovan, negocios que cruzan fronteras – afiche",
+      "alt": "Afiche del webinar Mujeres que innovan, negocios que cruzan fronteras: jueves 5 de noviembre de 2026, 11:00 a. m. hora de Venezuela; Emprendedora LAC, WeInvest, EU-LAC Digital Accelerator, Unión Europea y Global Gateway"
+    }
+  },
+  "evento": {
+    "titulo": "Webinar «Mujeres que innovan, negocios que cruzan fronteras»",
+    "inicio": "2026-11-05",
+    "hora": "11:00 a. m. (Venezuela) · 10:00 a. m. (Colombia)",
+    "lugar": "En línea (webinar, inscripción en Luma)"
+  }
+}
