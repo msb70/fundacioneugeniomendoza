@@ -1,0 +1,20 @@
+{
+  "titulo": "🔥 Cocinas limpias para empoderar a mujeres rurales: lo que dejó el piloto del BID en Guatemala",
+  "slug": "cocinas-limpias-mujeres-rurales-guatemala-bid-2026",
+  "estado": "publish",
+  "categorias": ["desarrollo-social", "emprendimiento"],
+  "etiquetas": ["BID", "Cocinas limpias", "Transición energética", "Mujeres rurales", "Uso del tiempo", "economía del cuidado", "Autonomía económica", "Guatemala", "América Latina"],
+  "comentarios": false,
+  "extracto": "Resumen de la nota técnica del BID (septiembre de 2026) sobre un piloto con 80 familias de dos aldeas cercanas a la ciudad de Guatemala que sustituyeron la leña por cocinas de inducción y ollas eléctricas: cuánto tiempo liberaron las mujeres, qué pasó con el gasto en combustible y si el cambio se mantuvo 18 meses después.",
+  "imagen_destacada": "cocinas-limpias-guatemala-portada.jpg",
+  "medios": {
+    "cocinas-limpias-guatemala-portada.jpg": {
+      "titulo": "Cocinas limpias para empoderar a mujeres rurales, BID 2026 – portada",
+      "alt": "Portada: Cocinas limpias, más tiempo para las mujeres rurales. Resumen de la nota técnica del BID de septiembre de 2026"
+    },
+    "cocinas-limpias-guatemala-bid-tapa.jpg": {
+      "titulo": "Cocinas limpias para empoderar a mujeres rurales en la transición energética: el caso de Guatemala, BID 2026 – tapa",
+      "alt": "Tapa de la nota técnica del BID Cocinas limpias para empoderar a mujeres rurales en la transición energética: el caso de Guatemala"
+    }
+  }
+}
