@@ -1,0 +1,21 @@
+{
+  "titulo": "💉 Séptima Jornada Nacional de Vacunación y Estrategia «Soy Generación más Sonriente» en Medellín",
+  "slug": "septima-jornada-nacional-vacunacion-medellin-2026",
+  "estado": "publish",
+  "categorias": ["eventos", "ayuda-a-la-infancia"],
+  "etiquetas": ["Vacunación", "Salud infantil", "Salud bucal", "Prevención", "primera infancia", "Alcaldía de Medellín", "Medellín", "Colombia"],
+  "comentarios": false,
+  "extracto": "La Alcaldía de Medellín invita a la Séptima Jornada Nacional de Vacunación y a la Estrategia «Soy Generación más Sonriente»: sábado 7 de noviembre de 2026, de 9:00 a. m. a 4:00 p. m., en puntos de vacunación de varias comunas.",
+  "imagen_destacada": "jornada-vacunacion-portada.jpg",
+  "medios": {
+    "jornada-vacunacion-portada.jpg": {"titulo": "Séptima Jornada Nacional de Vacunación Medellín – portada", "alt": "Portada: Séptima Jornada Nacional de Vacunación y Estrategia Soy Generación más Sonriente, sábado 7 de noviembre de 2026, 9:00 a. m. a 4:00 p. m., Alcaldía de Medellín"},
+    "jornada-vacunacion-afiche.jpg": {"titulo": "Séptima Jornada Nacional de Vacunación Medellín – esquema de vacunación", "alt": "Afiche de la Séptima Jornada Nacional de Vacunación: esquema de vacunación según la edad, servicios de salud bucal en las comunas 12 y 80, sábado 7 de noviembre de 2026 de 9:00 a. m. a 4:00 p. m."},
+    "jornada-vacunacion-puntos.jpg": {"titulo": "Séptima Jornada Nacional de Vacunación Medellín – puntos de vacunación", "alt": "Puntos de vacunación por comuna en Medellín: Popular, Santa Cruz, Manrique, Castilla, Doce de Octubre, La América, San Javier, Guayabal y San Antonio de Prado"}
+  },
+  "evento": {
+    "titulo": "Séptima Jornada Nacional de Vacunación (Medellín)",
+    "inicio": "2026-11-07",
+    "hora": "9:00 a. m. a 4:00 p. m. (Colombia)",
+    "lugar": "Puntos de vacunación en varias comunas, Medellín, Colombia"
+  }
+}

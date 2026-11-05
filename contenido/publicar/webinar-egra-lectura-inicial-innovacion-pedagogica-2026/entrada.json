@@ -1,0 +1,20 @@
+{
+  "titulo": "📖 Webinar «EGRA: medir habilidades para orientar la enseñanza y usos mediante la innovación pedagógica»",
+  "slug": "webinar-egra-lectura-inicial-innovacion-pedagogica-2026",
+  "estado": "publish",
+  "categorias": ["eventos", "educacion"],
+  "etiquetas": ["EGRA", "Lectura inicial", "Evaluación de aprendizajes", "Innovación educativa", "Docentes", "Fundación Fraternidad Medellín", "Banco Mundial", "Gobernación de Antioquia", "Colombia"],
+  "comentarios": false,
+  "extracto": "Fundación Fraternidad Medellín, el Banco Mundial y la Gobernación de Antioquia invitan al webinar sobre EGRA, la evaluación de las habilidades de lectura inicial para orientar la enseñanza. Jueves 5 de noviembre de 2026, 4:00 p. m. (Colombia), por Microsoft Teams.",
+  "imagen_destacada": "webinar-egra-portada.jpg",
+  "medios": {
+    "webinar-egra-portada.jpg": {"titulo": "Webinar EGRA: medir habilidades para orientar la enseñanza – portada", "alt": "Portada: webinar EGRA, medir habilidades para orientar la enseñanza y usos mediante la innovación pedagógica, jueves 5 de noviembre de 2026, 4:00 p. m., Microsoft Teams"},
+    "webinar-egra-afiche.jpg": {"titulo": "Webinar EGRA: medir habilidades para orientar la enseñanza – afiche", "alt": "Afiche del webinar EGRA: jueves 5 de noviembre de 2026, 4:00 p. m., plataforma Teams, con código QR; aliados Fundación Fraternidad Medellín, Banco Mundial y Gobernación de Antioquia"}
+  },
+  "evento": {
+    "titulo": "Webinar «EGRA: medir habilidades para orientar la enseñanza»",
+    "inicio": "2026-11-05",
+    "hora": "4:00 p. m. (Colombia) · 5:00 p. m. (Venezuela)",
+    "lugar": "En línea (Microsoft Teams)"
+  }
+}
