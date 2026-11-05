@@ -1,0 +1,20 @@
+{
+  "titulo": "🧭 Ética: los valores de Eugenio Mendoza, en sus propias palabras",
+  "slug": "etica-eugenio-mendoza-valores-del-fundador",
+  "estado": "publish",
+  "categorias": ["desarrollo-social", "emprendimiento"],
+  "etiquetas": ["Fundación Eugenio Mendoza", "Eugenio Mendoza Goiticoa", "Ética", "Valores", "Ética empresarial", "Responsabilidad social", "Filantropía", "Historia", "Universidad Metropolitana", "Venezuela"],
+  "comentarios": false,
+  "extracto": "Honestidad, ciudadanía, solidaridad, democracia, dignidad, trabajo, preocupación social y amor a Venezuela: las ideas de nuestro fundador, Eugenio Mendoza Goiticoa (1906–1979), recogidas en la tarjeta «Ética» que compartieron las instituciones que creó.",
+  "imagen_destacada": "etica-eugenio-mendoza-portada.jpg",
+  "medios": {
+    "etica-eugenio-mendoza-portada.jpg": {
+      "titulo": "Ética: los valores de Eugenio Mendoza – portada",
+      "alt": "Retrato a plumilla de Eugenio Mendoza Goiticoa junto al título Ética y su frase: Mi único mérito ha sido el haber tratado de ser un buen ciudadano"
+    },
+    "etica-eugenio-mendoza-tarjeta.jpg": {
+      "titulo": "Tarjeta «Ética» con frases de Eugenio Mendoza",
+      "alt": "Tarjeta impresa titulada Ética, con un retrato a plumilla de Eugenio Mendoza y sus frases agrupadas por valores: Honestidad, Responsabilidad Ciudadana, Solidaridad Humana, Conciencia Política, Dignidad Integral, Calidad de Trabajo, Preocupación Social y Amor a Venezuela"
+    }
+  }
+}
