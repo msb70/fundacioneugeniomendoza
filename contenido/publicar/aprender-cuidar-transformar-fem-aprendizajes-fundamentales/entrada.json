@@ -1,0 +1,14 @@
+{
+  "titulo": "✏️ Aprender, cuidar y transformar: nuestra apuesta por los aprendizajes fundamentales y el liderazgo de las cuidadoras",
+  "slug": "aprender-cuidar-transformar-fem-aprendizajes-fundamentales",
+  "estado": "publish",
+  "categorias": ["educacion", "ayuda-a-la-infancia"],
+  "etiquetas": ["Fundación Eugenio Mendoza", "Pobreza de aprendizaje", "Lectoescritura", "Matemáticas", "Fe y Alegría", "Tinker Foundation", "BID", "La Candelita", "La Profe Azul", "Inteligencia artificial", "mujeres cuidadoras", "Formación docente"],
+  "comentarios": false,
+  "extracto": "Cómo la Fundación Eugenio Mendoza, con Fe y Alegría, Tinker Foundation y el BID, combina recursos de audio, materiales de lectura y herramientas digitales con la formación de educadoras y cuidadoras para mitigar la pobreza de aprendizaje, a la luz del informe «El poder de lo esencial».",
+  "imagen_destacada": "aprender-cuidar-transformar-portada.jpg",
+  "medios": {
+    "aprender-cuidar-transformar-portada.jpg": {"titulo": "Aprender, cuidar y transformar – portada", "alt": "Portada: Aprender, cuidar y transformar. La apuesta de la Fundación Eugenio Mendoza por los aprendizajes fundamentales y el liderazgo de las cuidadoras"},
+    "fem-aprender-cuidar-transformar.pdf": {"titulo": "Aprender, cuidar y transformar – Fundación Eugenio Mendoza (PDF)", "alt": ""}
+  }
+}

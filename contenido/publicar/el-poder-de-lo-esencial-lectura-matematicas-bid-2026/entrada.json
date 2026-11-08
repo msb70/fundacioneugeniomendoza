@@ -1,0 +1,15 @@
+{
+  "titulo": "📘 El poder de lo esencial: lo que dice el BID sobre cómo enseñar a leer y a contar en América Latina",
+  "slug": "el-poder-de-lo-esencial-lectura-matematicas-bid-2026",
+  "estado": "publish",
+  "categorias": ["educacion", "desarrollo-social"],
+  "etiquetas": ["BID", "Habilidades fundacionales", "Lectoescritura", "Matemáticas", "Pobreza de aprendizaje", "Educación basada en evidencia", "Tutorías", "Formación docente", "Calidad educativa", "América Latina"],
+  "comentarios": false,
+  "extracto": "Resumen del libro del BID «El poder de lo esencial» (2026): por qué la lectoescritura y las matemáticas deciden quién prospera en América Latina y el Caribe, cuánto falta por aprender y qué funciona para enseñarlas, según más de 270 evaluaciones de impacto.",
+  "imagen_destacada": "el-poder-de-lo-esencial-portada.jpg",
+  "medios": {
+    "el-poder-de-lo-esencial-portada.jpg": {"titulo": "El poder de lo esencial, BID 2026 – portada", "alt": "Portada: El poder de lo esencial, leer y contar para prosperar. Resumen del estudio del BID de 2026"},
+    "el-poder-de-lo-esencial-bid-tapa.jpg": {"titulo": "El poder de lo esencial, BID 2026 – tapa", "alt": "Tapa del libro del BID El poder de lo esencial, editado por Emma Näslund-Hadley y Ximena Dueñas Herrera, con dos niñas leyendo juntas"},
+    "bid-el-poder-de-lo-esencial-2026.pdf": {"titulo": "BID – El poder de lo esencial (PDF, 2026)", "alt": ""}
+  }
+}
