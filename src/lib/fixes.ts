@@ -5,6 +5,7 @@
 import seo from '../site/seo.json';
 import carrusel from '../site/carrusel.json';
 import { agendaHtml, ordenarListadoEventos, eventos, rangoFechas } from './agenda';
+import { paginaDelBlog, paginarBlog } from './blog';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -171,6 +172,10 @@ export function fixBody(body: string, route: string, seoHtml: string): { body: s
     b = b.replace(/(\s*<!-- ===== POSTS)/, agendaHtml(asset('/assets/eventos/agenda.js')) + '$1');
     b = ordenarListadoEventos(b);
   }
+
+  // /blog/page/N/: la plantilla de WP repetía siempre las 10 últimas entradas (src/lib/blog.ts).
+  const pagBlog = paginaDelBlog(route);
+  if (pagBlog) b = paginarBlog(b, pagBlog);
 
   // En /category/X/ cada tarjeta mostraba la primera categoría de la entrada en WP (p. ej.
   // «Ayuda a la Infancia» dentro de Educación) y parecía que el filtro no funcionaba.
