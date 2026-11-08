@@ -1,0 +1,13 @@
+{
+  "titulo": "🌱 El cuidado infantil como inversión educativa y oportunidad para las familias",
+  "slug": "cuidado-infantil-inversion-educativa-cedain-fem",
+  "estado": "publish",
+  "categorias": ["ayuda-a-la-infancia", "educacion"],
+  "etiquetas": ["Fundación Eugenio Mendoza", "CEDAIN", "Familias Fuertes", "Cuidado infantil", "primera infancia", "mujeres cuidadoras", "Pobreza de aprendizaje", "Fe y Alegría", "ABC del Emprendedor", "Banco Mundial", "Educación basada en evidencia"],
+  "comentarios": false,
+  "extracto": "Una lectura estratégica de la Fundación Eugenio Mendoza sobre el estudio del Banco Mundial en Uganda: qué aporta para fortalecer CEDAIN y Familias Fuertes, Infancia Segura, conectarlos con la recuperación de aprendizajes y el ABC del Emprendedor, y cómo medir resultados antes de crecer.",
+  "imagen_destacada": "cuidado-inversion-educativa-portada.jpg",
+  "medios": {
+    "cuidado-inversion-educativa-portada.jpg": {"titulo": "El cuidado infantil como inversión educativa – portada", "alt": "Portada: El cuidado infantil como inversión educativa. Una lectura del estudio del Banco Mundial para fortalecer los programas de la Fundación Eugenio Mendoza"}
+  }
+}
