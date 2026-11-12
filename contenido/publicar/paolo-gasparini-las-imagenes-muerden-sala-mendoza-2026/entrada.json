@@ -1,0 +1,26 @@
+{
+  "titulo": "📷 Paolo Gasparini: «Las imágenes muerden (y sonríen)», exposición antológica en la Sala Mendoza",
+  "slug": "paolo-gasparini-las-imagenes-muerden-sala-mendoza-2026",
+  "estado": "publish",
+  "categorias": ["eventos"],
+  "etiquetas": ["Sala Mendoza", "Arte contemporáneo", "Paolo Gasparini", "Fotografía", "El Archivo", "Bicentenario de la Fotografía", "Universidad Metropolitana", "Caracas", "Venezuela"],
+  "comentarios": false,
+  "extracto": "La Sala Mendoza y El Archivo inauguran «Las imágenes muerden (y sonríen)», antológica de Paolo Gasparini con más de 200 fotografías. Jueves 19 de noviembre de 2026, 4:30 p. m., Sala Mendoza (Universidad Metropolitana, Caracas). Entrada libre.",
+  "imagen_destacada": "gasparini-portada.jpg",
+  "medios": {
+    "gasparini-portada.jpg": {
+      "titulo": "Paolo Gasparini: Las imágenes muerden (y sonríen) – portada",
+      "alt": "Portada: Paolo Gasparini, Las imágenes muerden (y sonríen), inauguración el 19 de noviembre de 2026 en la Sala Mendoza, Caracas"
+    },
+    "gasparini-afiche.jpg": {
+      "titulo": "Paolo Gasparini: Las imágenes muerden (y sonríen) – afiche",
+      "alt": "Afiche de la exposición Las imágenes muerden (y sonríen) de Paolo Gasparini: inauguración el 19 de noviembre de 2026 a las 4:30 p. m. en la Sala Mendoza, Universidad Metropolitana, Caracas. Entrada libre"
+    }
+  },
+  "evento": {
+    "titulo": "Paolo Gasparini: «Las imágenes muerden (y sonríen)» — inauguración",
+    "inicio": "2026-11-19",
+    "hora": "4:30 p. m. (Venezuela)",
+    "lugar": "Sala Mendoza, Edif. Eugenio Mendoza Goiticoa, Universidad Metropolitana, Terrazas del Ávila, Caracas, Venezuela · entrada libre"
+  }
+}
