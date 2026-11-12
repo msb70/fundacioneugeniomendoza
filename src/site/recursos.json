@@ -187,6 +187,21 @@
       "intro": "Documentos institucionales de la Fundación.",
       "items": [
         {
+          "nombre": "Memoria 2025–2026",
+          "etiqueta": "Informe anual · PDF",
+          "descripcion": "Informe de actividades del ejercicio julio 2025 – junio 2026, presentado a la Asamblea en el 75 aniversario de la Fundación: primera infancia, desarrollo social y emprendimiento, cultura, plataformas digitales, cobertura en Venezuela y Colombia, alianzas y cooperación.",
+          "imagen": "/assets/recursos/memoria-2025-2026.webp",
+          "imagenAlt": "Portada de la Memoria Anual 2025–2026 de la Fundación Eugenio Mendoza",
+          "imagenAjuste": "contain",
+          "enlaces": [
+            {
+              "texto": "Descargar PDF",
+              "url": "/publicaciones/memoria-fem-2025-2026.pdf",
+              "principal": true
+            }
+          ]
+        },
+        {
           "nombre": "Memoria 2025",
           "etiqueta": "Informe anual · PDF",
           "descripcion": "Informe anual de actividades de la Fundación Eugenio Mendoza (julio 2024 – junio 2025): programas de primera infancia, educación, desarrollo social, emprendimiento y cultura en Venezuela y Colombia, alianzas y resultados.",
