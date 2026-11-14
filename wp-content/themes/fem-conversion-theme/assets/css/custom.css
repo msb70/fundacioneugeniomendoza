@@ -1,0 +1,610 @@
+/* ============================================================
+   FEM Blog Styles — v5
+   Selectores reforzados para evitar conflictos con style.css
+   ============================================================ */
+
+:root {
+  --fem-primary:      #007991;
+  --fem-orange:       #FF9635;
+  --fem-dark:         #22323D;
+  --fem-light:        #ECF0F2;
+  --fem-muted:        #e2e8f0;
+  --fem-muted-fg:     #64748b;
+  --fem-white:        #ffffff;
+  --fem-radius:       0.75rem;
+  --fem-shadow:       0 1px 4px rgba(0,0,0,.08), 0 4px 16px rgba(0,0,0,.06);
+  --fem-shadow-hover: 0 4px 24px rgba(0,121,145,.18);
+}
+
+/* ────────────────────────────────────────────
+   Reset de contenedor
+   ──────────────────────────────────────────── */
+.blog-page .container,
+.single-post-page .container {
+  max-width: 1200px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.single-post-page .container--narrow {
+  max-width: 800px !important;
+}
+
+/* ────────────────────────────────────────────
+   Hero
+   ──────────────────────────────────────────── */
+main.blog-page .blog-hero {
+  background-color: #007991 !important;
+  color: #ffffff !important;
+  padding: 4rem 0 5rem !important;
+  width: 100% !important;
+}
+
+main.blog-page .blog-hero h1 {
+  font-size: clamp(2rem, 5vw, 3rem) !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  margin: 0 0 0.75rem !important;
+  line-height: 1.15 !important;
+}
+
+main.blog-page .blog-hero p {
+  font-size: 1.125rem !important;
+  color: rgba(255,255,255,0.85) !important;
+  max-width: 42rem !important;
+  margin: 0 !important;
+}
+
+/* ────────────────────────────────────────────
+   Barra de filtros
+   ──────────────────────────────────────────── */
+main.blog-page .blog-filters-bar {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 200 !important;
+  background: #ffffff !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  padding: 0.75rem 0 !important;
+  width: 100% !important;
+}
+
+main.blog-page .blog-filters {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.5rem !important;
+  align-items: center !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Píldora — se aplica a <a class="cat-pill"> */
+a.cat-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.3rem !important;
+  padding: 0.45rem 1.1rem !important;
+  border-radius: 9999px !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #64748b !important;
+  background: transparent !important;
+  transition: background 0.18s, color 0.18s, border-color 0.18s !important;
+  white-space: nowrap !important;
+  line-height: 1.4 !important;
+  cursor: pointer !important;
+}
+
+a.cat-pill:hover {
+  background: #ECF0F2 !important;
+  border-color: #cbd5e1 !important;
+  color: #22323D !important;
+  text-decoration: none !important;
+}
+
+/* Activo: Todos */
+a.cat-pill.is-active {
+  background: #22323D !important;
+  color: #ffffff !important;
+  border-color: #22323D !important;
+}
+
+/* Colores de categorías: gestionados dinámicamente por
+   template-parts/blog/category-colors.php
+   Se generan como <style> inline en cada página del blog. */
+
+/* ────────────────────────────────────────────
+   Badges de categoría en tarjetas (base sin color)
+   ──────────────────────────────────────────── */
+a.fem-badge {
+  display: inline-block !important;
+  padding: 0.3rem 0.75rem !important;
+  border-radius: 9999px !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  line-height: 1.4 !important;
+  background: #007991 !important; /* fallback si PHP no carga */
+  color: #fff !important;
+}
+a.fem-badge:hover { opacity: 0.85 !important; text-decoration: none !important; }
+
+/* ────────────────────────────────────────────
+   Sección de posts
+   ──────────────────────────────────────────── */
+main.blog-page .blog-list {
+  padding: 3rem 0 4rem !important;
+  background: #ffffff !important;
+}
+
+/* ────────────────────────────────────────────
+   POST DESTACADO — layout horizontal 50/50
+   ──────────────────────────────────────────── */
+article.fem-featured-card {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  grid-template-rows: auto !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 0.75rem !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08), 0 4px 16px rgba(0,0,0,.06) !important;
+  margin-bottom: 2.5rem !important;
+  background: #ffffff !important;
+  transition: box-shadow 0.25s ease !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+article.fem-featured-card:hover {
+  box-shadow: 0 4px 24px rgba(0,121,145,.18) !important;
+}
+
+/* Celda imagen — ocupa toda la altura de la fila */
+a.fem-featured-card__media {
+  display: block !important;
+  overflow: hidden !important;
+  text-decoration: none !important;
+  /* Fuerza que el <a> llene completamente la celda del grid */
+  align-self: stretch !important;
+}
+
+a.fem-featured-card__media img.fem-featured-card__img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  transition: transform 0.4s ease !important;
+  /* Asegura que la imagen llena la celda aunque el contenido sea más alto */
+  position: absolute !important;
+  top: 0 !important; left: 0 !important;
+  bottom: 0 !important; right: 0 !important;
+}
+
+/* Wrapper relativo para que position:absolute funcione en la imagen */
+a.fem-featured-card__media {
+  position: relative !important;
+}
+
+article.fem-featured-card:hover a.fem-featured-card__media img.fem-featured-card__img {
+  transform: scale(1.03) !important;
+}
+
+/* Placeholder imagen destacada */
+.fem-featured-card__placeholder {
+  position: absolute !important;
+  inset: 0 !important;
+  background: #ECF0F2 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #b0bec5 !important;
+}
+.fem-featured-card__placeholder svg { width: 64px !important; height: 64px !important; }
+
+/* Celda contenido */
+.fem-featured-card__body {
+  padding: 2.5rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+}
+
+.fem-featured-card__body a.fem-badge {
+  align-self: flex-start !important;
+  margin-bottom: 0.875rem !important;
+}
+
+.fem-featured-card__title {
+  font-size: 1.625rem !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  margin: 0 0 0.75rem !important;
+}
+
+.fem-featured-card__title a {
+  text-decoration: none !important;
+  color: #22323D !important;
+  transition: color 0.2s !important;
+}
+.fem-featured-card__title a:hover { color: #007991 !important; }
+
+.fem-featured-card__excerpt {
+  color: #64748b !important;
+  font-size: 1rem !important;
+  line-height: 1.65 !important;
+  margin: 0 0 1.25rem !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
+.fem-featured-card__meta {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 0.4rem !important;
+  font-size: 0.875rem !important;
+  color: #64748b !important;
+  margin-bottom: 1.25rem !important;
+}
+.fem-featured-card__sep { opacity: 0.4 !important; }
+
+a.fem-featured-card__link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.3rem !important;
+  font-weight: 700 !important;
+  font-size: 0.9375rem !important;
+  color: #007991 !important;
+  text-decoration: none !important;
+  transition: gap 0.2s ease !important;
+}
+a.fem-featured-card__link:hover {
+  gap: 0.6rem !important;
+  text-decoration: none !important;
+}
+
+/* ────────────────────────────────────────────
+   GRID DE TARJETAS — siempre 3 columnas en desktop
+   ──────────────────────────────────────────── */
+.blog-page .blog-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 1.5rem !important;
+  margin-top: 0 !important;
+  /* Alinear tarjetas al inicio cuando hay menos de 3 en la fila */
+  align-items: start !important;
+}
+
+article.fem-post-card {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 0.75rem !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08), 0 4px 16px rgba(0,0,0,.06) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  transition: box-shadow 0.25s ease, transform 0.25s ease !important;
+  /* Altura igual para todas las tarjetas de la fila */
+  height: 100% !important;
+}
+
+article.fem-post-card:hover {
+  box-shadow: 0 4px 24px rgba(0,121,145,.18) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Imagen tarjeta — contenedor con padding-top para ratio fijo */
+a.fem-post-card__media {
+  display: block !important;
+  overflow: hidden !important;
+  text-decoration: none !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+  padding-top: 56.25% !important; /* ratio 16:9 */
+}
+
+a.fem-post-card__media img.fem-post-card__img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  transition: transform 0.4s ease !important;
+}
+article.fem-post-card:hover a.fem-post-card__media img.fem-post-card__img {
+  transform: scale(1.04) !important;
+}
+
+.fem-post-card__placeholder {
+  position: absolute !important;
+  inset: 0 !important;
+  background: #ECF0F2 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #b0bec5 !important;
+}
+.fem-post-card__placeholder svg { width: 44px !important; height: 44px !important; }
+
+/* Body tarjeta */
+.fem-post-card__body {
+  padding: 1.25rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
+  box-sizing: border-box !important;
+}
+
+.fem-post-card__body a.fem-badge {
+  align-self: flex-start !important;
+  margin-bottom: 0.625rem !important;
+}
+
+.fem-post-card__title {
+  font-size: 1.0625rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+  margin: 0 0 0.5rem !important;
+}
+.fem-post-card__title a {
+  text-decoration: none !important;
+  color: #22323D !important;
+  transition: color 0.2s !important;
+}
+.fem-post-card__title a:hover { color: #007991 !important; }
+
+.fem-post-card__excerpt {
+  color: #64748b !important;
+  font-size: 0.875rem !important;
+  line-height: 1.6 !important;
+  margin: 0 !important;
+  flex: 1 !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
+.fem-post-card__meta {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 0.35rem !important;
+  font-size: 0.75rem !important;
+  color: #64748b !important;
+  margin-top: 1rem !important;
+  padding-top: 1rem !important;
+  border-top: 1px solid #e2e8f0 !important;
+}
+.fem-post-card__sep { opacity: 0.4 !important; }
+
+/* ────────────────────────────────────────────
+   Sin resultados
+   ──────────────────────────────────────────── */
+.blog-empty {
+  text-align: center !important;
+  color: #64748b !important;
+  padding: 4rem 0 !important;
+  font-size: 1.0625rem !important;
+}
+
+/* ────────────────────────────────────────────
+   Paginación
+   ──────────────────────────────────────────── */
+.blog-pagination {
+  margin-top: 3rem !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+.blog-pagination .nav-links {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.4rem !important;
+  align-items: center !important;
+}
+.blog-pagination .page-numbers {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 2.25rem !important;
+  height: 2.25rem !important;
+  padding: 0 0.625rem !important;
+  border-radius: 0.375rem !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #22323D !important;
+  text-decoration: none !important;
+  font-size: 0.875rem !important;
+  transition: all 0.18s ease !important;
+  background: transparent !important;
+}
+.blog-pagination .page-numbers:hover {
+  background: #007991 !important;
+  color: #fff !important;
+  border-color: #007991 !important;
+}
+.blog-pagination .page-numbers.current {
+  background: #007991 !important;
+  color: #fff !important;
+  border-color: #007991 !important;
+  font-weight: 600 !important;
+}
+
+/* ────────────────────────────────────────────
+   SINGLE POST
+   ──────────────────────────────────────────── */
+main.single-post-page {
+  background: #ffffff !important;
+  padding: 3rem 0 5rem !important;
+}
+
+a.single-back-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+  font-size: 0.875rem !important;
+  color: #64748b !important;
+  text-decoration: none !important;
+  transition: color 0.2s !important;
+}
+a.single-back-link:hover { color: #007991 !important; text-decoration: none !important; }
+
+/* Barra superior: Volver al blog ← → Badge de categoría */
+.single-top-bar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.single-badge { margin-bottom: 0 !important; }
+
+h1.single-title {
+  font-size: clamp(1.75rem, 4vw, 2.375rem) !important;
+  font-weight: 700 !important;
+  color: #22323D !important;
+  line-height: 1.25 !important;
+  margin: 0 0 1rem !important;
+}
+
+.single-meta {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+  font-size: 0.9rem !important;
+  color: #64748b !important;
+  margin-bottom: 2.5rem !important;
+}
+.single-meta__sep { opacity: 0.4 !important; }
+
+.single-featured-img {
+  border-radius: 0.75rem !important;
+  overflow: hidden !important;
+  margin-bottom: 2.5rem !important;
+  max-width: 90% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.single-featured-img__img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  aspect-ratio: 16 / 9 !important;
+  object-fit: cover !important;
+}
+
+.single-content {
+  font-size: 1.0625rem !important;
+  line-height: 1.8 !important;
+  color: #22323D !important;
+}
+.single-content p {
+  margin-bottom: 1.5rem !important;
+  text-align: justify !important;
+  hyphens: auto !important;
+}
+.single-content h2,
+.single-content h3      { margin: 2rem 0 1rem !important; }
+.single-content a       { color: #007991 !important; }
+.single-content a:hover { text-decoration: underline !important; }
+.single-content img     { max-width: 100% !important; height: auto !important; border-radius: 0.5rem !important; }
+.single-content blockquote {
+  border-left: 4px solid #007991 !important;
+  padding: 0.75rem 1.25rem !important;
+  margin: 1.5rem 0 !important;
+  color: #64748b !important;
+  font-style: italic !important;
+  background: #ECF0F2 !important;
+  border-radius: 0 0.5rem 0.5rem 0 !important;
+}
+
+/* Grid de 3 columnas exactas — cada celda siempre ocupa 1/3
+   aunque esté vacía, así los enlaces nunca se desplazan */
+.single-nav {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  padding-top: 2rem !important;
+  margin-top: 3rem !important;
+  border-top: 1px solid #e2e8f0 !important;
+}
+
+.single-nav__prev { text-align: left !important; }
+.single-nav__next { text-align: right !important; }
+
+/* Volver al blog: siempre en la columna central, centrado */
+a.single-back-link--bottom {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  margin: 0 !important;
+}
+
+.single-nav a {
+  font-size: 0.875rem !important;
+  color: #007991 !important;
+  text-decoration: none !important;
+  line-height: 1.4 !important;
+}
+.single-nav a:hover { text-decoration: underline !important; }
+
+/* ────────────────────────────────────────────
+   RESPONSIVE
+   ──────────────────────────────────────────── */
+
+/* Tablet: 2 columnas */
+@media (max-width: 1024px) {
+  .blog-page .blog-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  /* Featured card: apilado verticalmente */
+  article.fem-featured-card {
+    grid-template-columns: 1fr !important;
+  }
+  a.fem-featured-card__media {
+    position: relative !important;
+    padding-top: 56.25% !important; /* ratio 16:9 en móvil */
+    min-height: unset !important;
+  }
+  .fem-featured-card__body {
+    padding: 1.5rem !important;
+  }
+  .fem-featured-card__title {
+    font-size: 1.375rem !important;
+  }
+
+  /* Grid: 1 columna */
+  .blog-page .blog-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Single nav: apilado en móvil */
+  .single-nav {
+    grid-template-columns: 1fr !important;
+    text-align: center !important;
+  }
+  .single-nav__prev,
+  .single-nav__next { text-align: center !important; }
+  a.single-back-link--bottom { border-top: 1px solid #e2e8f0 !important; padding-top: 1rem !important; }
+}
+
+@media (max-width: 480px) {
+  main.blog-page .blog-hero { padding: 2.5rem 0 3.5rem !important; }
+  main.blog-page .blog-hero h1 { font-size: 2rem !important; }
+}
