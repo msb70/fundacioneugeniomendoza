@@ -1,0 +1,88 @@
+/* Página /recursos/ — mismo lenguaje visual que el blog del tema FEM */
+.fem-recursos { background: #f7f9fa; padding-bottom: 4rem; }
+.fem-recursos .container { max-width: 1200px; margin: 0 auto; padding: 0 1.25rem; }
+
+.fem-recursos__nav {
+  background: #fff;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky; top: 0; z-index: 20;
+}
+.fem-recursos__nav .container { display: flex; gap: .5rem; flex-wrap: wrap; padding-top: .9rem; padding-bottom: .9rem; }
+.fem-recursos__nav a {
+  display: inline-flex; align-items: center;
+  padding: .45rem 1rem; border-radius: 999px;
+  border: 1px solid #e2e8f0; color: #22323D;
+  font-family: 'Inter', sans-serif; font-size: .875rem; font-weight: 500;
+  transition: background .2s, border-color .2s, color .2s;
+}
+.fem-recursos__nav a:hover { border-color: #007991; color: #007991; background: #e6f2f4; }
+
+.fem-recursos__seccion { padding: 3.5rem 0 0; scroll-margin-top: 4.5rem; }
+.fem-recursos__cabecera { margin-bottom: 1.75rem; max-width: 48rem; }
+.fem-recursos__cabecera h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.6rem, 3vw, 2.1rem); color: #22323D; margin: 0 0 .5rem; line-height: 1.2;
+}
+.fem-recursos__cabecera p { font-family: 'Inter', sans-serif; color: #64748b; margin: 0; font-size: 1rem; line-height: 1.6; }
+
+.fem-recursos__grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 1024px) { .fem-recursos__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px)  { .fem-recursos__grid { grid-template-columns: 1fr; } }
+
+.fem-recurso {
+  background: #fff; border: 1px solid #e2e8f0; border-radius: .75rem; overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08), 0 4px 16px rgba(0,0,0,.06);
+  display: flex; flex-direction: column; height: 100%;
+  transition: box-shadow .25s ease, transform .25s ease;
+}
+.fem-recurso:hover { box-shadow: 0 4px 24px rgba(0,121,145,.18); transform: translateY(-2px); }
+
+.fem-recurso__media {
+  position: relative; display: block; aspect-ratio: 16 / 10; overflow: hidden; background: #ECF0F2;
+}
+.fem-recurso__media > img:first-child { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+.fem-recurso__media > img.is-contain { object-fit: contain; padding: .75rem; background: #ECF0F2; }
+.fem-recurso:hover .fem-recurso__media > img:first-child:not(.fem-recurso__icono) { transform: scale(1.03); }
+.fem-recurso__media > img.fem-recurso__icono {
+  position: absolute; inset: 0; margin: auto; width: 42%; height: auto; max-height: 72%; object-fit: contain;
+  border-radius: 22%; box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+.fem-recurso__logo {
+  position: absolute; left: .9rem; bottom: .9rem;
+  display: flex; align-items: center; justify-content: center;
+  height: 3.6rem; max-width: 62%; padding: .45rem .8rem; border-radius: .6rem;
+  box-shadow: 0 4px 14px rgba(0,0,0,.18);
+}
+.fem-recurso__logo img { max-height: 100%; max-width: 100%; width: auto; height: auto; display: block; object-fit: contain; }
+
+.fem-recurso__body { padding: 1.25rem 1.35rem 1.4rem; display: flex; flex-direction: column; gap: .6rem; flex: 1; }
+.fem-recurso__tag {
+  align-self: flex-start; font-family: 'Inter', sans-serif; font-size: .75rem; font-weight: 600;
+  letter-spacing: .02em; color: #007991; background: #e6f2f4; border-radius: 999px; padding: .25rem .7rem;
+}
+.fem-recurso__title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.3rem; line-height: 1.25; color: #22323D; margin: 0; }
+.fem-recurso__desc { font-family: 'Inter', sans-serif; color: #475569; font-size: .925rem; line-height: 1.6; margin: 0; flex: 1; }
+
+.fem-recurso__links { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .4rem; }
+.fem-recurso__btn {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-family: 'Inter', sans-serif; font-size: .875rem; font-weight: 600;
+  padding: .6rem 1.05rem; border-radius: .5rem;
+  background: #FF9635; color: #fff !important; border: 1px solid #FF9635;
+  transition: background .2s, border-color .2s, color .2s;
+}
+.fem-recurso__btn:hover { background: #e9801d; border-color: #e9801d; }
+.fem-recurso__btn--sec { background: #fff; color: #007991 !important; border-color: #007991; }
+.fem-recurso__btn--sec:hover { background: #e6f2f4; }
+.fem-recurso__btn:focus-visible, .fem-recursos__nav a:focus-visible { outline: 3px solid #007991; outline-offset: 2px; }
+
+.fem-recursos .screen-reader-text {
+  position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); white-space: nowrap;
+}
+
+/* El tema justifica los párrafos; en tarjetas se lee mejor alineado a la izquierda */
+.fem-recursos p { text-align: left !important; }
+@media (max-width: 640px) {
+  .fem-recursos__nav .container { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .fem-recursos__nav a { white-space: nowrap; flex: 0 0 auto; }
+}
