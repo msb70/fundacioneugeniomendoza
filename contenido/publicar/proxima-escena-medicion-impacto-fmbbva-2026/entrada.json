@@ -1,0 +1,19 @@
+{
+  "titulo": "🎭 «Próxima escena: de la medición al impacto», encuentro anual de la Fundación Microfinanzas BBVA",
+  "slug": "proxima-escena-medicion-impacto-fmbbva-2026",
+  "estado": "publish",
+  "categorias": ["eventos", "emprendimiento"],
+  "etiquetas": ["Fundación Microfinanzas BBVA", "Medición de impacto", "Impacto social", "Microfinanzas", "Emprendedores", "Datos", "OCDE", "Madrid"],
+  "comentarios": false,
+  "extracto": "La Fundación Microfinanzas BBVA celebra su encuentro anual el miércoles 18 de noviembre de 2026 a las 17:00 (Madrid), en Madrid y en directo por YouTube, para debatir cómo los datos ayudan a anticipar riesgos y generar impacto real.",
+  "imagen_destacada": "proxima-escena-portada.jpg",
+  "medios": {
+    "proxima-escena-portada.jpg": {"titulo": "Próxima escena: de la medición al impacto – portada", "alt": "Imagen del encuentro anual de la Fundación Microfinanzas BBVA «Próxima escena: de la medición al impacto»: un emprendedor trabaja en su taller de madera sobre un escenario con telón azul"}
+  },
+  "evento": {
+    "titulo": "Próxima escena: de la medición al impacto (Fundación Microfinanzas BBVA)",
+    "inicio": "2026-11-18",
+    "hora": "5:00 p. m. (Madrid) · 12:00 m. (Caracas) · 11:00 a. m. (Bogotá)",
+    "lugar": "Paseo de Recoletos 10, Madrid, España, y en directo por YouTube"
+  }
+}

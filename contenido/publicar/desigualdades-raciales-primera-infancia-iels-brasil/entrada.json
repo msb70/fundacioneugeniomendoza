@@ -1,0 +1,14 @@
+{
+  "titulo": "⚖️ Las desigualdades no esperan al primer grado: brechas raciales en el desarrollo infantil a los cinco años",
+  "slug": "desigualdades-raciales-primera-infancia-iels-brasil",
+  "estado": "publish",
+  "categorias": ["ayuda-a-la-infancia", "educacion"],
+  "etiquetas": ["primera infancia", "Desarrollo infantil", "Equidad", "Educación inicial", "Fundación Eugenio Mendoza", "Fundación Maria Cecilia Souto Vidigal", "IELS", "OCDE", "Desigualdad", "Brasil"],
+  "comentarios": false,
+  "extracto": "El boletín IELS em Foco muestra que, a los cinco años, las brechas por raza/color y nivel socioeconómico ya aparecen en preescolar: en pensamiento matemático inicial la diferencia llega a 84 puntos. Actuar en la primera infancia es urgente.",
+  "imagen_destacada": "iels-em-foco-portada.jpg",
+  "medios": {
+    "iels-em-foco-portada.jpg": {"titulo": "IELS em Foco: desigualdades raciales en la primera infancia – portada", "alt": "Portada del boletín IELS em Foco «Desigualdades raciais no desenvolvimento na primeira infância», de la Fundación Maria Cecilia Souto Vidigal"},
+    "iels-em-foco-tapa.jpg": {"titulo": "IELS em Foco: desigualdades raciales en la primera infancia – tapa", "alt": "Primera página del boletín IELS em Foco: antes de la educación primaria, la desigualdad ya tiene color; muestra brasileña de 2.598 niños de cinco años"}
+  }
+}
