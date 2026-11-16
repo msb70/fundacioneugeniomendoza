@@ -1,0 +1,33 @@
+{
+  "titulo": "🗿 Encuentro «Arte como arma» con Carlos Zerpa en la Sala Mendoza",
+  "categorias": [
+    "eventos"
+  ],
+  "etiquetas": [
+    "Sala Mendoza",
+    "Arte contemporáneo",
+    "Carlos Zerpa",
+    "Escultura",
+    "Instalación",
+    "Universidad Metropolitana",
+    "Caracas",
+    "Venezuela"
+  ],
+  "extracto": "La Sala Mendoza invita al encuentro «Arte como arma», sobre las instalaciones, esculturas y ensamblajes de Carlos Zerpa en los últimos años. Viernes 20 de noviembre de 2026, 4:00 p. m., Sala Mendoza (Universidad Metropolitana, Caracas).",
+  "imagen_destacada": "zerpa-portada.jpg",
+  "medios": {
+    "zerpa-portada.jpg": {
+      "titulo": "Arte como arma – Carlos Zerpa – portada",
+      "alt": "Encuentro Arte como arma: instalaciones, esculturas y ensamblaje de Carlos Zerpa en los últimos años. Viernes 20 de noviembre de 2026, 4:00 p. m., Sala Mendoza, Caracas"
+    }
+  },
+  "evento": {
+    "titulo": "Encuentro «Arte como arma» con Carlos Zerpa",
+    "inicio": "2026-11-20",
+    "hora": "4:00 p. m. (Venezuela)",
+    "lugar": "Sala Mendoza, Edif. Eugenio Mendoza Goiticoa, Universidad Metropolitana, Terrazas del Ávila, Caracas, Venezuela"
+  },
+  "slug": "arte-como-arma-carlos-zerpa-sala-mendoza-2026",
+  "estado": "publish",
+  "comentarios": false
+}

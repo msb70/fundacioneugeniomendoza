@@ -1,0 +1,39 @@
+{
+  "titulo": "🦔 Presentación de los libros «Fauna de la empatía» y «Elías el cachicamo» en la Sala Mendoza",
+  "categorias": [
+    "eventos",
+    "ayuda-a-la-infancia"
+  ],
+  "etiquetas": [
+    "Sala Mendoza",
+    "Espacio Anna Frank",
+    "Fundación La Compañía Humana",
+    "Banesco",
+    "Empatía",
+    "Literatura infantil",
+    "Libros",
+    "Caracas",
+    "Venezuela"
+  ],
+  "extracto": "La Sala Mendoza, Espacio Anna Frank, La Compañía Humana y Banesco presentan los libros «Fauna de la empatía» y «Elías el cachicamo», con Carlos Zerpa, Julie Restifo y Jan Vidal. Sábado 21 de noviembre de 2026, 10:00 a. m., Sala Mendoza (Caracas).",
+  "imagen_destacada": "fauna-empatia-portada.jpg",
+  "medios": {
+    "fauna-empatia-portada.jpg": {
+      "titulo": "Fauna de la empatía – Elías el cachicamo – portada",
+      "alt": "Portada: presentación de los libros Fauna de la empatía y Elías el cachicamo, 21 de noviembre de 2026 en la Sala Mendoza, Caracas"
+    },
+    "fauna-empatia-afiche.jpg": {
+      "titulo": "Fauna de la empatía – Elías el cachicamo – afiche",
+      "alt": "Afiche de la presentación de los libros Fauna de la empatía y Elías el cachicamo: sábado 21 de noviembre de 2026, 10:00 a. m., Sala Mendoza. Invitados especiales Carlos Zerpa, Julie Restifo y Jan Vidal"
+    }
+  },
+  "evento": {
+    "titulo": "Presentación de los libros «Fauna de la empatía» y «Elías el cachicamo»",
+    "inicio": "2026-11-21",
+    "hora": "10:00 a. m. (Venezuela)",
+    "lugar": "Sala Mendoza, Edif. Eugenio Mendoza Goiticoa, Universidad Metropolitana, Terrazas del Ávila, Caracas, Venezuela"
+  },
+  "slug": "fauna-de-la-empatia-elias-el-cachicamo-sala-mendoza-2026",
+  "estado": "publish",
+  "comentarios": false
+}

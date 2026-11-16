@@ -1,0 +1,38 @@
+{
+  "titulo": "📖 Presentación del libro «Jacobo Borges. Tiempos de aguas» en la Librería Sala Mendoza",
+  "categorias": [
+    "eventos"
+  ],
+  "etiquetas": [
+    "Sala Mendoza",
+    "Arte contemporáneo",
+    "Jacobo Borges",
+    "Fundación Telefónica Movistar",
+    "Libros",
+    "Pintura",
+    "Universidad Metropolitana",
+    "Caracas",
+    "Venezuela"
+  ],
+  "extracto": "La Fundación Telefónica Movistar presenta el libro «Jacobo Borges. Tiempos de aguas». Martes 17 de noviembre de 2026, 4:00 p. m., Librería Sala Mendoza (Universidad Metropolitana, Caracas).",
+  "imagen_destacada": "borges-portada.jpg",
+  "medios": {
+    "borges-portada.jpg": {
+      "titulo": "Jacobo Borges. Tiempos de aguas – portada",
+      "alt": "Portada: presentación del libro Jacobo Borges. Tiempos de aguas, 17 de noviembre de 2026 en la Librería Sala Mendoza, Caracas"
+    },
+    "borges-afiche.jpg": {
+      "titulo": "Jacobo Borges. Tiempos de aguas – afiche",
+      "alt": "Afiche de la presentación del libro Jacobo Borges. Tiempos de aguas, de la Fundación Telefónica Movistar: martes 17 de noviembre de 2026, 4:00 p. m., Librería Sala Mendoza, Universidad Metropolitana, Caracas"
+    }
+  },
+  "evento": {
+    "titulo": "Presentación del libro «Jacobo Borges. Tiempos de aguas»",
+    "inicio": "2026-11-17",
+    "hora": "4:00 p. m. (Venezuela)",
+    "lugar": "Librería Sala Mendoza, Universidad Metropolitana, Caracas, Venezuela"
+  },
+  "slug": "jacobo-borges-tiempos-de-aguas-presentacion-libro-2026",
+  "estado": "publish",
+  "comentarios": false
+}

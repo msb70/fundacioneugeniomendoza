@@ -1,0 +1,37 @@
+{
+  "titulo": "📸 «Fragilidad. Imagen, tiempo, memoria y territorio»: exposición del 5.º Visionado de Fotografía en la Sala Mendoza",
+  "categorias": [
+    "eventos"
+  ],
+  "etiquetas": [
+    "Sala Mendoza",
+    "Arte contemporáneo",
+    "Fotografía",
+    "El Archivo",
+    "Visionado de Fotografía",
+    "Universidad Metropolitana",
+    "Caracas",
+    "Venezuela"
+  ],
+  "extracto": "El Archivo y la Sala Mendoza inauguran «Fragilidad. Imagen, tiempo, memoria y territorio», exposición resultado del 5.º Visionado de Fotografía 2026. Jueves 19 de noviembre de 2026, 4:30 p. m., mezzanina de la Sala Mendoza (Universidad Metropolitana, Caracas).",
+  "imagen_destacada": "fragilidad-portada.jpg",
+  "medios": {
+    "fragilidad-portada.jpg": {
+      "titulo": "Fragilidad – 5.º Visionado de Fotografía 2026 – portada",
+      "alt": "Portada: exposición Fragilidad del 5.º Visionado de Fotografía 2026, inauguración el 19 de noviembre de 2026 en la Sala Mendoza, Caracas"
+    },
+    "fragilidad-afiche.jpg": {
+      "titulo": "Fragilidad – 5.º Visionado de Fotografía 2026 – afiche",
+      "alt": "Afiche de la exposición Fragilidad. Imagen, tiempo, memoria y territorio, resultado del 5.º Visionado de Fotografía 2026: jueves 19 de noviembre de 2026, 4:30 p. m., mezzanina de la Sala Mendoza, Universidad Metropolitana, Caracas"
+    }
+  },
+  "evento": {
+    "titulo": "«Fragilidad»: exposición del 5.º Visionado de Fotografía — inauguración",
+    "inicio": "2026-11-19",
+    "hora": "4:30 p. m. (Venezuela)",
+    "lugar": "Mezzanina de la Sala Mendoza, Edif. Eugenio Mendoza Goiticoa, Universidad Metropolitana, Terrazas del Ávila, Caracas, Venezuela"
+  },
+  "slug": "fragilidad-5to-visionado-fotografia-sala-mendoza-2026",
+  "estado": "publish",
+  "comentarios": false
+}
