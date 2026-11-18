@@ -1,0 +1,15 @@
+{
+  "titulo": "🤖 De la digitalización a la inteligencia artificial: lo que dice el BID sobre cómo convertir la IA en productividad",
+  "slug": "de-la-digitalizacion-a-la-inteligencia-artificial-bid-2026",
+  "estado": "publish",
+  "categorias": ["desarrollo-social", "emprendimiento"],
+  "etiquetas": ["BID", "Inteligencia artificial", "Transformación digital", "productividad", "Pymes", "Microempresas", "Habilidades digitales", "Políticas públicas", "América Latina"],
+  "comentarios": false,
+  "extracto": "Resumen del informe insignia del BID «De la digitalización a la inteligencia artificial» (Desarrollo en las Américas 2026): la IA podría elevar el PIB de la región un 5,1 % en una década, pero hoy su adopción es amplia y superficial. Qué la frena y qué políticas proponen los autores.",
+  "imagen_destacada": "digitalizacion-ia-bid-portada.jpg",
+  "medios": {
+    "digitalizacion-ia-bid-portada.jpg": {"titulo": "De la digitalización a la inteligencia artificial, BID 2026 – portada", "alt": "Portada: De la digitalización a la inteligencia artificial. Resumen del informe Desarrollo en las Américas 2026 del BID"},
+    "digitalizacion-ia-bid-tapa.jpg": {"titulo": "De la digitalización a la inteligencia artificial, BID 2026 – tapa", "alt": "Tapa del libro del BID De la digitalización a la inteligencia artificial: cómo transformar las promesas en productividad, editado por Julián Cristia, Philip Keefer, Nadia Rocha y Christian Volpe Martincus"},
+    "bid-de-la-digitalizacion-a-la-ia-2026.pdf": {"titulo": "BID – De la digitalización a la inteligencia artificial (PDF, 2026)", "alt": ""}
+  }
+}

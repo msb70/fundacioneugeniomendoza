@@ -1,0 +1,13 @@
+{
+  "titulo": "📱 Emprender en la era digital: la tecnología crea oportunidades cuando se convierte en capacidades",
+  "slug": "emprender-en-la-era-digital-ia-emprendimiento",
+  "estado": "publish",
+  "categorias": ["emprendimiento", "desarrollo-social"],
+  "etiquetas": ["Fundación Eugenio Mendoza", "Inteligencia artificial", "Transformación digital", "Desarrollo emprendedor", "ABC del Emprendedor", "Palante", "Microempresas", "Habilidades digitales", "Autonomía económica", "BID"],
+  "comentarios": false,
+  "extracto": "Lo que el informe del BID «De la digitalización a la inteligencia artificial» (2026) enseña a quienes emprenden: la brecha no está en el acceso, sino en el uso y la integración de las herramientas. Una ruta gradual y acompañada para que la tecnología mejore las decisiones del negocio.",
+  "imagen_destacada": "emprender-era-digital-portada.jpg",
+  "medios": {
+    "emprender-era-digital-portada.jpg": {"titulo": "Emprender en la era digital – portada", "alt": "Portada: Emprender en la era digital. La tecnología crea oportunidades cuando se convierte en capacidades, mejores decisiones y más valor para las personas"}
+  }
+}
