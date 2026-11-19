@@ -1,0 +1,16 @@
+{
+  "titulo": "👂 Escuchar para cuidar mejor: cómo la metodología RAPID puede fortalecer nuestro trabajo en primera infancia",
+  "slug": "escuchar-para-cuidar-mejor-rapid-primera-infancia",
+  "estado": "publish",
+  "categorias": ["ayuda-a-la-infancia", "desarrollo-social"],
+  "etiquetas": ["primera infancia", "RAPID", "Stanford Center on Early Childhood", "Centro de Primera Infancia", "Tecnológico de Monterrey", "Fundación FEMSA", "CRESIENDO", "Vidas en Movimiento", "mujeres cuidadoras", "Niñez migrante", "Medición de impacto", "Fundación Eugenio Mendoza"],
+  "comentarios": false,
+  "extracto": "La calidad de una intervención de primera infancia también depende de cuánto conocemos la vida cotidiana de quienes cuidan. Una reflexión de la Fundación sobre cómo la metodología RAPID, del Stanford Center on Early Childhood, puede integrar la voz de familias y cuidadoras en CRESIENDO y Vidas en Movimiento.",
+  "imagen_destacada": "escuchar-para-cuidar-mejor-portada.jpg",
+  "medios": {
+    "escuchar-para-cuidar-mejor-portada.jpg": {"titulo": "Escuchar para cuidar mejor – portada", "alt": "Portada: Escuchar para cuidar mejor. Cómo la metodología RAPID puede fortalecer CRESIENDO y Vidas en Movimiento con la voz de familias y cuidadoras"},
+    "infografia-escuchar-para-actuar-rapid.jpg": {"titulo": "Infografía: Escuchar para actuar – RAPID en CRESIENDO y Vidas en Movimiento", "alt": "Infografía «Escuchar para actuar»: qué es RAPID, cinco áreas para escuchar (necesidades materiales, bienestar de quien cuida, bienestar infantil, cuidado y educación, salud preventiva), cinco pasos para adaptarla con rigor, propuesta de uso en CRESIENDO y Vidas en Movimiento, y límites y resguardos"},
+    "infografia-fem-rapid-cresiendo-vidas-en-movimiento.pdf": {"titulo": "Infografía FEM – Escuchar para actuar: RAPID (PDF)", "alt": ""},
+    "articulo-fem-escuchar-para-cuidar-mejor-rapid.pdf": {"titulo": "Artículo FEM – Escuchar para cuidar mejor: RAPID y primera infancia (PDF)", "alt": ""}
+  }
+}
