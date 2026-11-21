@@ -1,0 +1,15 @@
+{
+  "titulo": "💛 Acompañar las emociones en la primera infancia: una tarea compartida entre familias y cuidadoras",
+  "slug": "acompanar-emociones-primera-infancia-familias-cuidadoras",
+  "estado": "publish",
+  "categorias": ["ayuda-a-la-infancia", "educacion"],
+  "etiquetas": ["primera infancia", "Familias Fuertes", "mujeres cuidadoras", "crianza respetuosa", "Bienestar emocional", "Educación emocional", "Regulación emocional", "Libro de las emociones", "Fundación Eugenio Mendoza"],
+  "comentarios": false,
+  "extracto": "Una emoción no es una mala conducta: es una experiencia que niñas y niños necesitan aprender a reconocer y expresar. La Fundación propone la ruta CALMA para que familias y cuidadoras conecten, validen, pongan límites seguros y enseñen, inspirada en el Libro de las emociones de Ana Tereza Coelho.",
+  "imagen_destacada": "acompanar-emociones-portada.jpg",
+  "medios": {
+    "acompanar-emociones-portada.jpg": {"titulo": "Acompañar las emociones en la primera infancia – portada", "alt": "Portada: Acompañar las emociones en la primera infancia. Una tarea compartida entre familias y cuidadoras: conectar, validar y enseñar"},
+    "infografia-acompanar-emociones-primera-infancia.jpg": {"titulo": "Infografía: Acompañar las emociones en la primera infancia", "alt": "Infografía «Acompañar las emociones en la primera infancia»: cuatro emociones (temor, enojo, tristeza, alegría) con una pregunta y una respuesta para cada una, la ruta CALMA (cuida tu calma, asegura y acércate, localiza y nombra, marca límites seguros, acompaña y enseña después), una frase modelo para el enojo y tres momentos para practicar en el centro"},
+    "infografia-fem-acompanar-emociones-primera-infancia.pdf": {"titulo": "Infografía FEM – Acompañar las emociones en la primera infancia (PDF)", "alt": ""}
+  }
+}

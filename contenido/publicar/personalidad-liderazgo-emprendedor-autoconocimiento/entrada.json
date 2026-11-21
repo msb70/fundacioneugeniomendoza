@@ -1,0 +1,15 @@
+{
+  "titulo": "🧭 Personalidad y liderazgo emprendedor: conocerse mejor para decidir, colaborar y hacer crecer el negocio",
+  "slug": "personalidad-liderazgo-emprendedor-autoconocimiento",
+  "estado": "publish",
+  "categorias": ["emprendimiento", "educacion"],
+  "etiquetas": ["Liderazgo", "Desarrollo emprendedor", "ABC del Emprendedor", "Herramientas para la Acción", "Autoconocimiento", "Teorías de la personalidad", "Aprendizaje emprendedor", "Fundación Eugenio Mendoza"],
+  "comentarios": false,
+  "extracto": "No existe un «tipo ideal» de emprendedor. La Fundación propone usar las teorías de la personalidad —rasgos, motivación, autoeficacia, reencuadre, hábitos e interés social— como lentes de reflexión para convertir el autoconocimiento en experimentos y decisiones observables dentro del ABC del Emprendedor.",
+  "imagen_destacada": "personalidad-liderazgo-portada.jpg",
+  "medios": {
+    "personalidad-liderazgo-portada.jpg": {"titulo": "Personalidad y liderazgo emprendedor – portada", "alt": "Portada: Personalidad y liderazgo emprendedor. Cómo las teorías de la personalidad pueden enriquecer el liderazgo y el aprendizaje emprendedor"},
+    "infografia-personalidad-liderazgo-emprendedor.jpg": {"titulo": "Infografía: Personalidad y liderazgo emprendedor", "alt": "Infografía «Personalidad y liderazgo emprendedor»: seis lentes para liderar y emprender (rasgos y fortalezas, motivación y propósito, autoeficacia, perspectiva y reencuadre, hábitos que sostienen, liderazgo con interés social), cómo llevarlo a la práctica en el ABC del Emprendedor (observa, elige, prueba, aprende) y un reto de 7 días"},
+    "infografia-fem-personalidad-liderazgo-emprendedor.pdf": {"titulo": "Infografía FEM – Personalidad y liderazgo emprendedor (PDF)", "alt": ""}
+  }
+}
