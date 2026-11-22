@@ -1,0 +1,15 @@
+{
+  "titulo": "🌍 Informe sobre las Migraciones en el Mundo 2026: lo que dice la OIM sobre una movilidad en tiempos de perturbaciones",
+  "slug": "informe-migraciones-mundo-2026-oim",
+  "estado": "publish",
+  "categorias": ["desarrollo-social", "ayuda-a-la-infancia"],
+  "etiquetas": ["OIM", "Migración", "Niñez migrante", "Desplazamiento interno", "Movilidad climática", "Regularización migratoria", "Remesas", "Discapacidad", "Venezuela", "Colombia", "América Latina"],
+  "comentarios": false,
+  "extracto": "Resumen del Informe sobre las Migraciones en el Mundo 2026 de la OIM: 304 millones de migrantes internacionales, 83,4 millones de desplazados internos, remesas por 905.000 millones de dólares y la experiencia latinoamericana de regularización de la migración venezolana.",
+  "imagen_destacada": "informe-migraciones-2026-portada.jpg",
+  "medios": {
+    "informe-migraciones-2026-portada.jpg": {"titulo": "Informe sobre las Migraciones en el Mundo 2026, OIM – portada", "alt": "Portada: Informe sobre las migraciones en el mundo 2026. Resumen del estudio de la OIM"},
+    "informe-migraciones-2026-oim-tapa.jpg": {"titulo": "Informe sobre las Migraciones en el Mundo 2026, OIM – tapa", "alt": "Tapa del Informe sobre las Migraciones en el Mundo 2026 de la OIM, ONU Migración"},
+    "oim-informe-migraciones-mundo-2026.pdf": {"titulo": "OIM – Informe sobre las Migraciones en el Mundo 2026 (PDF)", "alt": ""}
+  }
+}

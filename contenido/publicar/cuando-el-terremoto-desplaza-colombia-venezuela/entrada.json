@@ -1,0 +1,14 @@
+{
+  "titulo": "🧭 Cuando el terremoto desplaza: nuevas rutas, movimientos internos y niñez entre Colombia y Venezuela",
+  "slug": "cuando-el-terremoto-desplaza-colombia-venezuela",
+  "estado": "publish",
+  "categorias": ["ayuda-a-la-infancia", "desarrollo-social"],
+  "etiquetas": ["Niñez migrante", "Migración", "Vidas en Movimiento", "OIM", "Desplazamiento interno", "Terremoto", "Emergencias", "Diálogo Interamericano", "FEMSA", "Colombia", "Venezuela", "América Latina"],
+  "comentarios": false,
+  "extracto": "Los datos recientes de la OIM muestran que la movilidad en América Latina ya no avanza en una sola dirección. Las emergencias sísmicas en Colombia y Venezuela añaden desplazamientos internos, alojamientos temporales y decisiones de migrar que requieren seguimiento diferenciado.",
+  "imagen_destacada": "cuando-el-terremoto-desplaza-portada.jpg",
+  "medios": {
+    "cuando-el-terremoto-desplaza-portada.jpg": {"titulo": "Cuando el terremoto desplaza – portada", "alt": "Portada: Cuando el terremoto desplaza. Nuevas rutas, movimientos internos y niñez entre Colombia y Venezuela. Lectura estratégica FEM"},
+    "articulo-fem-cuando-el-terremoto-desplaza.pdf": {"titulo": "FEM – Cuando el terremoto desplaza (PDF)", "alt": ""}
+  }
+}

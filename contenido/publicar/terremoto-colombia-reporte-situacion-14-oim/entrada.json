@@ -1,0 +1,13 @@
+{
+  "titulo": "🏚️ Terremoto en Colombia: la OIM reporta el paso de la emergencia a la reconstrucción",
+  "slug": "terremoto-colombia-reporte-situacion-14-oim",
+  "estado": "publish",
+  "categorias": ["desarrollo-social", "ayuda-a-la-infancia"],
+  "etiquetas": ["OIM", "Terremoto", "Emergencias", "Desplazamiento interno", "Alojamientos temporales", "Salud mental", "Protección", "Educación", "Colombia"],
+  "comentarios": false,
+  "extracto": "El Reporte de situación #14 de la OIM (3 de noviembre de 2026) registra 778.281 personas afectadas, 255.079 viviendas dañadas y 5.309 sedes educativas afectadas por el terremoto en Colombia, y resume la respuesta en alojamiento, salud, protección y seguimiento de la movilidad.",
+  "imagen_destacada": "terremoto-colombia-sitrep-14-portada.jpg",
+  "medios": {
+    "terremoto-colombia-sitrep-14-portada.jpg": {"titulo": "Terremoto en Colombia, Reporte de situación #14 OIM – portada", "alt": "Portada: Terremoto en Colombia, de la emergencia a la reconstrucción. Reporte de situación #14 de OIM Colombia"}
+  }
+}
