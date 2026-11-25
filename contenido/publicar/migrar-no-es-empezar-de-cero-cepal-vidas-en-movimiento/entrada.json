@@ -1,0 +1,15 @@
+{
+  "titulo": "🧭 Migrar no debería significar empezar de cero",
+  "slug": "migrar-no-es-empezar-de-cero-cepal-vidas-en-movimiento",
+  "estado": "publish",
+  "categorias": ["ayuda-a-la-infancia", "desarrollo-social"],
+  "etiquetas": ["Vidas en Movimiento", "Migración", "Niñez migrante", "CEPAL", "Observatorio Demográfico", "R4V", "Diálogo Interamericano", "Fundación FEMSA", "Protección infantil", "Colombia", "Venezuela"],
+  "comentarios": false,
+  "extracto": "El Observatorio Demográfico 2026 de la CEPAL y la experiencia de Vidas en Movimiento muestran por qué la continuidad de atención es clave para niñas, niños y familias en movilidad.",
+  "imagen_destacada": "migrar-cepal-vem-portada.jpg",
+  "medios": {
+    "migrar-cepal-vem-portada.jpg": {"titulo": "Migrar no debería significar empezar de cero – portada", "alt": "Infografía de la Fundación Eugenio Mendoza y Vidas en Movimiento: Migrar transforma la región, incluir protege el futuro"},
+    "infografia-cepal-vem.jpg": {"titulo": "Infografía FEM – Migrar transforma la región, incluir protege el futuro", "alt": "Infografía: 48 millones de personas nacidas en América Latina y el Caribe vivían fuera de su país en 2024; 6,96 millones de personas venezolanas en otros países de la región, 2,8 millones en Colombia; 29 % migra dentro de la región; cinco prioridades para la protección e inclusión de la niñez en movilidad"},
+    "infografia-fem-cepal-migracion-vidas-en-movimiento.pdf": {"titulo": "Infografía FEM – CEPAL, migración y Vidas en Movimiento (PDF)", "alt": ""}
+  }
+}
