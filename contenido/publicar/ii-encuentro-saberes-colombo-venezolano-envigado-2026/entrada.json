@@ -1,0 +1,20 @@
+{
+  "titulo": "🎄 II Encuentro de Saberes Colombo-venezolano en Envigado",
+  "slug": "ii-encuentro-saberes-colombo-venezolano-envigado-2026",
+  "estado": "publish",
+  "categorias": ["eventos", "desarrollo-social"],
+  "etiquetas": ["Colombia", "Venezuela", "Migración", "Integración", "Envigado"],
+  "comentarios": false,
+  "extracto": "Gerencia Sostenible, con el apoyo de la Alcaldía de Envigado, convoca al II Encuentro de Saberes Colombo-venezolano: sábado 28 de noviembre de 2026, 4:00 p. m., en la Casa de la Cultura Miguel Uribe Restrepo de Envigado. Entrada libre con registro previo.",
+  "imagen_destacada": "encuentro-saberes-portada.jpg",
+  "medios": {
+    "encuentro-saberes-portada.jpg": {"titulo": "II Encuentro de Saberes Colombo-venezolano – portada", "alt": "Afiche navideño del II Encuentro de Saberes Colombo-venezolano en Envigado"},
+    "encuentro-saberes-afiche.jpg": {"titulo": "II Encuentro de Saberes Colombo-venezolano – afiche", "alt": "Afiche del II Encuentro de Saberes Colombo-venezolano: sábado 28 de noviembre de 2026, 4:00 p. m., Casa de la Cultura Miguel Uribe Restrepo, Envigado. Entrada libre con registro por QR"}
+  },
+  "evento": {
+    "titulo": "II Encuentro de Saberes Colombo-venezolano",
+    "inicio": "2026-11-28",
+    "hora": "4:00 p. m. (Colombia)",
+    "lugar": "Casa de la Cultura Miguel Uribe Restrepo, Envigado, Colombia"
+  }
+}
