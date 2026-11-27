@@ -66,5 +66,5 @@
 "66ccba454ee1": "<script data-wp-strategy=\"defer\" defer id=\"essential-blocks-typedjs-js\" src=\"/wp-content/plugins/essential-blocks/assets/js/typed.min.js\"></script>",
 "0e47259c34ad": "<script data-wp-strategy=\"defer\" defer id=\"essential-blocks-typing-text-frontend-js\" src=\"/wp-content/plugins/essential-blocks/assets/blocks/typing-text/frontend.js\"></script>",
 "a869bab710e4": "<style id=\"block-style-variation-styles-inline-css\">\n:root :where(.wp-block-button.is-style-outline--1 .wp-block-button__link){background: transparent none;border-color: currentColor;border-width: 2px;border-style: solid;color: currentColor;padding-top: 0.667em;padding-right: 1.33em;padding-bottom: 0.667em;padding-left: 1.33em;}\n/*# sourceURL=block-style-variation-styles-inline-css */\n</style>",
-"4d38bb6743ac": "<script id=\"fem-post-rating-js-extra\">\nvar FEMRating = {\"ajaxUrl\":\"/api/rating.php\",\"nonce\":\"3b09a3cfbe\"};\n//# sourceURL=fem-post-rating-js-extra\n</script>"
+"ba70662bca49": "<script id=\"fem-post-rating-js-extra\">\nvar FEMRating = {\"ajaxUrl\":\"/api/rating.php\",\"nonce\":\"8af3b55348\"};\n//# sourceURL=fem-post-rating-js-extra\n</script>"
 }
