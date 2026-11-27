@@ -1,0 +1,21 @@
+{
+  "titulo": "💡 Abierta la convocatoria del V Premio Iberoamericano de Innovación Educativa de la OEI",
+  "slug": "v-premio-iberoamericano-innovacion-educativa-oei-2027",
+  "estado": "publish",
+  "categorias": ["eventos", "educacion"],
+  "etiquetas": ["OEI", "Premio Iberoamericano de Innovación Educativa", "Innovación educativa", "Convocatoria", "Bibliotecas escolares", "Formación técnico profesional", "Iberoamérica"],
+  "comentarios": false,
+  "extracto": "La OEI y el Ministerio de Educación, Formación Profesional y Deportes de España abren la convocatoria del V Premio Iberoamericano de Innovación Educativa. Inscripciones del 27 de noviembre de 2026 al 1 de marzo de 2027, mediante formulario en línea.",
+  "imagen_destacada": "premio-innovacion-oei-portada.jpg",
+  "medios": {
+    "premio-innovacion-oei-portada.jpg": {"titulo": "V Premio Iberoamericano de Innovación Educativa – portada", "alt": "Portada: V Premio Iberoamericano de Innovación Educativa de la OEI, inscripciones abiertas del 27 de noviembre de 2026 al 1 de marzo de 2027"},
+    "premio-innovacion-oei-afiche.jpg": {"titulo": "V Premio Iberoamericano de Innovación Educativa – afiche", "alt": "Afiche del V Premio Iberoamericano de Innovación Educativa: inscripciones abiertas del 27 de noviembre de 2026 al 1 de marzo de 2027; OEI y Ministerio de Educación, Formación Profesional y Deportes de España"}
+  },
+  "evento": {
+    "titulo": "V Premio Iberoamericano de Innovación Educativa (inscripciones)",
+    "inicio": "2026-11-27",
+    "fin": "2027-03-01",
+    "hora": "Inscripciones abiertas hasta el 1 de marzo de 2027",
+    "lugar": "En línea (formulario de la OEI)"
+  }
+}
